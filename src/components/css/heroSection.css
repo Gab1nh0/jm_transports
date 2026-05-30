@@ -1,6 +1,11 @@
-.hero-section-wrapper {
+.hero-dock-wrapper {
   position: relative;
   width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-top: -60px;
+  z-index: 10;
+  padding: 0 40px;
 }
 
 
@@ -194,4 +199,9 @@ background-color: transparent;
 
 .dock-item:hover .iphone-emoji {
   transform: translateY(-4px);
+}
+
+.hero-example-content{
+  padding-top: 80px;
+  height: 500px; /* Ajusta esta altura según tus necesidades */
 }
