@@ -1,0 +1,25 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Montserrat:wght@600;700;800&display=swap');
+
+:root {
+  --font-headlines: 'Syne', sans-serif;
+  --font-body: 'Space Grotesk', sans-serif;
+
+  --color-primary: #000000;       
+  --color-secondary: #00D2E6;     
+  --color-tertiary: #FFD700;      
+  --color-neutral-bg: #F5F7F8;    
+  --color-white: #FFFFFF;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: var(--font-body); 
+}
+
+body {
+  background-color: var(--color-white);
+  color: var(--color-primary);
+  -webkit-font-smoothing: antialiased;
+}
