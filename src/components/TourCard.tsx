@@ -29,7 +29,7 @@ export default function Tours() {
 
         {/* San Blas */}
         <div className="tc-card sanblas">
-          <img className="tc-card-img" src="https://images.unsplash.com/photo-1559128010-7c1ad6e1b6a5?w=800&q=80" alt="San Blas" />
+          <img className="tc-card-img" src="https://i0.wp.com/panamamastertours.com/wp-content/uploads/2023/08/panama-city-4-day-island-hopping-san-blas-adventure-1695289.webp?fit=1500%2C1001&ssl=1" alt="San Blas" />
           <div className="tc-card-body">
             <div className="tc-badges">
               <span className="tc-badge featured">Featured</span>
@@ -55,7 +55,7 @@ export default function Tours() {
 
         {/* Monkey */}
         <div className="tc-card monkey">
-          <img className="tc-card-img" src="https://images.unsplash.com/photo-1540573133985-87b6da6d54a9?w=600&q=80" alt="Monkey Tour" />
+          <img className="tc-card-img" src="https://img.magnific.com/foto-gratis/macaco-cola-munon-cara-roja-selva-verde_475641-1561.jpg?semt=ais_hybrid&w=740&q=80" alt="Monkey Tour" />
           <div className="tc-card-body">
             <div className="tc-card-top">
               <h3>Monkey Tour</h3>
@@ -76,7 +76,7 @@ export default function Tours() {
 
         {/* City Tour */}
         <div className="tc-card city">
-          <img className="tc-card-img" src="https://images.unsplash.com/photo-1533106418989-88406c7cc8ca?w=600&q=80" alt="City Tour" />
+          <img className="tc-card-img" src="https://media.istockphoto.com/id/1097678776/es/foto/skyline-ciudad-de-panam%C3%A1.jpg?s=612x612&w=0&k=20&c=HIF5ggcAMc_0VCkUxnun1dwEpoXV29FYrBpBzVOHD88=" alt="City Tour" />
           <div className="tc-card-body">
             <div className="tc-card-top">
               <h3>City Tour Panamá</h3>

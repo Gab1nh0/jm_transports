@@ -14,7 +14,21 @@ export default function Navbar() {
 
   return (
     <nav className={`navbar ${scrolled ? 'navbar--scrolled' : ''}`}>
-      <a href="#" className="nav-brand">JM Transport Group</a>
+
+      <a href="#" className="nav-brand">
+  <span className="brand-text">
+    {'JM Transport'.split('').map((char, i) => (
+      <span
+        key={i}
+        className="brand-char"
+        style={{ '--i': i } as React.CSSProperties}
+      >
+        {char === ' ' ? '\u00A0' : char}
+      </span>
+    ))}
+  </span>
+  <span className="brand-group">Group</span>
+</a>
 
       <ul className="nav-links">
         <li><a href="#">{t('nav.services')}</a></li>

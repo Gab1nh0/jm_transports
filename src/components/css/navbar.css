@@ -108,3 +108,54 @@
   border-color: var(--color-primary);
   color: var(--color-primary);
 }
+
+.nav-brand {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 5px;
+  text-decoration: none;
+}
+
+.brand-text {
+  display: inline-flex;
+}
+
+.brand-char {
+  display: inline-block;
+  color: rgba(255, 255, 255, 0.9);
+  transition: color 0.3s ease;
+  transition-delay: calc(var(--i) * 40ms);
+  font-family: var(--font-headlines);
+  font-size: 1.2rem;
+  font-weight: 800;
+}
+
+.nav-brand:hover .brand-char {
+  color: #444;
+  transition-delay: calc(var(--i) * 40ms);
+}
+
+/* Cuando el navbar está scrolled, letras ya son oscuras */
+.navbar--scrolled .brand-char {
+  color: var(--color-primary);
+}
+
+.navbar--scrolled .nav-brand:hover .brand-char {
+  color: #555;
+}
+
+.brand-group {
+  font-family: var(--font-headlines);
+  font-size: 0.72rem;
+  font-weight: 400;
+  color: white;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  align-self: flex-end;
+  padding-bottom: 2px;
+  transition: color 0.3s ease;
+}
+
+.navbar--scrolled .brand-group {
+  color: rgba(0, 0, 0, 0.3);
+}
