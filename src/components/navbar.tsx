@@ -1,11 +1,19 @@
 import './css/navbar.css';
 import { useLang } from '../context/LanguageContext';
+import { useState, useEffect } from 'react';
 
 export default function Navbar() {
   const { lang, toggleLang, t } = useLang();
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => setScrolled(window.scrollY > 50);
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   return (
-    <nav className="navbar">
+    <nav className={`navbar ${scrolled ? 'navbar--scrolled' : ''}`}>
       <a href="#" className="nav-brand">JM Transport Group</a>
 
       <ul className="nav-links">

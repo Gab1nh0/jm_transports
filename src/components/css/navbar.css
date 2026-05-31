@@ -72,3 +72,39 @@
   border-color: var(--color-white);
   color: var(--color-white);
 }
+
+
+.navbar {
+  transition: background 0.3s ease, box-shadow 0.3s ease;
+}
+
+.navbar--scrolled {
+  background: var(--color-white) !important;
+  box-shadow: 0 2px 20px rgba(0, 0, 0, 0.08);
+}
+
+.navbar--scrolled .nav-brand {
+  color: var(--color-primary);
+}
+
+.navbar--scrolled .nav-links a {
+  color: rgba(0, 0, 0, 0.65);
+}
+
+.navbar--scrolled .nav-links a:hover {
+  color: var(--color-primary);
+}
+
+.navbar--scrolled .nav-links a.active {
+  color: var(--color-secondary);
+}
+
+.navbar--scrolled .lang-toggle {
+  border-color: rgba(0, 0, 0, 0.25);
+  color: rgba(0, 0, 0, 0.65);
+}
+
+.navbar--scrolled .lang-toggle:hover {
+  border-color: var(--color-primary);
+  color: var(--color-primary);
+}
