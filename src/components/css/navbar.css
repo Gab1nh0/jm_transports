@@ -138,6 +138,7 @@
 /* Cuando el navbar está scrolled, letras ya son oscuras */
 .navbar--scrolled .brand-char {
   color: var(--color-primary);
+  
 }
 
 .navbar--scrolled .nav-brand:hover .brand-char {

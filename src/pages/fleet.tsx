@@ -1,5 +1,7 @@
 import './css/fleet.css';
 import { useNavigate } from 'react-router-dom';
+import Footer from '../components/footer.tsx';
+import Navbarwhite from '../components/navbar_fondo.tsx';
 
 export default function Booking() {
   const navigate = useNavigate();
@@ -11,11 +13,13 @@ export default function Booking() {
   };
 
   return (
+  <>
+    <Navbarwhite />
     <div className="bk-root">
 
       {/* Hero */}
       <div className="bk-hero">
-        <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1200&q=80" alt="Panama" />
+        <img src="https://www.travelleating.com/wp-content/uploads/Isla-Pelicano.jpg" alt="Panama" />
         <div className="bk-hero-overlay" />
         <div className="bk-hero-content">
           <h1>Book Your Premium Journey</h1>
@@ -163,5 +167,7 @@ export default function Booking() {
         </div>
       </div>
     </div>
+    <Footer />
+  </>
   );
 }
