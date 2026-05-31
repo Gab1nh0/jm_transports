@@ -1,10 +1,10 @@
 import './css/tours.css';
-import { useNavigate } from 'react-router-dom';
+//import { useNavigate } from 'react-router-dom';
 import Footer from '../components/footer.tsx';
 import Navbarwhite from '../components/navbar_fondo.tsx';
 
 export default function Booking() {
-  const navigate = useNavigate();
+  //const navigate = useNavigate();
 
   const handleSubmit = () => {
     const phone = '50762166675';
