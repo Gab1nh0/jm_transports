@@ -1,0 +1,220 @@
+.tc-root {
+  font-family: var(--font-body);
+  padding: 48px 60px;
+  background: var(--color-white);
+}
+
+.tc-header { margin-bottom: 28px; }
+
+.tc-header h2 {
+  font-family: var(--font-headlines);
+  font-size: 1.8rem;
+  font-weight: 800;
+  color: var(--color-primary);
+  letter-spacing: -0.02em;
+  margin-bottom: 6px;
+}
+
+.tc-header p {
+  color: #64748b;
+  font-size: 0.92rem;
+  font-weight: 300;
+}
+
+.tc-filters { display: flex; gap: 8px; margin-top: 16px; }
+
+.tc-filter {
+  padding: 6px 16px;
+  border-radius: 50px;
+  border: 0.5px solid #e2e8f0;
+  background: transparent;
+  font-family: var(--font-body);
+  font-size: 0.82rem;
+  font-weight: 500;
+  color: #64748b;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.tc-filter.active {
+  background: var(--color-primary);
+  color: var(--color-white);
+  border-color: var(--color-primary);
+}
+
+/* Grid principal */
+.tc-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  grid-template-rows: auto auto;
+  grid-template-areas:
+    "sanblas monkey"
+    "city    custom";
+  gap: 16px;
+}
+
+/* Cards base */
+.tc-card {
+  background: var(--color-white);
+  border-radius: 12px;
+  border: 0.5px solid #e2e8f0;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.tc-card.sanblas { grid-area: sanblas; }
+.tc-card.monkey  { grid-area: monkey; }
+.tc-card.city    { grid-area: city; flex-direction: row; }
+
+.tc-card-img { object-fit: cover; display: block; }
+.tc-card.sanblas .tc-card-img { width: 100%; height: 500px; }
+.tc-card.monkey  .tc-card-img { width: 100%; height: 400px; }
+.tc-card.city    .tc-card-img { width: 600px; height: 100%; flex-shrink: 0; }
+
+.tc-card-body {
+  padding: 16px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.tc-badges { display: flex; gap: 6px; margin-bottom: 10px; }
+
+.tc-badge {
+  font-size: 0.7rem;
+  font-weight: 600;
+  padding: 3px 10px;
+  border-radius: 50px;
+  font-family: var(--font-body);
+}
+
+.tc-badge.featured { background: var(--color-secondary); color: var(--color-primary); }
+.tc-badge.rated    { background: #f1f5f9; color: #64748b; border: 0.5px solid #e2e8f0; }
+
+.tc-card-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 6px;
+}
+
+.tc-card-top h3 {
+  font-family: var(--font-headlines);
+  font-size: 1rem;
+  font-weight: 800;
+  color: var(--color-primary);
+}
+
+.tc-price { text-align: right; flex-shrink: 0; margin-left: 8px; }
+.tc-price span { font-size: 0.62rem; color: #94a3b8; display: block; font-weight: 400; }
+.tc-price strong {
+  font-family: var(--font-headlines);
+  font-size: 2.5rem;
+  font-weight: 800;
+  color: var(--color-secondary);
+}
+
+.tc-meta { display: flex; gap: 10px; margin-bottom: 8px; flex-wrap: wrap; }
+.tc-meta-item { font-size: 0.74rem; color: #64748b; }
+
+.tc-desc {
+  font-size: 0.82rem;
+  color: #64748b;
+  line-height: 1.6;
+  font-weight: 300;
+  flex: 1;
+  margin-bottom: 12px;
+}
+
+.tc-includes { display: flex; flex-direction: column; gap: 4px; margin-bottom: 12px; }
+
+.tc-include { font-size: 0.77rem; color: #64748b; }
+.tc-include::before { content: '✓ '; color: var(--color-secondary); font-weight: 700; }
+
+.tc-tags { display: flex; gap: 5px; flex-wrap: wrap; margin-bottom: 12px; }
+
+.tc-tag {
+  font-size: 0.7rem;
+  padding: 3px 8px;
+  border-radius: 6px;
+  border: 0.5px solid #e2e8f0;
+  color: #64748b;
+  background: #f8fafc;
+}
+
+.tc-btn {
+  width: 45%;
+  padding: 10px;
+  border: none;
+  border-radius: 50px;
+  font-family: var(--font-headlines);
+  font-size: 0.83rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s;
+  background: var(--color-primary);
+  color: var(--color-white);
+  margin-top: auto;
+}
+
+.tc-btn:hover {
+  background: var(--color-secondary);
+  color: var(--color-primary);
+}
+
+/* Custom card */
+.tc-custom {
+  grid-area: custom;
+  background: var(--color-white);
+  border-radius: 12px;
+  border: 0.5px solid #e2e8f0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 32px 24px;
+  text-align: center;
+}
+
+.tc-custom h3 {
+  font-family: var(--font-headlines);
+  font-size: 1rem;
+  font-weight: 800;
+  color: var(--color-primary);
+  margin-bottom: 8px;
+}
+
+.tc-custom p {
+  font-size: 0.82rem;
+  color: #64748b;
+  font-weight: 300;
+  line-height: 1.6;
+  margin-bottom: 16px;
+}
+
+.tc-custom a {
+  font-size: 0.83rem;
+  font-weight: 600;
+  color: var(--color-secondary);
+  text-decoration: none;
+}
+
+.tc-custom a:hover { text-decoration: underline; }
+
+/* Responsive */
+@media (max-width: 768px) {
+  .tc-root { padding: 32px 20px; }
+
+  .tc-grid {
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "sanblas"
+      "monkey"
+      "city"
+      "custom";
+  }
+
+  .tc-card.city { flex-direction: column; }
+  .tc-card.city .tc-card-img { width: 100%; height: 180px; }
+}
