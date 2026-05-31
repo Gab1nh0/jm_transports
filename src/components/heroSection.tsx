@@ -1,8 +1,5 @@
 import './css/heroSection.css';
-import pilotEmoji from '../assets/pilot_emoji.png';
-import vehicleEmoji from '../assets/vehicle_emoji.png';
-import shieldEmoji from '../assets/shield_emoji.png';
-import moneyEmoji from '../assets/money_emoji.png';
+import heroVideo from '../assets/hero-video.mp4';
 
 export const Hero = () => {
   return (
@@ -12,7 +9,7 @@ export const Hero = () => {
         {/* Zona del Video y Contenido Principal */}
         <div className="hero-main-container">
           <video className="hero-video" autoPlay loop muted playsInline>
-            <source src="aquí-ira-tu-video.mp4" type="video/mp4" />
+            <source src={heroVideo} type="video/mp4" />
           </video>
 
           <div className="hero-overlay"></div>
@@ -43,22 +40,22 @@ export const Hero = () => {
         <div className="hero-dock-container">
           
           <div className="dock-item">
-            <img src={pilotEmoji} alt="Professional Drivers" className="iphone-emoji" />
+            <img src= ""  alt="Professional Drivers" className="iphone-emoji" />
             <p>Professional Drivers</p>
           </div>
 
           <div className="dock-item">
-            <img src={vehicleEmoji} alt="Comfortable Vehicles" className="iphone-emoji" />
+            <img src="" alt="Comfortable Vehicles" className="iphone-emoji" />
             <p>Comfortable Vehicles</p>
           </div>
 
           <div className="dock-item">
-            <img src={shieldEmoji} alt="Safe Transfers" className="iphone-emoji" />
+            <img src="" alt="Safe Transfers" className="iphone-emoji" />
             <p>Safe Transfers</p>
           </div>
 
           <div className="dock-item">
-            <img src={moneyEmoji} alt="Affordable Prices" className="iphone-emoji" />
+            <img src= "" alt="Affordable Prices" className="iphone-emoji" />
             <p>Affordable Prices</p>
           </div>
 
