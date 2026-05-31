@@ -24,7 +24,7 @@
 .bk-hero-overlay {
   position: absolute;
   inset: 0;
-  background: rgba(0, 0, 0, 0.55);
+  background: rgba(0, 0, 0, 0.30);
 }
 
 .bk-hero-content {

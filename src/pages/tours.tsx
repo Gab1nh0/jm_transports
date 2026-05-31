@@ -19,7 +19,7 @@ export default function Booking() {
 
       {/* Hero */}
       <div className="bk-hero">
-        <img src="https://www.travelleating.com/wp-content/uploads/Isla-Pelicano.jpg" alt="Panama" />
+        <img src="https://firebasestorage.googleapis.com/v0/b/jmtransport-df658.firebasestorage.app/o/kunayala53925.jpg?alt=media&token=c5111d87-fbb1-48d0-83f6-3f75ab1ca004" alt="Panama" />
         <div className="bk-hero-overlay" />
         <div className="bk-hero-content">
           <h1>Book Your Premium Journey</h1>
