@@ -7,7 +7,7 @@ export default function Tours() {
   return (
     <div className="tc-root">
       <div className="tc-header">
-        <h2>Exclusive Tours</h2>
+        <h2 className='tc-tittle'>Exclusive Tours</h2>
         <p>Selected premium experiences for our corporate and luxury clients.</p>
         <div className="tc-filters">
           {['All', 'Beach', 'Nature', 'Urban'].map(f => (

@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Playfair+Display:wght@700&display=swap');
+
 .navbar {
   position: fixed;
   top: 0;
@@ -9,106 +11,12 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  font-family: var(--font-body);
+  font-family: 'DM Sans', sans-serif;
   z-index: 100;
-}
-
-.nav-brand {
-  font-family: var(--font-headlines);
-  font-size: 1.2rem;
-  font-weight: 800;
-  color: white;
-  text-decoration: none;
-  white-space: nowrap;
-  letter-spacing: -0.01em;
-}
-
-.nav-links {
-  display: flex;
-  align-items: center;
-  gap: 36px;
-  list-style: none;
-  position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
-  padding: 0;
-  margin: 0;
-}
-
-.nav-links a {
-  color: rgba(255, 255, 255, 0.85);
-  text-decoration: none;
-  font-size: 0.92rem;
-  font-weight: 500;
-  transition: color 0.2s ease;
-}
-
-.nav-links a:hover {
-  color: var(--color-white);
-}
-
-.nav-links a.active {
-  color: var(--color-secondary);
-  text-decoration: underline;
-  text-underline-offset: 4px;
-  text-decoration-thickness: 2px;
-}
-
-.lang-toggle {
-  background: transparent;
-  border: 1.5px solid rgba(255, 255, 255, 0.5);
-  border-radius: 8px;
-  padding: 6px 14px;
-  color: rgba(255, 255, 255, 0.85);
-  font-family: var(--font-body);
-  font-size: 0.85rem;
-  font-weight: 600;
-  cursor: pointer;
-  transition: all 0.2s ease;
-  letter-spacing: 0.03em;
-}
-
-.lang-toggle:hover {
-  border-color: var(--color-white);
-  color: var(--color-white);
-}
-
-
-.navbar {
   transition: background 0.3s ease, box-shadow 0.3s ease;
 }
 
-.navbar--scrolled {
-  background: var(--color-white) !important;
-  box-shadow: 0 2px 20px rgba(0, 0, 0, 0.08);
-}
-
-.navbar--scrolled .nav-brand {
-  color: var(--color-primary);
-}
-
-.navbar--scrolled .nav-links a {
-  color: rgba(0, 0, 0, 0.65);
-}
-
-.navbar--scrolled .nav-links a:hover {
-  color: var(--color-primary);
-}
-
-.navbar--scrolled .nav-links a.active {
-  color: var(--color-secondary);
-}
-
-.navbar--scrolled .lang-toggle {
-  border-color: rgba(0, 0, 0, 0.25);
-  color: rgba(0, 0, 0, 0.65);
-}
-
-.navbar--scrolled .lang-toggle:hover {
-  border-color: var(--color-primary);
-  color: var(--color-primary);
-}
-
+/* ── Brand ── */
 .nav-brand {
   display: inline-flex;
   align-items: baseline;
@@ -122,41 +30,141 @@
 
 .brand-char {
   display: inline-block;
-  color: rgba(255, 255, 255, 0.9);
+  /* font-family: 'Playfair Display', serif; */
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: rgba(255, 255, 255, 0.95);
   transition: color 0.3s ease;
   transition-delay: calc(var(--i) * 40ms);
-  font-family: var(--font-headlines);
-  font-size: 1.2rem;
-  font-weight: 800;
 }
 
 .nav-brand:hover .brand-char {
-  color: #444;
+  color: rgba(255, 255, 255, 0.6);
   transition-delay: calc(var(--i) * 40ms);
 }
 
-/* Cuando el navbar está scrolled, letras ya son oscuras */
-.navbar--scrolled .brand-char {
-  color: var(--color-primary);
-  
-}
-
-.navbar--scrolled .nav-brand:hover .brand-char {
-  color: #555;
-}
-
 .brand-group {
-  font-family: var(--font-headlines);
-  font-size: 0.72rem;
-  font-weight: 400;
-  color: white;
-  letter-spacing: 0.08em;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.68rem;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.55);
+  letter-spacing: 0.12em;
   text-transform: uppercase;
   align-self: flex-end;
   padding-bottom: 2px;
   transition: color 0.3s ease;
 }
 
+/* ── Nav links ── */
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  list-style: none;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 0;
+  margin: 0;
+}
+
+.nav-links a {
+  position: relative;
+  color: rgba(255, 255, 255, 0.75);
+  text-decoration: none;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.9rem;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+  padding: 6px 14px;
+  border-radius: 6px;
+  transition: color 0.2s ease, background 0.2s ease;
+}
+
+/* Hover — siempre funciona, incluso en el link activo */
+.nav-links a:hover {
+  color: var(--color-white, #fff);
+  background: rgba(255, 255, 255, 0.1);
+}
+
+/* Active — color secundario con pill sutil */
+.nav-links a.active {
+  color: var(--color-secondary, #f0b429);
+  background: rgba(240, 180, 41, 0.12);
+  font-weight: 600;
+}
+
+/* Hover sobre el link activo — se mantiene el color activo */
+.nav-links a.active:hover {
+  color: var(--color-secondary, #f0b429);
+  background: rgba(240, 180, 41, 0.18);
+}
+
+/* ── Lang toggle ── */
+.lang-toggle {
+  background: transparent;
+  border: 1.5px solid rgba(255, 255, 255, 0.4);
+  border-radius: 8px;
+  padding: 6px 14px;
+  color: rgba(255, 255, 255, 0.8);
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.82rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  letter-spacing: 0.05em;
+}
+
+.lang-toggle:hover {
+  border-color: rgba(255, 255, 255, 0.85);
+  color: var(--color-white, #fff);
+  background: rgba(255, 255, 255, 0.08);
+}
+
+/* ── Scrolled state ── */
+.navbar--scrolled {
+  background: var(--color-white, #fff) !important;
+  box-shadow: 0 2px 24px rgba(0, 0, 0, 0.07);
+}
+
+.navbar--scrolled .brand-char {
+  color: var(--color-primary, #1a1a2e);
+}
+
+.navbar--scrolled .nav-brand:hover .brand-char {
+  color: rgba(0, 0, 0, 0.45);
+}
+
 .navbar--scrolled .brand-group {
   color: rgba(0, 0, 0, 0.3);
+}
+
+.navbar--scrolled .nav-links a {
+  color: rgba(0, 0, 0, 0.6);
+}
+
+.navbar--scrolled .nav-links a:hover {
+  color: var(--color-primary, #1a1a2e);
+  background: rgba(0, 0, 0, 0.05);
+}
+
+.navbar--scrolled .nav-links a.active {
+  color: var(--color-secondary, #c87d2a);
+  background: rgba(200, 125, 42, 0.1);
+}
+
+.navbar--scrolled .nav-links a.active:hover {
+  color: var(--color-secondary, #c87d2a);
+  background: rgba(200, 125, 42, 0.16);
+}
+
+.navbar--scrolled .lang-toggle {
+  border-color: rgba(0, 0, 0, 0.2);
+  color: rgba(0, 0, 0, 0.6);
+}
+
+.navbar--scrolled .lang-toggle:hover {
+  border-color: var(--color-primary, #1a1a2e);
+  color: var(--color-primary, #1a1a2e);
+  background: rgba(0, 0, 0, 0.04);
 }

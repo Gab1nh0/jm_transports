@@ -11,11 +11,11 @@ interface LanguageContextType {
 const translations = {
   en: {
     // Navbar
-    'nav.services': 'Services',
+    'nav.home': 'Home',
     'nav.tours': 'Tours',
     'nav.fleet': 'Fleet',
     'nav.about': 'About',
-    'nav.contact': 'Contact',
+    'nav.booking': 'Booking',
 
     // Hero
     'hero.title': 'Explore Panama with Comfort, Safety & Style',
