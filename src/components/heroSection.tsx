@@ -6,7 +6,6 @@ export const Hero = () => {
     <>
       <section className="hero-section-wrapper">
         
-        {/* Zona del Video y Contenido Principal */}
         <div className="hero-main-container">
           <video className="hero-video" autoPlay loop muted playsInline>
             <source src={heroVideo} type="video/mp4" />
@@ -34,36 +33,6 @@ export const Hero = () => {
         </div>
 
       </section>
-
-      {/* Dock FUERA del section — flujo normal */}
-      <div className="hero-dock-wrapper">
-        <div className="hero-dock-container">
-          
-          <div className="dock-item">
-            <img src= ""  alt="Professional Drivers" className="iphone-emoji" />
-            <p>Professional Drivers</p>
-          </div>
-
-          <div className="dock-item">
-            <img src="" alt="Comfortable Vehicles" className="iphone-emoji" />
-            <p>Comfortable Vehicles</p>
-          </div>
-
-          <div className="dock-item">
-            <img src="" alt="Safe Transfers" className="iphone-emoji" />
-            <p>Safe Transfers</p>
-          </div>
-
-          <div className="dock-item">
-            <img src= "" alt="Affordable Prices" className="iphone-emoji" />
-            <p>Affordable Prices</p>
-          </div>
-
-        </div>
-      </div>
-
-      <div className="hero-example-content">
-      </div>
     </>
   );
 };

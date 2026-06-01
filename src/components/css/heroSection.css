@@ -1,13 +1,6 @@
-.hero-dock-wrapper {
-  position: relative;
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  margin-top: -60px;
-  z-index: 10;
-  padding: 0 40px;
-}
-
+/* ==========================================================================
+   HERO SECTION 
+   ========================================================================== */
 
 .hero-main-container {
   position: relative;
@@ -20,16 +13,20 @@
   color: var(--color-white);
 }
 
+/* Video de Fondo */
 .hero-video {
   position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
+  top: 50%;
+  left: 50%;
+  width: calc(100% + 80px);
+  height: calc(100% + 80px);
   object-fit: cover;
   z-index: 1;
+  transform: translate(-50%, -50%) scale(1.25);
+  transform-origin: center center;
 }
 
+/* Capa oscura */
 .hero-overlay {
   position: absolute;
   top: 0;
@@ -40,6 +37,7 @@
   z-index: 2;
 }
 
+/* Texto del hero */
 .hero-content {
   position: relative;
   z-index: 3;
@@ -66,6 +64,7 @@
   color: #E2E8F0;
 }
 
+/* Contenedor de botones */
 .hero-buttons {
   display: flex;
   gap: 20px;
@@ -82,6 +81,7 @@
   transition: all 0.25s ease;
 }
 
+/* --- BOTÓN WHATSAPP --- */
 .btn-whatsapp {
   background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
   color: var(--color-white) !important;
@@ -108,14 +108,14 @@
 
 .btn-whatsapp:hover {
   transform: translateY(-3px);
-box-shadow: 0 0 25px rgba(37, 211, 102, 0.8), 
+  box-shadow: 0 0 25px rgba(37, 211, 102, 0.8), 
               0 8px 20px rgba(0, 0, 0, 0.2);
   filter: brightness(1.15);
 }
 
-
+/* --- BOTÓN EXPLORAR TOURS --- */
 .btn-tours {
-background-color: transparent;
+  background-color: transparent;
   color: var(--color-white);
   border: 2px solid var(--color-white);
   display: inline-flex;
@@ -132,76 +132,4 @@ background-color: transparent;
   transform: translateY(-3px);
   box-shadow: 0 0 25px rgba(255, 255, 255, 0.7), 
               0 8px 20px rgba(0, 0, 0, 0.3);
-}
-
-
-.hero-dock-wrapper {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  transform: translateY(50%); 
-  z-index: 10;
-  padding: 0 40px; 
-}
-
-
-.hero-dock-container {
-  background-color: var(--color-white);
-  width: 100%;
-  max-width: 1100px; 
-  padding: 24px 40px; 
-  border-radius: 20px;
-  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.12);
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 20px;
-}
-
-
-.dock-item {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 14px;
-  text-align: center;
-}
-
-.dock-item p {
-  font-family: var(--font-body);
-  color: var(--color-primary);
-  font-size: 0.95rem;
-  font-weight: 600;
-  margin: 0;
-  white-space: nowrap;
-}
-
-
-.iphone-emoji {
-  width: 50px !important;
-  height: 50px !important;
-  background-color: var(--color-secondary); 
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 10px;
-  object-fit: contain;
-  flex-shrink: 0;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
-  transition: transform 0.2s ease;
-}
-
-
-.dock-item:hover .iphone-emoji {
-  transform: translateY(-4px);
-}
-
-.hero-example-content{
-  padding-top: 80px;
-  height: 500px; /* Ajusta esta altura según tus necesidades */
 }
