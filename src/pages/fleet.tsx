@@ -65,7 +65,7 @@ export const FleetSection: React.FC = () => {
   };
 
   return (
-    <section className="fleet-section">
+    <section className="fleet-section" id="fleet-section">
       <div className="fleet-container">
         
         {/* Encabezado */}
