@@ -7,8 +7,22 @@ export default function Footer() {
 
         {/* Brand */}
         <div className="footer-brand">
-          <h2>JM Transport Group</h2>
-          <p>Leading premium transportation and tourism logistics in the Republic of Panama since 2012.</p>
+          <a href="#" className="footer-brand__logo">
+            <span className="footer-brand__text">
+              {'JM Transport'.split('').map((char, i) => (
+                <span
+                  key={i}
+                  className="footer-brand__char"
+                  style={{ '--i': i } as React.CSSProperties}
+                >
+                  {char === ' ' ? '\u00A0' : char}
+                </span>
+              ))}
+            </span>
+            <span className="footer-brand__group">Group</span>
+          </a>
+          <span className="brand-tagline">Panama · Since 2012</span>
+          <p>Leading premium transportation and tourism logistics in the Republic of Panama.</p>
         </div>
 
         {/* Quick Links */}
@@ -59,7 +73,7 @@ export default function Footer() {
       </div>
 
       <div className="footer-bottom">
-        <p>© 2024 JM Transport Group Panama. All rights reserved.</p>
+        <p>© 2025 JM Transport Group Panama. <span>All rights reserved.</span></p>
       </div>
     </footer>
   );

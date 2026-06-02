@@ -1,27 +1,34 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&family=Playfair+Display:wght@700&display=swap');
+
+/* ── Base — siempre blanco, sin transparencia ── */
 .transport-navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
   width: 100%;
   height: 72px;
   background: #ffffff;
-  box-shadow: 0 2px 20px rgba(0, 0, 0, 0.08);
   padding: 0 48px;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  font-family: var(--font-body);
-  position: relative;
+  font-family: 'DM Sans', sans-serif;
+  z-index: 100;
+  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.08);
 }
 
+/* Al scrollear solo cambia la sombra, fondo SIEMPRE blanco */
+.transport-navbar--scrolled {
+  background: #ffffff;
+  box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+}
+
+/* ── Brand ── */
 .transport-navbar__brand {
   display: inline-flex;
   align-items: baseline;
   gap: 5px;
   text-decoration: none;
-  font-family: var(--font-headlines);
-  font-size: 1.2rem;
-  font-weight: 800;
-  color: var(--color-primary);
-  white-space: nowrap;
-  letter-spacing: -0.01em;
 }
 
 .transport-navbar__brand-text {
@@ -30,34 +37,40 @@
 
 .transport-navbar__brand-char {
   display: inline-block;
-  color: var(--color-primary);
+  
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--color-primary, #1a1a2e);
   transition: color 0.3s ease;
-  transition-delay: calc(var(--i) * 40ms);
-  font-family: var(--font-headlines);
-  font-size: 1.2rem;
-  font-weight: 800;
+  transition-delay: calc(var(--i) * 35ms);
 }
 
 .transport-navbar__brand:hover .transport-navbar__brand-char {
-  color: #555;
+  color: var(--color-secondary, #c87d2a);
+  transition-delay: calc(var(--i) * 35ms);
 }
 
 .transport-navbar__group {
-  font-family: var(--font-headlines);
-  font-size: 0.72rem;
-  font-weight: 400;
-  color: rgba(0, 0, 0, 0.4);
-  letter-spacing: 0.08em;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.65rem;
+  font-weight: 500;
+  color: rgba(0, 0, 0, 0.3);
+  letter-spacing: 0.14em;
   text-transform: uppercase;
   align-self: flex-end;
   padding-bottom: 2px;
   transition: color 0.3s ease;
 }
 
+.transport-navbar__brand:hover .transport-navbar__group {
+  color: rgba(0, 0, 0, 0.45);
+}
+
+/* ── Nav links ── */
 .transport-navbar__links {
   display: flex;
   align-items: center;
-  gap: 36px;
+  gap: 4px;
   list-style: none;
   position: absolute;
   left: 50%;
@@ -67,47 +80,50 @@
 }
 
 .transport-navbar__links a {
-  color: rgba(0, 0, 0, 0.7);
+  color: rgba(0, 0, 0, 0.55);
   text-decoration: none;
-  font-size: 0.92rem;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.9rem;
   font-weight: 500;
-  transition: color 0.2s ease;
+  letter-spacing: 0.01em;
+  padding: 6px 14px;
+  border-radius: 6px;
+  transition: color 0.2s ease, background 0.2s ease;
 }
 
 .transport-navbar__links a:hover {
-  color: var(--color-primary);
+  color: var(--color-primary, #1a1a2e);
+  background: rgba(0, 0, 0, 0.05);
 }
 
 .transport-navbar__links a.active {
-  color: var(--color-secondary);
-  text-decoration: underline;
-  text-underline-offset: 4px;
-  text-decoration-thickness: 2px;
+  color: var(--color-secondary, #c87d2a);
+  background: rgba(200, 125, 42, 0.1);
+  font-weight: 600;
 }
 
+.transport-navbar__links a.active:hover {
+  color: var(--color-secondary, #c87d2a);
+  background: rgba(200, 125, 42, 0.16);
+}
+
+/* ── Lang toggle ── */
 .transport-navbar__lang-toggle {
-  background: #ffffff;
-  border: 1.5px solid rgba(0, 0, 0, 0.25);
+  background: transparent;
+  border: 1.5px solid rgba(0, 0, 0, 0.18);
   border-radius: 8px;
   padding: 6px 14px;
-  color: rgba(0, 0, 0, 0.7);
-  font-family: var(--font-body);
-  font-size: 0.85rem;
+  color: rgba(0, 0, 0, 0.55);
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.82rem;
   font-weight: 600;
   cursor: pointer;
   transition: all 0.2s ease;
-  letter-spacing: 0.03em;
+  letter-spacing: 0.05em;
 }
 
 .transport-navbar__lang-toggle:hover {
-  border-color: var(--color-primary);
-  color: var(--color-primary);
-}
-
-.transport-navbar--scrolled {
-  background: #ffffff;
-}
-
-.transport-navbar--scrolled .transport-navbar__brand-char {
-  color: var(--color-primary);
+  border-color: var(--color-primary, #1a1a2e);
+  color: var(--color-primary, #1a1a2e);
+  background: rgba(0, 0, 0, 0.04);
 }
