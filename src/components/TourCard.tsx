@@ -1,5 +1,84 @@
 import './css/TourCard.css';
 import { useNavigate } from 'react-router-dom';
+import { useRef, useState, useEffect, useCallback } from 'react';
+
+interface CarouselProps {
+  images: { src: string; alt: string }[];
+  className?: string;
+}
+
+function ImageCarousel({ images, className = '' }: CarouselProps) {
+  const [current, setCurrent] = useState(0);
+  const [isHovered, setIsHovered] = useState(false);
+  const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
+
+  const goTo = useCallback((idx: number) => {
+    setCurrent((idx + images.length) % images.length);
+  }, [images.length]);
+
+  useEffect(() => {
+    if (isHovered && images.length > 1) {
+      intervalRef.current = setInterval(() => {
+        setCurrent(prev => (prev + 1) % images.length);
+      }, 1800);
+    } else {
+      if (intervalRef.current) clearInterval(intervalRef.current);
+      if (!isHovered) setCurrent(0);
+    }
+    return () => { if (intervalRef.current) clearInterval(intervalRef.current); };
+  }, [isHovered, images.length]);
+
+  return (
+    <div
+      className={`tc-carousel ${className}`}
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
+    >
+      <div
+        className="tc-slides"
+        style={{ transform: `translateX(-${current * 100}%)` }}
+      >
+        {images.map((img, i) => (
+          <div key={i} className="tc-slide">
+            <img className="tc-card-img" src={img.src} alt={img.alt} />
+          </div>
+        ))}
+      </div>
+
+      {images.length > 1 && (
+        <div className="tc-dots">
+          {images.map((_, i) => (
+            <button
+              key={i}
+              className={`tc-dot ${i === current ? 'active' : ''}`}
+              onClick={() => goTo(i)}
+              aria-label={`Slide ${i + 1}`}
+            />
+          ))}
+        </div>
+      )}
+    </div>
+  );
+}
+
+/* ── Image pools per tour ── */
+const sanBlasImages = [
+  { src: 'https://i0.wp.com/panamamastertours.com/wp-content/uploads/2023/08/panama-city-4-day-island-hopping-san-blas-adventure-1695289.webp?fit=1500%2C1001&ssl=1', alt: 'San Blas Islands' },
+  { src: 'https://sanblasadventours.com/wp-content/uploads/AnyConv.com__psina-5-scaled.webp', alt: 'San Blas turquoise water' },
+  { src: 'https://sanblasdreams.com/wp-content/uploads/2024/02/Diablo-Island-San-Blas-Tour-with-San-Blas-Dreams.jpg', alt: 'Guna Yala village' },
+];
+
+const monkeyImages = [
+  { src: 'https://img.magnific.com/foto-gratis/macaco-cola-munon-cara-roja-selva-verde_475641-1561.jpg?semt=ais_hybrid&w=740&q=80', alt: 'Monkey on tree' },
+  { src: 'https://elfarodelcanal.com/wp-content/uploads/2022/07/mono-arana.jpg', alt: 'Howler monkey' },
+  { src: 'https://www.panamacanal-excursions.com/images/monkeyisland/monkey1_h.jpg', alt: 'Panama Canal rainforest' },
+];
+
+const cityImages = [
+  { src: 'https://media.istockphoto.com/id/1097678776/es/foto/skyline-ciudad-de-panam%C3%A1.jpg?s=612x612&w=0&k=20&c=HIF5ggcAMc_0VCkUxnun1dwEpoXV29FYrBpBzVOHD88=', alt: 'Panama City skyline' },
+  { src: 'https://balaena.travel/storage/header_bookable_category-photos-b3bdd95d-de9c-4444-9d28-efa1eb0f14ed', alt: 'Casco Antiguo' },
+  { src: 'https://media.admagazine.com/photos/6298ea6145a759381146b164/16:9/w_2991,h_1682,c_limit/panama-1.jpg', alt: 'Miraflores Locks' },
+];
 
 export default function Tours() {
   const navigate = useNavigate();
@@ -7,8 +86,8 @@ export default function Tours() {
   return (
     <div className="tc-root">
       <div className="tc-header">
-        <h2 className='tc-tittle'>Exclusive Tours</h2>
-        <p>Selected premium experiences for our corporate and luxury clients.</p>
+        <h2>Exclusive Tours</h2>
+        <p>Selected premium experiences for corporate and luxury clients.</p>
         <div className="tc-filters">
           {['All', 'Beach', 'Nature', 'Urban'].map(f => (
             <button
@@ -27,9 +106,9 @@ export default function Tours() {
 
       <div className="tc-grid">
 
-        {/* San Blas */}
+        {/* ── San Blas ── */}
         <div className="tc-card sanblas">
-          <img className="tc-card-img" src="https://i0.wp.com/panamamastertours.com/wp-content/uploads/2023/08/panama-city-4-day-island-hopping-san-blas-adventure-1695289.webp?fit=1500%2C1001&ssl=1" alt="San Blas" />
+          <ImageCarousel images={sanBlasImages} />
           <div className="tc-card-body">
             <div className="tc-badges">
               <span className="tc-badge featured">Featured</span>
@@ -37,13 +116,19 @@ export default function Tours() {
             </div>
             <div className="tc-card-top">
               <h3>Pasadía San Blas 2026</h3>
-              <div className="tc-price"><span>FROM</span><strong>$125</strong></div>
+              <div className="tc-price">
+                <span>From</span>
+                <strong>$125</strong>
+              </div>
             </div>
             <div className="tc-meta">
               <span className="tc-meta-item">⏱ Full day</span>
               <span className="tc-meta-item">👥 Private group</span>
             </div>
-            <p className="tc-desc">Escape to the paradise of Guna Yala. Crystal clear waters, white sand beaches, and a unique indigenous culture in the archipelago of 365 islands.</p>
+            <p className="tc-desc">
+              Escape to the paradise of Guna Yala — crystal-clear waters, white sand beaches,
+              and a unique indigenous culture across an archipelago of 365 islands.
+            </p>
             <div className="tc-tags">
               <span className="tc-tag">4×4 Transport</span>
               <span className="tc-tag">Lunch included</span>
@@ -53,9 +138,9 @@ export default function Tours() {
           </div>
         </div>
 
-        {/* Monkey */}
+        {/* ── Monkey Tour ── */}
         <div className="tc-card monkey">
-          <img className="tc-card-img" src="https://img.magnific.com/foto-gratis/macaco-cola-munon-cara-roja-selva-verde_475641-1561.jpg?semt=ais_hybrid&w=740&q=80" alt="Monkey Tour" />
+          <ImageCarousel images={monkeyImages} />
           <div className="tc-card-body">
             <div className="tc-card-top">
               <h3>Monkey Tour</h3>
@@ -64,44 +149,57 @@ export default function Tours() {
             <div className="tc-meta">
               <span className="tc-meta-item">⏱ Half day</span>
             </div>
-            <p className="tc-desc">Experience the biodiversity of the Panama Canal and meet its most famous residents up close.</p>
+            <p className="tc-desc">
+              Discover the biodiversity of the Panama Canal and meet its most famous
+              residents up close in their natural habitat.
+            </p>
             <div className="tc-includes">
               <span className="tc-include">Boat ride on the Canal</span>
               <span className="tc-include">Wildlife spotting</span>
-              <span className="tc-include">Hotel pickup & drop-off</span>
+              <span className="tc-include">Hotel pickup &amp; drop-off</span>
             </div>
             <button className="tc-btn" onClick={() => navigate('/booking')}>Book Now</button>
           </div>
         </div>
 
-        {/* City Tour */}
+        {/* ── City Tour ── */}
         <div className="tc-card city">
-          <img className="tc-card-img" src="https://media.istockphoto.com/id/1097678776/es/foto/skyline-ciudad-de-panam%C3%A1.jpg?s=612x612&w=0&k=20&c=HIF5ggcAMc_0VCkUxnun1dwEpoXV29FYrBpBzVOHD88=" alt="City Tour" />
+          <ImageCarousel images={cityImages} />
           <div className="tc-card-body">
             <div className="tc-card-top">
               <h3>City Tour Panamá</h3>
-              <div className="tc-price"><span>UP TO 3 PAX</span><strong>$140</strong></div>
+              <div className="tc-price">
+                <span>Up to 3 pax</span>
+                <strong>$140</strong>
+              </div>
             </div>
             <div className="tc-meta">
               <span className="tc-meta-item">⏱ 5 hours</span>
               <span className="tc-meta-item">🚗 Pro driver</span>
             </div>
-            <p className="tc-desc">A perfect mix of history, engineering marvels, and modern skyscrapers across Panama City.</p>
+            <p className="tc-desc">
+              A perfect mix of history, engineering marvels, and modern skyscrapers
+              across the highlights of Panama City.
+            </p>
             <div className="tc-includes">
-              <span className="tc-include">Panama Canal Miraflores</span>
-              <span className="tc-include">Casco Antiguo Walking Tour</span>
-              <span className="tc-include">Amador Causeway & Skyline</span>
+              <span className="tc-include">Panama Canal — Miraflores</span>
+              <span className="tc-include">Casco Antiguo walking tour</span>
+              <span className="tc-include">Amador Causeway &amp; skyline</span>
             </div>
             <button className="tc-btn" onClick={() => navigate('/booking')}>Book Now</button>
           </div>
         </div>
 
-        {/* Custom */}
+        {/* ── Custom ── */}
         <div className="tc-custom">
+          <div className="tc-custom-icon">✦</div>
           <h3>Need a Custom Experience?</h3>
-          <p>We specialize in tailoring luxury tours for corporate retreats, family gatherings, and VIP guests.</p>
+          <p>
+            We specialize in tailoring luxury tours for corporate retreats,
+            family gatherings, and VIP guests.
+          </p>
           <a href="https://wa.me/50762166675" target="_blank" rel="noreferrer">
-            Contact our Concierge Team →
+            Contact our Concierge →
           </a>
         </div>
 

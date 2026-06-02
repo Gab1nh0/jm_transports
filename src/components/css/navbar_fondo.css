@@ -29,6 +29,7 @@
   align-items: baseline;
   gap: 5px;
   text-decoration: none;
+  
 }
 
 .transport-navbar__brand-text {
@@ -37,9 +38,9 @@
 
 .transport-navbar__brand-char {
   display: inline-block;
-  
+  font-family: 'DM Sans', sans-serif;
   font-size: 1.25rem;
-  font-weight: 700;
+  font-weight: 800;
   color: var(--color-primary, #1a1a2e);
   transition: color 0.3s ease;
   transition-delay: calc(var(--i) * 35ms);
