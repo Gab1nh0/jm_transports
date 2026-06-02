@@ -19,7 +19,7 @@ export default function Navbar() {
     { key: '#tc-header',   label: t('nav.tours') },
     { key: '#fleet-section',   label: t('nav.fleet') },
     { key: '/booking', label: t('nav.booking') },
-    { key: 'about',   label: t('nav.about') },
+    { key: '/about-us',   label: t('nav.about') },
   ];
   const navigate = useNavigate();
 

@@ -173,7 +173,7 @@
   text-transform: uppercase;
 }
 
-.tc-badge.featured { background: var(--color-secondary); color: var(--color-primary); }
+.tc-badge.featured { background: #0073ff; color: white; }
 .tc-badge.rated    { background: #f1f5f9; color: #94a3b8; border: 0.5px solid #e2e8f0; }
 
 /* ── Card top: title + price ── */
@@ -215,7 +215,7 @@
   font-family: var(--font-headlines-tour);
   font-size: 2.4rem;
   font-weight: 800;
-  color: var(--color-secondary);
+  color: #0073ff;
   line-height: 1;
 }
 
@@ -303,7 +303,7 @@
   font-weight: 700;
   cursor: pointer;
   transition: all 0.22s;
-  background: var(--color-primary);
+  background: #0073ff;
   color: var(--color-white);
   margin-top: auto;
   letter-spacing: 0.01em;
