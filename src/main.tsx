@@ -5,6 +5,7 @@ import './index.css'
 import App from './App.tsx'
 import { LanguageProvider } from './context/LanguageContext.tsx';
 import Booking from './pages/tours.tsx';
+import AboutUs from './pages/about_us.tsx';
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
@@ -17,6 +18,7 @@ createRoot(document.getElementById('root')!).render(
           </>
         } />
         <Route path="/booking" element={<Booking />} />
+        <Route path="/about-us" element={<AboutUs />} />
          </Routes>
     </LanguageProvider>  
     </BrowserRouter>    
