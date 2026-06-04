@@ -161,7 +161,7 @@ export default function Tours() {
               <span className="tc-tag">Lunch included</span>
               <span className="tc-tag">Boat rides</span>
             </div>
-            <button className="tc-btn" onClick={() => navigate('/booking')}>Book Now</button>
+            <button className="tc-btn" onClick={() => navigate('/booking?tour=san-blas')}>Book Now</button>
           </div>
         </div>
 
@@ -185,7 +185,7 @@ export default function Tours() {
               <span className="tc-include">Wildlife spotting</span>
               <span className="tc-include">Hotel pickup &amp; drop-off</span>
             </div>
-            <button className="tc-btn" onClick={() => navigate('/booking')}>Book Now</button>
+            <button className="tc-btn" onClick={() => navigate('/booking?tour=monkey-tour')}>Book Now</button>
           </div>
         </div>
 
@@ -215,7 +215,7 @@ export default function Tours() {
               <span className="tc-tag">{t('tours.playas.tag2')}</span>
               <span className="tc-tag">{t('tours.playas.tag3')}</span>
             </div>
-            <button className="tc-btn" onClick={() => navigate('/booking')}>
+            <button className="tc-btn" onClick={() => navigate('/booking?tour=playas')}>
               {lang === 'en' ? 'Book Now' : 'Reservar Ahora'}
             </button>
           </div>
@@ -245,7 +245,7 @@ export default function Tours() {
               <span className="tc-include">{t('tours.colon.inc3')}</span>
               <span className="tc-include">{t('tours.colon.inc4')}</span>
             </div>
-            <button className="tc-btn" onClick={() => navigate('/booking')}>
+            <button className="tc-btn" onClick={() => navigate('/booking?tour=colon')}>
               {lang === 'en' ? 'Book Now' : 'Reservar Ahora'}
             </button>
           </div>
@@ -275,7 +275,7 @@ export default function Tours() {
               <span className="tc-include">Casco Antiguo walking tour</span>
               <span className="tc-include">Amador Causeway &amp; skyline</span>
             </div>
-            <button className="tc-btn" onClick={() => navigate('/booking')}>Book Now</button>
+            <button className="tc-btn" onClick={() => navigate('/booking?tour=city-tour')}>Book Now</button>
           </div>
         </div>
 
@@ -303,7 +303,7 @@ export default function Tours() {
               <span className="tc-include">{t('tours.portobelo.inc3')}</span>
               <span className="tc-include">{t('tours.portobelo.inc4')}</span>
             </div>
-            <button className="tc-btn" onClick={() => navigate('/booking')}>
+            <button className="tc-btn" onClick={() => navigate('/booking?tour=portobelo')}>
               {lang === 'en' ? 'Book Now' : 'Reservar Ahora'}
             </button>
           </div>

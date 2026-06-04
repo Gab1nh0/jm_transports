@@ -1,15 +1,56 @@
 import './css/tours.css';
-//import { useNavigate } from 'react-router-dom';
+import { useSearchParams } from 'react-router-dom';
+import { useState, useEffect } from 'react';
 import Footer from '../components/footer.tsx';
 import Navbarwhite from '../components/navbar_fondo.tsx';
 
 export default function Booking() {
-  //const navigate = useNavigate();
+  const [searchParams] = useSearchParams();
+
+  // Map query param IDs → select option values
+  const tourMap: Record<string, string> = {
+    'san-blas': 'Pasadía San Blas 2026',
+    'monkey-tour': 'Monkey Tour',
+    'city-tour': 'City Tour Panamá',
+    'playas': 'Beach Transfers',
+    'colon': 'Colón Histórico Tour',
+    'portobelo': 'Portobelo Adventure',
+    'airport': 'Airport Transfer',
+    'custom': 'Custom Experience',
+  };
+
+  const tourParam = searchParams.get('tour') || '';
+  const [selectedTour, setSelectedTour] = useState('');
+  const [fullName, setFullName] = useState('');
+  const [email, setEmail] = useState('');
+  const [phone, setPhone] = useState('');
+  const [people, setPeople] = useState('1');
+  const [date, setDate] = useState('');
+  const [notes, setNotes] = useState('');
+
+  useEffect(() => {
+    if (tourParam && tourMap[tourParam]) {
+      setSelectedTour(tourMap[tourParam]);
+    }
+  }, [tourParam]);
 
   const handleSubmit = () => {
-    const phone = '50762166675';
-    const message = encodeURIComponent('Hello! I would like to book a service with JM Transport Group.');
-    window.open(`https://wa.me/${phone}?text=${message}`, '_blank');
+    const waPhone = '50762166675';
+    const lines = [
+      '🚐 *JM Transport Group — Booking Request*',
+      '',
+      `👤 *Name:* ${fullName || 'Not provided'}`,
+      `📧 *Email:* ${email || 'Not provided'}`,
+      `📱 *WhatsApp:* +507 ${phone || 'Not provided'}`,
+      `👥 *People:* ${people}`,
+      `📅 *Date:* ${date || 'Not specified'}`,
+      `🎯 *Tour/Service:* ${selectedTour || 'Not selected'}`,
+    ];
+    if (notes.trim()) {
+      lines.push(`📝 *Notes:* ${notes.trim()}`);
+    }
+    const message = encodeURIComponent(lines.join('\n'));
+    window.open(`https://wa.me/${waPhone}?text=${message}`, '_blank');
   };
 
   return (
@@ -37,47 +78,50 @@ export default function Booking() {
 
             <div className="bk-field">
               <label>Full Name</label>
-              <input type="text" placeholder="John Doe" />
+              <input type="text" placeholder="John Doe" value={fullName} onChange={e => setFullName(e.target.value)} />
             </div>
 
             <div className="bk-field">
               <label>Email Address</label>
-              <input type="email" placeholder="john@example.com" />
+              <input type="email" placeholder="john@example.com" value={email} onChange={e => setEmail(e.target.value)} />
             </div>
 
             <div className="bk-field">
               <label>WhatsApp Number</label>
               <div className="bk-phone-wrap">
                 <span className="bk-phone-prefix">+ 507</span>
-                <input type="tel" placeholder="0000-0000" />
+                <input type="tel" placeholder="0000-0000" value={phone} onChange={e => setPhone(e.target.value)} />
               </div>
             </div>
 
             <div className="bk-field">
               <label>Number of People</label>
-              <input type="number" defaultValue={1} min={1} />
+              <input type="number" value={people} min={1} onChange={e => setPeople(e.target.value)} />
             </div>
 
             <div className="bk-field">
               <label>Preferred Date</label>
-              <input type="date" />
+              <input type="date" value={date} onChange={e => setDate(e.target.value)} />
             </div>
 
             <div className="bk-field">
               <label>Tour / Service Selected</label>
-              <select>
+              <select value={selectedTour} onChange={e => setSelectedTour(e.target.value)}>
                 <option value="">Select a service...</option>
-                <option>Pasadía San Blas 2026</option>
-                <option>Monkey Tour</option>
-                <option>City Tour Panamá</option>
-                <option>Airport Transfer</option>
-                <option>Custom Experience</option>
+                <option value="Pasadía San Blas 2026">Pasadía San Blas 2026</option>
+                <option value="Monkey Tour">Monkey Tour</option>
+                <option value="City Tour Panamá">City Tour Panamá</option>
+                <option value="Beach Transfers">Beach Transfers</option>
+                <option value="Colón Histórico Tour">Colón Histórico Tour</option>
+                <option value="Portobelo Adventure">Portobelo Adventure</option>
+                <option value="Airport Transfer">Airport Transfer</option>
+                <option value="Custom Experience">Custom Experience</option>
               </select>
             </div>
 
             <div className="bk-field full">
               <label>Additional Notes</label>
-              <textarea placeholder="Flight details, specific pickup points, or special requests..." />
+              <textarea placeholder="Flight details, specific pickup points, or special requests..." value={notes} onChange={e => setNotes(e.target.value)} />
             </div>
 
           </div>

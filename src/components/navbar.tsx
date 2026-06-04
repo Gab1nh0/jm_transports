@@ -6,12 +6,23 @@ export default function Navbar() {
   const { lang, toggleLang, t } = useLang();
   const [scrolled, setScrolled] = useState(false);
   const [activeLink, setActiveLink] = useState('home');
+  const [menuOpen, setMenuOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 50);
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+
+  // Lock body scroll when mobile menu is open
+  useEffect(() => {
+    if (menuOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+    return () => { document.body.style.overflow = ''; };
+  }, [menuOpen]);
 
   const navLinks = [
     { key: '/',    label: t('nav.home') },
@@ -26,6 +37,7 @@ export default function Navbar() {
     return (e: React.MouseEvent<HTMLAnchorElement>) => {
       e.preventDefault();
       setActiveLink(key);
+      setMenuOpen(false);
 
       if (key.startsWith('#')) {
         const element = document.querySelector(key);
@@ -61,7 +73,25 @@ export default function Navbar() {
         <span className="brand-group">Group</span>
       </a>
 
-      <ul className="nav-links">
+      {/* Hamburger button — visible only on mobile */}
+      <button
+        className={`navbar__hamburger ${menuOpen ? 'navbar__hamburger--open' : ''}`}
+        onClick={() => setMenuOpen(!menuOpen)}
+        aria-label="Toggle menu"
+        aria-expanded={menuOpen}
+      >
+        <span className="navbar__hamburger-line" />
+        <span className="navbar__hamburger-line" />
+        <span className="navbar__hamburger-line" />
+      </button>
+
+      {/* Overlay backdrop */}
+      <div
+        className={`navbar__overlay ${menuOpen ? 'navbar__overlay--visible' : ''}`}
+        onClick={() => setMenuOpen(false)}
+      />
+
+      <ul className={`nav-links ${menuOpen ? 'nav-links--open' : ''}`}>
         {navLinks.map(({ key, label }) => (
           <li key={key}>
             <a
@@ -73,9 +103,17 @@ export default function Navbar() {
             </a>
           </li>
         ))}
+
+        {/* Lang toggle inside mobile menu */}
+        <li className="nav-links__lang-mobile">
+          <button className="lang-toggle" onClick={toggleLang}>
+            {lang === 'en' ? 'ES/EN' : 'EN/ES'}
+          </button>
+        </li>
       </ul>
 
-      <button className="lang-toggle" onClick={toggleLang}>
+      {/* Lang toggle desktop — visible only on larger screens */}
+      <button className="lang-toggle lang-toggle--desktop" onClick={toggleLang}>
         {lang === 'en' ? 'ES/EN' : 'EN/ES'}
       </button>
     </nav>

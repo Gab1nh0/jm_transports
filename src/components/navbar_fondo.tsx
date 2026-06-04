@@ -7,12 +7,23 @@ export default function Navbar() {
   const { lang, toggleLang, t } = useLang();
   const [scrolled, setScrolled] = useState(false);
   const [activeLink, setActiveLink] = useState('home');
+  const [menuOpen, setMenuOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 50);
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+
+  // Lock body scroll when mobile menu is open
+  useEffect(() => {
+    if (menuOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+    return () => { document.body.style.overflow = ''; };
+  }, [menuOpen]);
 
   const navLinks = [
     { key: '/',    label: t('nav.home') },
@@ -27,6 +38,7 @@ export default function Navbar() {
     return (e: React.MouseEvent<HTMLAnchorElement>) => {
       e.preventDefault();
       setActiveLink(key);
+      setMenuOpen(false);
 
       if (key.startsWith('#')) {
         const element = document.querySelector(key);
@@ -75,7 +87,25 @@ export default function Navbar() {
         <span className="transport-navbar__group">Group</span>
       </a>
 
-      <ul className="transport-navbar__links">
+      {/* Hamburger button — visible only on mobile */}
+      <button
+        className={`transport-navbar__hamburger ${menuOpen ? 'transport-navbar__hamburger--open' : ''}`}
+        onClick={() => setMenuOpen(!menuOpen)}
+        aria-label="Toggle menu"
+        aria-expanded={menuOpen}
+      >
+        <span className="transport-navbar__hamburger-line" />
+        <span className="transport-navbar__hamburger-line" />
+        <span className="transport-navbar__hamburger-line" />
+      </button>
+
+      {/* Overlay backdrop */}
+      <div
+        className={`transport-navbar__overlay ${menuOpen ? 'transport-navbar__overlay--visible' : ''}`}
+        onClick={() => setMenuOpen(false)}
+      />
+
+      <ul className={`transport-navbar__links ${menuOpen ? 'transport-navbar__links--open' : ''}`}>
         {navLinks.map(({ key, label }) => (
           <li key={key}>
             <a
@@ -87,10 +117,18 @@ export default function Navbar() {
             </a>
           </li>
         ))}
+
+        {/* Lang toggle inside mobile menu */}
+        <li className="transport-navbar__links-lang-mobile">
+          <button className="transport-navbar__lang-toggle" onClick={toggleLang}>
+            {lang === 'en' ? 'ES/EN' : 'EN/ES'}
+          </button>
+        </li>
       </ul>
 
+      {/* Lang toggle desktop — visible only on larger screens */}
       <button
-        className="transport-navbar__lang-toggle"
+        className="transport-navbar__lang-toggle transport-navbar__lang-toggle--desktop"
         onClick={toggleLang}
       >
         {lang === 'en' ? 'ES/EN' : 'EN/ES'}
