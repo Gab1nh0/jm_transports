@@ -80,21 +80,30 @@ const monkeyImages = [
 ];
 
 const cityImages = [
+  { src: 'https://media.admagazine.com/photos/6298ea6145a759381146b164/16:9/w_2991,h_1682,c_limit/panama-1.jpg', alt: 'Miraflores Locks' },
   { src: 'https://media.istockphoto.com/id/1097678776/es/foto/skyline-ciudad-de-panam%C3%A1.jpg?s=612x612&w=0&k=20&c=HIF5ggcAMc_0VCkUxnun1dwEpoXV29FYrBpBzVOHD88=', alt: 'Panama City skyline' },
   { src: 'https://balaena.travel/storage/header_bookable_category-photos-b3bdd95d-de9c-4444-9d28-efa1eb0f14ed', alt: 'Casco Antiguo' },
-  { src: 'https://media.admagazine.com/photos/6298ea6145a759381146b164/16:9/w_2991,h_1682,c_limit/panama-1.jpg', alt: 'Miraflores Locks' },
-];
-
-const playasImages = [
-  { src: playasImg, alt: 'Beach Transfers' },
-];
-
-const colonImages = [
-  { src: colonImg, alt: 'Colón Histórico Tour' },
 ];
 
 const portobeloImages = [
-  { src: portobeloImg, alt: 'Portobelo Tour' },
+  { src: 'https://upload.wikimedia.org/wikipedia/commons/thumb/e/e8/Bater%C3%ADa_de_Santiago_en_Portobelo.jpg/1280px-Bater%C3%ADa_de_Santiago_en_Portobelo.jpg?utm_source=es.wikivoyage.org&utm_campaign=parser&utm_content=thumbnail', alt: 'Beach Transfers' },
+  { src: 'https://www.thevisitorpanama.info/esp/wp-content/uploads/2024/08/Compress_20240817_235251_1205.jpg', alt: 'Beach Transfers' },
+  { src: 'https://e9q4u4m64gi.exactdn.com/wp-content/uploads/2018/01/Portobelo-Panam%C3%A1-e1516284626521.jpg?strip=all', alt: 'Beach Transfers' },
+
+
+];
+
+const colonImages = [
+  { src: 'https://upload.wikimedia.org/wikipedia/commons/4/43/Toma_a%C3%A9rea_del_Fuerte_San_Lorenzo.jpg', alt: 'Colón Histórico Tour' },
+  { src: 'https://elcapitalfinanciero.com/wp-content/uploads/2017/07/sanlorenzo3.png' , alt: 'Colón Histórico Tour' },
+  { src: 'https://www.viajesyfotografia.com/wp-content/uploads/2016/11/esclusas-agua-clara.jpg', alt: 'Colón Histórico Tour' },
+];
+
+const playasImages = [
+  { src: 'https://buenaventura.com.pa/wp-content/uploads/2024/06/video-4.jpg', alt: 'Playa Tour' },
+  { src: 'https://elcapitalfinanciero.com/wp-content/uploads/2022/12/Evenia-Hotel.jpg', alt: 'Playa Tour' },
+  { src: 'https://travelagents.decameron.com/images/destinos/panama/royal-panama/panoramica-hotal-panama.jpg', alt: 'Playa Tour' },
+
 ];
 
 export default function Tours() {

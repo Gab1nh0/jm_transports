@@ -79,8 +79,8 @@
 .tc-card.sanblas { grid-area: sanblas; }
 .tc-card.monkey  { grid-area: monkey; }
 .tc-card.playas  { grid-area: playas; }
-.tc-card.colon   { grid-area: colon; flex-direction: row; }
-.tc-card.city    { grid-area: city; flex-direction: row; }
+.tc-card.colon   { grid-area: colon; flex-direction: column; }
+.tc-card.city    { grid-area: city; flex-direction: column; }
 .tc-card.portobelo { grid-area: portobelo; }
 
 /* ── Carousel wrapper ── */
@@ -93,8 +93,8 @@
 .tc-card.sanblas .tc-carousel { width: 100%; height: 500px; }
 .tc-card.monkey  .tc-carousel { width: 100%; height: 500px; }
 .tc-card.playas  .tc-carousel { width: 100%; height: 500px; }
-.tc-card.colon   .tc-carousel { width: 600px; height: 500px; }
-.tc-card.city    .tc-carousel { width: 600px; height: 350px; min-height: 260px; }
+.tc-card.colon   .tc-carousel { width: 100%; height: 500px; }
+.tc-card.city    .tc-carousel { width: 100%; height: 350px; min-height: 260px; }
 .tc-card.portobelo .tc-carousel { width: 100%; height: 350px; }
 
 /* Slides strip */
