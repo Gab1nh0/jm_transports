@@ -56,12 +56,13 @@
 /* ── Grid ── */
 .tc-grid {
   display: grid;
-  grid-template-columns: 2fr 1fr;
-  grid-template-rows: auto auto;
+  grid-template-columns: 1fr 1fr 1fr;
   grid-template-areas:
-    "sanblas monkey"
-    "city    custom";
-  gap: 16px;
+    "sanblas sanblas monkey"
+    "playas  colon   colon"
+    "city    city    portobelo"
+    "custom  custom  custom";
+  gap: 20px;
 }
 
 /* ── Cards base ── */
@@ -77,7 +78,10 @@
 
 .tc-card.sanblas { grid-area: sanblas; }
 .tc-card.monkey  { grid-area: monkey; }
+.tc-card.playas  { grid-area: playas; }
+.tc-card.colon   { grid-area: colon; flex-direction: row; }
 .tc-card.city    { grid-area: city; flex-direction: row; }
+.tc-card.portobelo { grid-area: portobelo; }
 
 /* ── Carousel wrapper ── */
 .tc-carousel {
@@ -87,8 +91,11 @@
 }
 
 .tc-card.sanblas .tc-carousel { width: 100%; height: 500px; }
-.tc-card.monkey  .tc-carousel { width: 100%; height: 400px; }
+.tc-card.monkey  .tc-carousel { width: 100%; height: 500px; }
+.tc-card.playas  .tc-carousel { width: 100%; height: 500px; }
+.tc-card.colon   .tc-carousel { width: 600px; height: 500px; }
 .tc-card.city    .tc-carousel { width: 600px; height: 350px; min-height: 260px; }
+.tc-card.portobelo .tc-carousel { width: 100%; height: 350px; }
 
 /* Slides strip */
 .tc-slides {
@@ -403,18 +410,33 @@
 }
 
 /* ── Responsive ── */
-@media (max-width: 768px) {
+@media (max-width: 992px) {
   .tc-root { padding: 32px 20px; }
 
   .tc-grid {
     grid-template-columns: 1fr;
-    grid-template-areas:
-      "sanblas"
-      "monkey"
-      "city"
-      "custom";
+    grid-template-areas: none;
+    gap: 20px;
   }
 
-  .tc-card.city { flex-direction: column; }
-  .tc-card.city .tc-carousel { width: 100%; height: 220px; min-height: unset; }
+  .tc-card,
+  .tc-custom {
+    grid-area: auto !important;
+  }
+
+  .tc-card.city,
+  .tc-card.colon {
+    flex-direction: column;
+  }
+
+  .tc-card.city .tc-carousel,
+  .tc-card.colon .tc-carousel,
+  .tc-card.sanblas .tc-carousel,
+  .tc-card.monkey .tc-carousel,
+  .tc-card.playas .tc-carousel,
+  .tc-card.portobelo .tc-carousel {
+    width: 100% !important;
+    height: 250px !important;
+    min-height: unset !important;
+  }
 }

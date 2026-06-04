@@ -1,5 +1,6 @@
 import './css/about_us.css';
 import Navbarwhite from '../components/navbar_fondo.tsx';
+import { useLang } from '../context/LanguageContext';
 
 const teamMembers = [
   {
@@ -29,26 +30,10 @@ const stats = [
   { num: '100%', label: 'Private experiences' },
 ];
 
-const values = [
-  {
-    icon: '◇',
-    title: 'Uncompromising quality',
-    desc: 'Every vehicle, guide, and supplier is carefully vetted. We only work with partners who share our standard for detail.',
-  },
-  {
-    icon: '♡',
-    title: 'Radical personalization',
-    desc: 'No two groups are the same. Every itinerary is built around your goals, pace, and curiosity — not our inventory.',
-  },
-  {
-    icon: '❧',
-    title: 'Responsible travel',
-    desc: 'We operate with deep respect for the communities we visit — particularly in indigenous territories like Guna Yala.',
-  },
-];
+
 
 export default function AboutUs() {
-  
+  const { lang, t } = useLang();
 
   return (
     <>
@@ -105,20 +90,48 @@ export default function AboutUs() {
         </div>
       </div>
 
-      {/* ── Values ── */}
-      <div className="ab-section">
+      {/* ── Contact & Location ── */}
+      <div className="ab-section ab-contact-section">
         <div className="ab-section-header">
           <span className="ab-section-num">02</span>
-          <h2>What we stand for</h2>
+          <h2>{t('about.contact.title')}</h2>
         </div>
-        <div className="ab-values-grid">
-          {values.map(v => (
-            <div className="ab-value-card" key={v.title}>
-              <div className="ab-value-icon">{v.icon}</div>
-              <h3>{v.title}</h3>
-              <p>{v.desc}</p>
+        <div className="ab-contact-grid">
+          <div className="ab-contact-info">
+            <div className="ab-contact-item">
+              <span className="ab-contact-icon">📍</span>
+              <div>
+                <h3>{lang === 'en' ? 'Address' : 'Dirección'}</h3>
+                <p style={{ whiteSpace: 'pre-line' }}>{t('about.contact.address')}</p>
+              </div>
             </div>
-          ))}
+            <div className="ab-contact-item">
+              <span className="ab-contact-icon">📞</span>
+              <div>
+                <h3>{lang === 'en' ? 'Landline' : 'Teléfono Fijo'}</h3>
+                <p><a href="tel:+5073104785">{t('about.contact.phone').replace('Landline: ', '').replace('Teléfono fijo: ', '')}</a></p>
+              </div>
+            </div>
+            <div className="ab-contact-item">
+              <span className="ab-contact-icon">💬</span>
+              <div>
+                <h3>WhatsApp</h3>
+                <p><a href="https://wa.me/50762166675" target="_blank" rel="noreferrer">+507 6216-6675</a></p>
+              </div>
+            </div>
+          </div>
+          <div className="ab-contact-map">
+            <iframe 
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3946.195727003886!2d-79.53023992496735!3d8.979174691067272!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8faca88f117c0607%3A0x7d6f55562140a3ec!2sScotia%20Plaza%2C%20Av.%20Federico%20Boyd%2C%20Panam%C3%A1!5e0!3m2!1sen!2spa!4v1717500000000!5m2!1sen!2spa" 
+              width="100%" 
+              height="350" 
+              style={{ border: 0, borderRadius: '12px' }} 
+              allowFullScreen={true} 
+              loading="lazy" 
+              referrerPolicy="no-referrer-when-downgrade"
+              title="Scotia Plaza Location Map"
+            />
+          </div>
         </div>
       </div>
 

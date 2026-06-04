@@ -1,6 +1,9 @@
 import './css/footer.css';
+import { useLang } from '../context/LanguageContext';
 
 export default function Footer() {
+  const { lang, t } = useLang();
+
   return (
     <footer className="footer-root">
       <div className="footer-main">
@@ -22,38 +25,40 @@ export default function Footer() {
             <span className="footer-brand__group">Group</span>
           </a>
           <span className="brand-tagline">Panama · Since 2012</span>
-          <p>Leading premium transportation and tourism logistics in the Republic of Panama.</p>
+          <p>{t('footer.description')}</p>
         </div>
 
         {/* Quick Links */}
         <div className="footer-col">
-          <h4>Quick Links</h4>
+          <h4>{t('footer.quicklinks')}</h4>
           <ul>
-            <li><a href="#">Privacy Policy</a></li>
-            <li><a href="#">Terms of Service</a></li>
-            <li><a href="#">FAQ</a></li>
-            <li><a href="#">Corporate Travel</a></li>
+            <li><a href="#">{t('footer.privacy')}</a></li>
+            <li><a href="#">{t('footer.terms')}</a></li>
+            <li><a href="#">{t('footer.faq')}</a></li>
+            <li><a href="#">{t('footer.corporate')}</a></li>
           </ul>
         </div>
 
         {/* Services */}
         <div className="footer-col">
-          <h4>Services</h4>
+          <h4>{t('footer.services')}</h4>
           <ul>
-            <li><a href="#">Airport Transfers</a></li>
-            <li><a href="#">City Tours</a></li>
-            <li><a href="#">Inter-city Travel</a></li>
-            <li><a href="#">Special Events</a></li>
+            <li><a href="#">{t('footer.airport')}</a></li>
+            <li><a href="#">{t('footer.citytours')}</a></li>
+            <li><a href="#">{t('footer.intercity')}</a></li>
+            <li><a href="#">{t('footer.events')}</a></li>
           </ul>
         </div>
 
         {/* Location */}
         <div className="footer-col footer-location">
-          <h4>Location</h4>
+          <h4>{t('footer.location')}</h4>
           <address>
-            Avenida Balboa, Financial District<br />
-            Panama City, Panama
+            {t('footer.address')}
           </address>
+          <div className="footer-phone">
+            <a href="tel:+5073104785">{t('footer.phone')}</a>
+          </div>
           <div className="footer-socials">
             {/* WhatsApp */}
             <button className="social-btn" title="WhatsApp">
@@ -73,7 +78,13 @@ export default function Footer() {
       </div>
 
       <div className="footer-bottom">
-        <p>© 2025 JM Transport Group Panama. <span>All rights reserved.</span></p>
+        <p>
+          {lang === 'en' ? (
+            <>© 2025 JM Transport Group Panama. <span>All rights reserved.</span></>
+          ) : (
+            <>© 2025 JM Transport Group Panamá. <span>Todos los derechos reservados.</span></>
+          )}
+        </p>
       </div>
     </footer>
   );

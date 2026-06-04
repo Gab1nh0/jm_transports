@@ -1,6 +1,11 @@
 import './css/TourCard.css';
 import { useNavigate } from 'react-router-dom';
 import { useRef, useState, useEffect, useCallback } from 'react';
+import { useLang } from '../context/LanguageContext';
+
+import playasImg from '../assets/playas.png';
+import colonImg from '../assets/colon.png';
+import portobeloImg from '../assets/portobelo.png';
 
 interface CarouselProps {
   images: { src: string; alt: string }[];
@@ -80,8 +85,21 @@ const cityImages = [
   { src: 'https://media.admagazine.com/photos/6298ea6145a759381146b164/16:9/w_2991,h_1682,c_limit/panama-1.jpg', alt: 'Miraflores Locks' },
 ];
 
+const playasImages = [
+  { src: playasImg, alt: 'Beach Transfers' },
+];
+
+const colonImages = [
+  { src: colonImg, alt: 'Colón Histórico Tour' },
+];
+
+const portobeloImages = [
+  { src: portobeloImg, alt: 'Portobelo Tour' },
+];
+
 export default function Tours() {
   const navigate = useNavigate();
+  const { lang, t } = useLang();
 
   return (
     <div id="tc-header" className="tc-root">
@@ -162,6 +180,68 @@ export default function Tours() {
           </div>
         </div>
 
+        {/* ── Beach Transfers ── */}
+        <div className="tc-card playas">
+          <ImageCarousel images={playasImages} />
+          <div className="tc-card-body">
+            <div className="tc-card-top">
+              <h3>{t('tours.playas.title')}</h3>
+              <div className="tc-price">
+                <span>{t('tours.playas.price_label')}</span>
+                <strong>{t('tours.playas.price')}</strong>
+              </div>
+            </div>
+            <div className="tc-meta">
+              <span className="tc-meta-item">⏱ Oneway / Roundtrip</span>
+              <span className="tc-meta-item">👥 Private</span>
+            </div>
+            <p className="tc-desc">
+              {t('tours.playas.desc')}
+            </p>
+            <p className="tc-destinations-text" style={{ fontSize: '0.8rem', color: '#64748b', fontWeight: '500', marginBottom: '14px' }}>
+              <strong>{lang === 'en' ? 'Destinations:' : 'Destinos:'}</strong> RIU Playa Blanca, Gran Evenia Bijao, Decameron, Buenaventura.
+            </p>
+            <div className="tc-tags">
+              <span className="tc-tag">{t('tours.playas.tag1')}</span>
+              <span className="tc-tag">{t('tours.playas.tag2')}</span>
+              <span className="tc-tag">{t('tours.playas.tag3')}</span>
+            </div>
+            <button className="tc-btn" onClick={() => navigate('/booking')}>
+              {lang === 'en' ? 'Book Now' : 'Reservar Ahora'}
+            </button>
+          </div>
+        </div>
+
+        {/* ── Historic Colon ── */}
+        <div className="tc-card colon">
+          <ImageCarousel images={colonImages} />
+          <div className="tc-card-body">
+            <div className="tc-card-top">
+              <h3>{t('tours.colon.title')}</h3>
+              <div className="tc-price">
+                <span>{t('tours.colon.price_label')}</span>
+                <strong>{t('tours.colon.price')}</strong>
+              </div>
+            </div>
+            <div className="tc-meta">
+              <span className="tc-meta-item">⏱ Full day</span>
+              <span className="tc-meta-item">🚗 Private Tour</span>
+            </div>
+            <p className="tc-desc">
+              {t('tours.colon.desc')}
+            </p>
+            <div className="tc-includes">
+              <span className="tc-include">{t('tours.colon.inc1')}</span>
+              <span className="tc-include">{t('tours.colon.inc2')}</span>
+              <span className="tc-include">{t('tours.colon.inc3')}</span>
+              <span className="tc-include">{t('tours.colon.inc4')}</span>
+            </div>
+            <button className="tc-btn" onClick={() => navigate('/booking')}>
+              {lang === 'en' ? 'Book Now' : 'Reservar Ahora'}
+            </button>
+          </div>
+        </div>
+
         {/* ── City Tour ── */}
         <div className="tc-card city">
           <ImageCarousel images={cityImages} />
@@ -187,6 +267,36 @@ export default function Tours() {
               <span className="tc-include">Amador Causeway &amp; skyline</span>
             </div>
             <button className="tc-btn" onClick={() => navigate('/booking')}>Book Now</button>
+          </div>
+        </div>
+
+        {/* ── Portobelo ── */}
+        <div className="tc-card portobelo">
+          <ImageCarousel images={portobeloImages} />
+          <div className="tc-card-body">
+            <div className="tc-card-top">
+              <h3>{t('tours.portobelo.title')}</h3>
+              <div className="tc-price">
+                <span>{t('tours.portobelo.price_label')}</span>
+                <strong>{t('tours.portobelo.price')}</strong>
+              </div>
+            </div>
+            <div className="tc-meta">
+              <span className="tc-meta-item">⏱ Full day</span>
+              <span className="tc-meta-item">⛵ Adventure</span>
+            </div>
+            <p className="tc-desc">
+              {t('tours.portobelo.desc')}
+            </p>
+            <div className="tc-includes">
+              <span className="tc-include">{t('tours.portobelo.inc1')}</span>
+              <span className="tc-include">{t('tours.portobelo.inc2')}</span>
+              <span className="tc-include">{t('tours.portobelo.inc3')}</span>
+              <span className="tc-include">{t('tours.portobelo.inc4')}</span>
+            </div>
+            <button className="tc-btn" onClick={() => navigate('/booking')}>
+              {lang === 'en' ? 'Book Now' : 'Reservar Ahora'}
+            </button>
           </div>
         </div>
 
