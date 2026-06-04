@@ -3,9 +3,6 @@ import { useNavigate } from 'react-router-dom';
 import { useRef, useState, useEffect, useCallback } from 'react';
 import { useLang } from '../context/LanguageContext';
 
-import playasImg from '../assets/playas.png';
-import colonImg from '../assets/colon.png';
-import portobeloImg from '../assets/portobelo.png';
 
 interface CarouselProps {
   images: { src: string; alt: string }[];
