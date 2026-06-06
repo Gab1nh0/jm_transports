@@ -2,7 +2,7 @@
 .fleet-section {
   width: 100%;
   padding: 100px 80px;
-  background-color: var(--color-secondary); 
+  background-color: #0270bc; 
   color: var(--color-white);
   overflow: hidden;
 }

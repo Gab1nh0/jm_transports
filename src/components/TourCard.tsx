@@ -3,7 +3,6 @@ import { useNavigate } from 'react-router-dom';
 import { useRef, useState, useEffect, useCallback } from 'react';
 import { useLang } from '../context/LanguageContext';
 
-
 interface CarouselProps {
   images: { src: string; alt: string }[];
   className?: string;
@@ -63,7 +62,6 @@ function ImageCarousel({ images, className = '' }: CarouselProps) {
   );
 }
 
-/* ── Image pools per tour ── */
 const sanBlasImages = [
   { src: 'https://i0.wp.com/panamamastertours.com/wp-content/uploads/2023/08/panama-city-4-day-island-hopping-san-blas-adventure-1695289.webp?fit=1500%2C1001&ssl=1', alt: 'San Blas Islands' },
   { src: 'https://sanblasadventours.com/wp-content/uploads/AnyConv.com__psina-5-scaled.webp', alt: 'San Blas turquoise water' },
@@ -83,24 +81,21 @@ const cityImages = [
 ];
 
 const portobeloImages = [
-  { src: 'https://upload.wikimedia.org/wikipedia/commons/thumb/e/e8/Bater%C3%ADa_de_Santiago_en_Portobelo.jpg/1280px-Bater%C3%ADa_de_Santiago_en_Portobelo.jpg?utm_source=es.wikivoyage.org&utm_campaign=parser&utm_content=thumbnail', alt: 'Beach Transfers' },
-  { src: 'https://www.thevisitorpanama.info/esp/wp-content/uploads/2024/08/Compress_20240817_235251_1205.jpg', alt: 'Beach Transfers' },
-  { src: 'https://e9q4u4m64gi.exactdn.com/wp-content/uploads/2018/01/Portobelo-Panam%C3%A1-e1516284626521.jpg?strip=all', alt: 'Beach Transfers' },
-
-
+  { src: 'https://upload.wikimedia.org/wikipedia/commons/thumb/e/e8/Bater%C3%ADa_de_Santiago_en_Portobelo.jpg/1280px-Bater%C3%ADa_de_Santiago_en_Portobelo.jpg?utm_source=es.wikivoyage.org&utm_campaign=parser&utm_content=thumbnail', alt: 'Portobelo Forts' },
+  { src: 'https://www.thevisitorpanama.info/esp/wp-content/uploads/2024/08/Compress_20240817_235251_1205.jpg', alt: 'Portobelo Culture' },
+  { src: 'https://e9q4u4m64gi.exactdn.com/wp-content/uploads/2018/01/Portobelo-Panam%C3%A1-e1516284626521.jpg?strip=all', alt: 'Portobelo Coastline' },
 ];
 
 const colonImages = [
   { src: 'https://upload.wikimedia.org/wikipedia/commons/4/43/Toma_a%C3%A9rea_del_Fuerte_San_Lorenzo.jpg', alt: 'Colón Histórico Tour' },
-  { src: 'https://elcapitalfinanciero.com/wp-content/uploads/2017/07/sanlorenzo3.png' , alt: 'Colón Histórico Tour' },
-  { src: 'https://www.viajesyfotografia.com/wp-content/uploads/2016/11/esclusas-agua-clara.jpg', alt: 'Colón Histórico Tour' },
+  { src: 'https://elcapitalfinanciero.com/wp-content/uploads/2017/07/sanlorenzo3.png', alt: 'San Lorenzo' },
+  { src: 'https://www.viajesyfotografia.com/wp-content/uploads/2016/11/esclusas-agua-clara.jpg', alt: 'Agua Clara Locks' },
 ];
 
 const playasImages = [
-  { src: 'https://buenaventura.com.pa/wp-content/uploads/2024/06/video-4.jpg', alt: 'Playa Tour' },
-  { src: 'https://elcapitalfinanciero.com/wp-content/uploads/2022/12/Evenia-Hotel.jpg', alt: 'Playa Tour' },
-  { src: 'https://travelagents.decameron.com/images/destinos/panama/royal-panama/panoramica-hotal-panama.jpg', alt: 'Playa Tour' },
-
+  { src: 'https://buenaventura.com.pa/wp-content/uploads/2024/06/video-4.jpg', alt: 'Playa Tour Buenaventura' },
+  { src: 'https://elcapitalfinanciero.com/wp-content/uploads/2022/12/Evenia-Hotel.jpg', alt: 'Playa Tour Bijao' },
+  { src: 'https://travelagents.decameron.com/images/destinos/panama/royal-panama/panoramica-hotal-panama.jpg', alt: 'Playa Tour Decameron' },
 ];
 
 export default function Tours() {
@@ -108,10 +103,13 @@ export default function Tours() {
   const { lang, t } = useLang();
 
   return (
-    <div id="tc-header" className="tc-root">
+    <div className="tc-root">
+      
       <div className="tc-header">
-        <h2 className='tc-header'>Exclusive Tours</h2>
-        <p>Selected premium experiences for corporate and luxury clients.</p>
+        <span className="subtitle tc-yellow-subtitle">EXCLUSIVE TOURS</span>
+        <h2>Selected Premium Experiences</h2>
+        <p>Curated luxury and corporate itineraries across Panama's most iconic destinations.</p>
+        
         <div className="tc-filters">
           {['All', 'Beach', 'Nature', 'Urban'].map(f => (
             <button
@@ -204,7 +202,7 @@ export default function Tours() {
             <p className="tc-desc">
               {t('tours.playas.desc')}
             </p>
-            <p className="tc-destinations-text" style={{ fontSize: '0.8rem', color: '#64748b', fontWeight: '500', marginBottom: '14px' }}>
+            <p className="tc-destinations-text">
               <strong>{lang === 'en' ? 'Destinations:' : 'Destinos:'}</strong> RIU Playa Blanca, Gran Evenia Bijao, Decameron, Buenaventura.
             </p>
             <div className="tc-tags">
@@ -306,16 +304,27 @@ export default function Tours() {
           </div>
         </div>
 
-        {/* ── Custom ── */}
+        {/* ── Custom Experience (Icono Amarillo + Botón Verde Tornasol de Soporte) ── */}
         <div className="tc-custom">
-          <div className="tc-custom-icon">✦</div>
+          <div className="tc-custom-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="custom-appointment-svg yellow-svg">
+              <path d="M16 2v4M8 2v4M3 10h18M5 4h14a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2z" />
+              <circle cx="12" cy="14" r="2" />
+              <path d="M16 19c0-1.5-1.5-2.5-4-2.5s-4 1-4 2.5" />
+            </svg>
+          </div>
           <h3>Need a Custom Experience?</h3>
           <p>
             We specialize in tailoring luxury tours for corporate retreats,
             family gatherings, and VIP guests.
           </p>
-          <a href="https://wa.me/50762166675" target="_blank" rel="noreferrer">
-            Contact our Concierge →
+          
+          {/* MODIFICADO: Cambiado a Contact Support con enlace directo y clase verde tornasol */}
+          <a href="https://wa.me/50762166675" target="_blank" rel="noreferrer" className="tc-green-tornasol-btn">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" fill="currentColor" className="tc-wa-icon">
+              <path d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L0 480l117.7-30.9c32.4 17.7 68.9 27 106.1 27h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-157zm-157 341.6c-33.2 0-65.7-8.9-94-25.7l-6.7-4-69.8 18.3L72 359.2l-4.4-7c-18.5-29.4-28.2-63.3-28.2-98.2 0-101.7 82.8-184.5 184.6-184.5 49.3 0 95.6 19.2 130.4 54.1 34.8 34.9 56.2 81.2 56.1 130.5 0 101.8-84.9 184.6-186.6 184.6zm101.2-138.2c-5.5-2.8-32.8-16.2-37.9-18-5.1-1.9-8.8-2.8-12.5 2.8-3.7 5.6-14.3 18-17.6 21.8-3.2 3.7-6.5 4.2-12 1.4-32.6-16.3-54-29.1-75.5-66-5.7-9.8 5.7-9.1 16.3-30.3 1.8-3.7 .9-6.9-.5-9.7-1.4-2.8-12.5-30.1-17.1-41.2-4.5-10.8-9.1-9.3-12.5-9.5-3.2-.2-6.9-.2-10.6-.2-3.7 0-9.7 1.4-14.8 6.9-5.1 5.6-19.4 19-19.4 46.3 0 27.3 19.9 53.7 22.6 57.4 2.8 3.7 39.1 59.7 94.8 83.8 35.2 15.2 49 16.5 66.6 13.9 10.7-1.6 32.8-13.4 37.4-26.4 4.6-13 4.6-24.1 3.2-26.4-1.3-2.5-5-3.9-10.5-6.6z"/>
+            </svg>
+            Contact Support
           </a>
         </div>
 
