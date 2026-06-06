@@ -43,19 +43,25 @@
   justify-content: center;
   align-items: center; 
   padding: 40px;
+  cursor: pointer;
   border: 1px solid rgba(255, 255, 255, 0.05);
   background-size: cover;
   background-position: center;
   transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
   isolation: isolate;
+  outline: 3px solid var(--color-primary); 
+  outline-offset: -3px;                    
+  transform: translateZ(0);
 }
 
 .card-overlay {
-  position: absolute;
-  width: 104%;
-  height: 104%;
+position: absolute;
+  top: -0.5px;
+  left: -0.5px;
+  width: calc(100% + 1px);
+  height: calc(100% + 1px);
   z-index: 1;
-  background: linear-gradient(to top, rgba(0, 0, 0, 0.95) 0%, rgba(0, 0, 0, 0.3) 100%);
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.98) 0%, rgba(0, 0, 0, 0.4) 100%);
   transition: background 0.3s ease;
 }
 .service-card:hover {
@@ -113,11 +119,10 @@
   font-family: var(--font-body);
   font-weight: 600;
   font-size: 0.95rem;
-  cursor: pointer;
   align-self: flex-start;
-  padding: 0;
   margin-top: 10px;
   transition: color 0.2s ease, transform 0.2s ease;
+  display: inline-block;
 }
 
 .service-card:hover .card-link {
@@ -129,6 +134,7 @@
 @media (max-width: 1100px) {
   .services-grid {
     grid-template-columns: 1fr 1fr;
+    gap: 24px;
   }
   .card-large {
     grid-column: span 2;
@@ -147,8 +153,17 @@
     grid-column: span 1;
   }
   .service-card {
-    height: 380px;
+    height: 400px; 
     padding: 30px;
+    border-radius: 16px;
+  }
+  .card-info {
+    bottom: 30px;
+    left: 30px;
+    width: calc(100% - 60px);
+  }
+  .services-header h2 {
+    font-size: 2.1rem; 
   }
 }
 
@@ -162,4 +177,194 @@
 
 .bg-tours { 
   background-image: url('../../assets/panama.png'); 
+}
+
+/* --- MODAL OVERLAY (FONDO DIFUMINADO) --- */
+.service-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.75);
+  backdrop-filter: blur(8px); 
+  -webkit-backdrop-filter: blur(8px);
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  animation: fadeIn 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* --- VENTANA DEL MODAL --- */
+.service-modal-window {
+  background-color: #111111; 
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  width: 100%;
+  max-width: 650px;
+  border-radius: 24px;
+  padding: 40px;
+  position: relative;
+  color: var(--color-white);
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.6);
+  max-height: 90vh;
+  overflow-y: auto; 
+  animation: scaleUp 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Botón de Cerrar (X) */
+.modal-close-btn {
+  position: absolute;
+  top: 25px;
+  right: 30px;
+  background: none;
+  border: none;
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 2rem;
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+
+.modal-close-btn:hover {
+  color: var(--color-white);
+}
+
+/* Detalles de Texto Interno */
+.modal-tag {
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  color: var(--color-secondary);
+  text-transform: uppercase;
+  display: block;
+  margin-bottom: 8px;
+}
+
+.service-modal-window h2 {
+  font-family: var(--font-headlines);
+  font-size: 2.2rem;
+  font-weight: 800;
+  margin: 0 0 6px 0;
+}
+
+.modal-subtitle {
+  font-size: 1rem;
+  color: rgba(255, 255, 255, 0.6);
+  margin-bottom: 20px;
+}
+
+.modal-divider {
+  border: none;
+  height: 1px;
+  background: rgba(255, 255, 255, 0.1);
+  margin-bottom: 24px;
+}
+
+.modal-description {
+  font-size: 1.05rem;
+  line-height: 1.6;
+  color: #E2E8F0;
+  margin-bottom: 30px;
+}
+
+.service-modal-window h3 {
+  font-family: var(--font-headlines);
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin-bottom: 16px;
+}
+
+/* Lista de Pasos */
+.modal-steps-list {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 30px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.modal-steps-list li {
+  font-size: 0.95rem;
+  line-height: 1.5;
+  color: rgba(255, 255, 255, 0.85);
+  position: relative;
+  padding-left: 24px;
+}
+
+/* Indicador VIP o Viñeta personalizada antes de cada paso */
+.modal-steps-list li::before {
+  content: "→";
+  position: absolute;
+  left: 0;
+  color: var(--color-secondary);
+  font-weight: 700;
+}
+
+/* Caja de Notas Adicionales */
+.modal-notes-box {
+  background: rgba(2, 112, 188, 0.08); 
+  border-left: 3px solid var(--color-secondary);
+  padding: 16px;
+  border-radius: 8px;
+  margin-bottom: 30px;
+}
+
+.modal-notes-box p {
+  font-size: 0.88rem;
+  color: rgba(255, 255, 255, 0.7);
+  margin: 0;
+}
+.modal-notes-box p + p {
+  margin-top: 6px;
+}
+
+/* Acción de Cotización */
+.modal-btn-quote {
+  display: inline-flex;
+  width: 100%;
+  justify-content: center;
+  background-color: var(--color-white);
+  color: #000000;
+  padding: 16px;
+  border-radius: 12px;
+  font-weight: 600;
+  text-decoration: none;
+  font-size: 1rem;
+  transition: all 0.25s ease;
+  text-align: center;
+}
+
+.modal-btn-quote:hover {
+  background-color: var(--color-tertiary); 
+  transform: translateY(-2px);
+}
+
+/* --- ANIMACIONES DE ENTRADA SUAVE --- */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes scaleUp {
+  from {
+    opacity: 0;
+    transform: scale(0.96) translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+/* Responsive del Modal */
+@media (max-width: 600px) {
+  .service-modal-window {
+    padding: 30px 20px;
+    border-radius: 20px;
+  }
+  .service-modal-window h2 {
+    font-size: 1.8rem;
+  }
 }

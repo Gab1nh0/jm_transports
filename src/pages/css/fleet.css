@@ -126,7 +126,8 @@
   overflow-x: auto;
   scroll-snap-type: x mandatory;
   padding: 20px 5px;
-  scrollbar-width: none; /* Oculta barra en Firefox */
+  scrollbar-width: none; 
+  scroll-behavior: smooth;
 }
 
 .fleet-render-container.is-carousel::-webkit-scrollbar {
@@ -162,7 +163,7 @@
 .vehicle-card-premium:hover {
   transform: translateY(-8px);
   border-color: rgba(255, 255, 255, 0.25);
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2); 
 }
 
 /* Badge VIP Esquina Superior */

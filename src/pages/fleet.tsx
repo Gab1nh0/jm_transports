@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { FaChevronLeft, FaChevronRight, FaUsers, FaCheckCircle } from 'react-icons/fa';
 import './css/fleet.css';
 
@@ -49,23 +49,69 @@ const INCLUDED_BENEFITS = [
 export const FleetSection: React.FC = () => {
   const [activeFilter, setActiveFilter] = useState<'all' | 'suv' | 'coaster' | 'vip'>('all');
   const carouselRef = useRef<HTMLDivElement>(null);
+  const autoplayTimerRef = useRef<NodeJS.Timeout | null>(null);
 
   const filteredVehicles = activeFilter === 'all' 
     ? FLEET_DATA 
     : FLEET_DATA.filter(v => v.type === activeFilter || (activeFilter === 'vip' && v.isVip));
 
+  // Función lógica para mover el carrusel
   const scrollCarousel = (direction: 'left' | 'right') => {
     if (carouselRef.current) {
-      const scrollAmount = 360; // Ancho aproximado de la tarjeta + gap
-      carouselRef.current.scrollBy({
-        left: direction === 'left' ? -scrollAmount : scrollAmount,
-        behavior: 'smooth'
-      });
+      const scrollAmount = 370; // Ancho aproximado de la tarjeta + gap
+      const container = carouselRef.current;
+      
+      if (direction === 'left') {
+        // Si está al puro inicio y va a la izquierda, salta al final (Ciclo Infinito)
+        if (container.scrollLeft <= 0) {
+          container.scrollTo({ left: container.scrollWidth, behavior: 'smooth' });
+        } else {
+          container.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+        }
+      } else {
+        // Si llegó al final y va a la derecha, regresa al puro inicio (Ciclo Infinito)
+        const isAtEnd = container.scrollLeft + container.clientWidth >= container.scrollWidth - 10;
+        if (isAtEnd) {
+          container.scrollTo({ left: 0, behavior: 'smooth' });
+        } else {
+          container.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+        }
+      }
     }
   };
 
+  // Función para arrancar el Autoplay automático
+  const startAutoplay = () => {
+    stopAutoplay(); // Limpia cualquier timer activo previo por seguridad
+    if (activeFilter === 'all') {
+      autoplayTimerRef.current = setInterval(() => {
+        scrollCarousel('right');
+      }, 3500); // Se mueve automáticamente cada 3.5 segundos
+    }
+  };
+
+  // Función para detener el Autoplay (cuando el usuario interactúa)
+  const stopAutoplay = () => {
+    if (autoplayTimerRef.current) {
+      clearInterval(autoplayTimerRef.current);
+    }
+  };
+
+  // Efecto para controlar el ciclo de vida del Autoplay
+  useEffect(() => {
+    startAutoplay();
+    return () => stopAutoplay(); // Limpieza al desmontar el componente
+  }, [activeFilter]); // Se reinicia si el usuario cambia el filtro
+
+  // Manejador para cuando el usuario hace clic manual en las flechas
+  const handleManualScroll = (direction: 'left' | 'right') => {
+    scrollCarousel(direction);
+    // Pausa el autoplay un momento para que no salte toscamente justo después del clic
+    startAutoplay(); 
+  };
+
   return (
-    <section className="fleet-section" id="fleet-section">
+    <section className="fleet-section">
       <div className="fleet-container">
         
         {/* Encabezado */}
@@ -90,10 +136,10 @@ export const FleetSection: React.FC = () => {
         <div className="fleet-display-wrapper">
           {activeFilter === 'all' && (
             <>
-              <button className="carousel-arrow left" onClick={() => scrollCarousel('left')} aria-label="Scroll left">
+              <button className="carousel-arrow left" onClick={() => handleManualScroll('left')} aria-label="Scroll left">
                 <FaChevronLeft />
               </button>
-              <button className="carousel-arrow right" onClick={() => scrollCarousel('right')} aria-label="Scroll right">
+              <button className="carousel-arrow right" onClick={() => handleManualScroll('right')} aria-label="Scroll right">
                 <FaChevronRight />
               </button>
             </>
@@ -102,6 +148,9 @@ export const FleetSection: React.FC = () => {
           <div 
             ref={carouselRef} 
             className={`fleet-render-container ${activeFilter === 'all' ? 'is-carousel' : 'is-grid'}`}
+            onMouseEnter={stopAutoplay} // Si el mouse se para encima, congela el carrusel para que puedan leer bien
+            onMouseLeave={startAutoplay} // Si el mouse sale, continúa el ciclo solo
+            onTouchStart={stopAutoplay} // Soporte para celulares
           >
             {filteredVehicles.map((vehicle, index) => (
               <div key={index} className="vehicle-card-premium">
