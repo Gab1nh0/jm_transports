@@ -1,3 +1,4 @@
+/* ESTRUCTURA GENERAL */
 .fleet-section {
   width: 100%;
   padding: 100px 80px;
@@ -12,7 +13,7 @@
   position: relative;
 }
 
-/* Encabezado */
+/* ENCABEZADO */
 .fleet-header {
   text-align: center;
   max-width: 750px;
@@ -24,7 +25,7 @@
   font-size: 0.9rem;
   font-weight: 700;
   letter-spacing: 0.25em;
-  color: var(--color-tertiary); /* Tu Amarillo */
+  color: var(--color-tertiary); 
   text-transform: uppercase;
   display: block;
   margin-bottom: 12px;
@@ -45,7 +46,7 @@
   opacity: 0.85;
 }
 
-/* Filtros en forma de píldoras */
+/* FILTROS (PÍLDORAS) */
 .fleet-filters {
   display: flex;
   justify-content: center;
@@ -75,25 +76,29 @@
 
 .fleet-filters button.active {
   background-color: var(--color-white);
-  color: var(--color-primary); /* Texto negro */
+  color: var(--color-primary); 
   border-color: var(--color-white);
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
 }
 
-/* Envoltura del visor y controles de flecha */
+/* ENVOLTURA DE SWIPER */
 .fleet-display-wrapper {
   position: relative;
   width: 100%;
   margin-bottom: 80px;
+  padding: 10px 0;
 }
 
+/* BOTONES DEL CARRUSEL (ELEGANTES Y TRANSPARENTES) */
 .carousel-arrow {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  background: var(--color-white);
-  color: var(--color-primary);
-  border: none;
+  background: rgba(255, 255, 255, 0.1); 
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  color: rgba(255, 255, 255, 0.7);
+  border: 1px solid rgba(255, 255, 255, 0.2);
   width: 48px;
   height: 48px;
   border-radius: 50%;
@@ -102,71 +107,60 @@
   justify-content: center;
   cursor: pointer;
   z-index: 10;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
-  transition: transform 0.2s ease, background-color 0.2s ease;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .carousel-arrow:hover {
   transform: translateY(-50%) scale(1.1);
-  background-color: var(--color-tertiary);
+  background: rgba(255, 255, 255, 0.25);
+  color: var(--color-white);
+  border-color: rgba(255, 255, 255, 0.4);
 }
 
 .carousel-arrow.left { left: -25px; }
 .carousel-arrow.right { right: -25px; }
 
-/* Control del layout dinámico (Carrusel vs Grid) */
-.fleet-render-container {
+/* LAYOUT DE SWIPER (CARRUSEL VS REJILLA) */
+.fleet-swiper-container.is-carousel {
   width: 100%;
-  transition: all 0.3s ease;
+  overflow: visible; 
 }
 
-.fleet-render-container.is-carousel {
-  display: flex;
-  gap: 30px;
-  overflow-x: auto;
-  scroll-snap-type: x mandatory;
-  padding: 20px 5px;
-  scrollbar-width: none; 
-  scroll-behavior: smooth;
+.fleet-swiper-container.is-grid {
+  width: 100%;
 }
 
-.fleet-render-container.is-carousel::-webkit-scrollbar {
-  display: none; /* Oculta barra en Chrome/Safari */
-}
-
-.fleet-render-container.is-grid {
+.fleet-swiper-container.is-grid .swiper-wrapper {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
   gap: 30px;
-  padding: 10px 0;
+  width: 100%;
+  transform: none !important; 
 }
 
-/* Tarjetas Premium Modernas */
+/* TARJETAS DE VEHÍCULOS */
 .vehicle-card-premium {
-  flex: 0 0 340px; 
-  scroll-snap-align: start;
   background: rgba(255, 255, 255, 0.05);
   backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
   border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: 24px;
   overflow: hidden;
   position: relative;
   display: flex;
   flex-direction: column;
-  transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
-}
-
-.fleet-render-container.is-grid .vehicle-card-premium {
-  flex: none; 
+  height: 100%; 
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
 .vehicle-card-premium:hover {
   transform: translateY(-8px);
   border-color: rgba(255, 255, 255, 0.25);
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2); 
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.25); 
 }
 
-/* Badge VIP Esquina Superior */
+/* BADGE VIP */
 .vip-tag-badge {
   position: absolute;
   top: 20px;
@@ -184,7 +178,7 @@
   z-index: 2;
 }
 
-/* Contenedor de la foto */
+/* IMAGEN DE TARJETA */
 .vehicle-card-premium .img-holder {
   width: 100%;
   height: 200px;
@@ -199,14 +193,14 @@
   max-width: 100%;
   max-height: 100%;
   object-fit: contain;
-  transition: transform 0.4s ease;
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .vehicle-card-premium:hover .img-holder img {
   transform: scale(1.06);
 }
 
-/* Detalles internos */
+/* CONTENIDO DE TARJETA */
 .card-details {
   padding: 25px;
   display: flex;
@@ -232,10 +226,10 @@
 }
 
 .passenger-count .icon {
-  color: var(--color-tertiary); /* Amarillo resalta el icono */
+  color: var(--color-tertiary); 
 }
 
-/* Botón de Reserva */
+/* BOTÓN RESERVAR */
 .book-vehicle-btn {
   width: 100%;
   padding: 12px;
@@ -247,7 +241,7 @@
   font-weight: 700;
   font-size: 0.95rem;
   cursor: pointer;
-  margin-top: auto;
+  margin-top: auto; 
   transition: background-color 0.2s ease, color 0.2s ease;
 }
 
@@ -256,7 +250,7 @@
   color: var(--color-primary);
 }
 
-/* Bloque de Beneficios Incluidos */
+/* SECCIÓN BENEFICIOS */
 .fleet-perks-showcase {
   border-top: 1px solid rgba(255, 255, 255, 0.1);
   padding-top: 60px;
@@ -289,10 +283,18 @@
   text-align: left;
 }
 
-.perk-check-icon {
-  color: var(--color-tertiary); /* El gancho en Amarillo */
-  font-size: 1.3rem;
+/* ADAPTACIÓN DEL PNG: Moderno, grande y estilizado */
+.perk-png-icon {
+  width: 38px;
+  height: 38px;
+  object-fit: contain;
   flex-shrink: 0;
+  filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.15));
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.perk-card-item:hover .perk-png-icon {
+  transform: scale(1.1) rotate(8deg);
 }
 
 .perk-card-item span {
@@ -302,10 +304,11 @@
   opacity: 0.9;
 }
 
-/* Reponsive */
+/* RESPONSIVE DESIGN */
 @media (max-width: 1024px) {
   .perks-grid { grid-template-columns: repeat(2, 1fr); }
-  .carousel-arrow { display: none; } /* En tablets se arrastra con el dedo */
+  .fleet-section { padding: 80px 40px; }
+  .carousel-arrow { display: none !important; } 
 }
 
 @media (max-width: 768px) {
@@ -314,4 +317,5 @@
   .perks-grid { grid-template-columns: 1fr; gap: 15px; }
   .fleet-filters { gap: 8px; }
   .fleet-filters button { padding: 10px 18px; font-size: 0.85rem; }
+  .fleet-perks-showcase h3 { font-size: 1.5rem; }
 }

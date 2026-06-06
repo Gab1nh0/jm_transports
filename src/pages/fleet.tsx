@@ -1,8 +1,13 @@
-import React, { useState, useRef, useEffect } from 'react';
-import { FaChevronLeft, FaChevronRight, FaUsers, FaCheckCircle } from 'react-icons/fa';
-import './css/fleet.css';
+import React, { useState, useRef } from 'react';
+import { FaUsers, FaChevronLeft, FaChevronRight } from 'react-icons/fa';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Autoplay, Navigation } from 'swiper/modules';
+import type { Swiper as SwiperType } from 'swiper';
 
-// NOTA: Recuerda importar o ajustar las rutas de tus imágenes cuando las tengas listas
+import 'swiper/css';
+import './css/fleet.css';
+import imgCheckInstagram from '../assets/check.png'; 
+
 import imgSuburban from '../assets/suburban.avif';
 import imgSprinter from '../assets/sprinter.png';
 import imgCarens from '../assets/carens.webp';
@@ -48,73 +53,17 @@ const INCLUDED_BENEFITS = [
 
 export const FleetSection: React.FC = () => {
   const [activeFilter, setActiveFilter] = useState<'all' | 'suv' | 'coaster' | 'vip'>('all');
-  const carouselRef = useRef<HTMLDivElement>(null);
-  const autoplayTimerRef = useRef<NodeJS.Timeout | null>(null);
+  const swiperRef = useRef<SwiperType | null>(null);
 
   const filteredVehicles = activeFilter === 'all' 
     ? FLEET_DATA 
     : FLEET_DATA.filter(v => v.type === activeFilter || (activeFilter === 'vip' && v.isVip));
 
-  // Función lógica para mover el carrusel
-  const scrollCarousel = (direction: 'left' | 'right') => {
-    if (carouselRef.current) {
-      const scrollAmount = 370; // Ancho aproximado de la tarjeta + gap
-      const container = carouselRef.current;
-      
-      if (direction === 'left') {
-        // Si está al puro inicio y va a la izquierda, salta al final (Ciclo Infinito)
-        if (container.scrollLeft <= 0) {
-          container.scrollTo({ left: container.scrollWidth, behavior: 'smooth' });
-        } else {
-          container.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
-        }
-      } else {
-        // Si llegó al final y va a la derecha, regresa al puro inicio (Ciclo Infinito)
-        const isAtEnd = container.scrollLeft + container.clientWidth >= container.scrollWidth - 10;
-        if (isAtEnd) {
-          container.scrollTo({ left: 0, behavior: 'smooth' });
-        } else {
-          container.scrollBy({ left: scrollAmount, behavior: 'smooth' });
-        }
-      }
-    }
-  };
-
-  // Función para arrancar el Autoplay automático
-  const startAutoplay = () => {
-    stopAutoplay(); // Limpia cualquier timer activo previo por seguridad
-    if (activeFilter === 'all') {
-      autoplayTimerRef.current = setInterval(() => {
-        scrollCarousel('right');
-      }, 3500); // Se mueve automáticamente cada 3.5 segundos
-    }
-  };
-
-  // Función para detener el Autoplay (cuando el usuario interactúa)
-  const stopAutoplay = () => {
-    if (autoplayTimerRef.current) {
-      clearInterval(autoplayTimerRef.current);
-    }
-  };
-
-  // Efecto para controlar el ciclo de vida del Autoplay
-  useEffect(() => {
-    startAutoplay();
-    return () => stopAutoplay(); // Limpieza al desmontar el componente
-  }, [activeFilter]); // Se reinicia si el usuario cambia el filtro
-
-  // Manejador para cuando el usuario hace clic manual en las flechas
-  const handleManualScroll = (direction: 'left' | 'right') => {
-    scrollCarousel(direction);
-    // Pausa el autoplay un momento para que no salte toscamente justo después del clic
-    startAutoplay(); 
-  };
-
   return (
     <section className="fleet-section">
       <div className="fleet-container">
         
-        {/* Encabezado */}
+        {/* ENCABEZADO */}
         <div className="fleet-header">
           <span className="subtitle">OUR FLEET</span>
           <h2>Travel with Style, Comfort & Security</h2>
@@ -124,7 +73,7 @@ export const FleetSection: React.FC = () => {
           </p>
         </div>
 
-        {/* Filtros */}
+        {/* FILTROS */}
         <div className="fleet-filters">
           <button className={activeFilter === 'all' ? 'active' : ''} onClick={() => setActiveFilter('all')}>All Fleet</button>
           <button className={activeFilter === 'suv' ? 'active' : ''} onClick={() => setActiveFilter('suv')}>SUVs</button>
@@ -132,54 +81,86 @@ export const FleetSection: React.FC = () => {
           <button className={activeFilter === 'vip' ? 'active' : ''} onClick={() => setActiveFilter('vip')}>VIP Experience</button>
         </div>
 
-        {/* Contenedor Dinámico: Carrusel o Grid Estático */}
+        {/* CONTENEDOR DINÁMICO */}
         <div className="fleet-display-wrapper">
+          
+          {/* BOTONES DEL CARRUSEL */}
           {activeFilter === 'all' && (
             <>
-              <button className="carousel-arrow left" onClick={() => handleManualScroll('left')} aria-label="Scroll left">
+              <button 
+                className="carousel-arrow left" 
+                onClick={() => swiperRef.current?.slidePrev()} 
+                aria-label="Scroll left"
+              >
                 <FaChevronLeft />
               </button>
-              <button className="carousel-arrow right" onClick={() => handleManualScroll('right')} aria-label="Scroll right">
+              <button 
+                className="carousel-arrow right" 
+                onClick={() => swiperRef.current?.slideNext()} 
+                aria-label="Scroll right"
+              >
                 <FaChevronRight />
               </button>
             </>
           )}
 
-          <div 
-            ref={carouselRef} 
-            className={`fleet-render-container ${activeFilter === 'all' ? 'is-carousel' : 'is-grid'}`}
-            onMouseEnter={stopAutoplay} // Si el mouse se para encima, congela el carrusel para que puedan leer bien
-            onMouseLeave={startAutoplay} // Si el mouse sale, continúa el ciclo solo
-            onTouchStart={stopAutoplay} // Soporte para celulares
+          <Swiper
+            modules={[Autoplay, Navigation]}
+            onBeforeInit={(swiper) => { swiperRef.current = swiper; }}
+            key={activeFilter} 
+            spaceBetween={30}
+            loop={activeFilter === 'all'} 
+            autoplay={
+              activeFilter === 'all'
+                ? {
+                    delay: 3500,
+                    disableOnInteraction: false,
+                    pauseOnMouseEnter: true,
+                  }
+                : false
+            }
+            breakpoints={{
+              0: { slidesPerView: 1, allowTouchMove: true },
+              640: { slidesPerView: 1.5, allowTouchMove: true },
+              850: { slidesPerView: 2.2, allowTouchMove: true },
+              1100: { slidesPerView: 3.2, allowTouchMove: activeFilter === 'all' }
+            }}
+            className={`fleet-swiper-container ${activeFilter === 'all' ? 'is-carousel' : 'is-grid'}`}
           >
             {filteredVehicles.map((vehicle, index) => (
-              <div key={index} className="vehicle-card-premium">
-                {vehicle.isVip && <div className="vip-tag-badge">VIP Class</div>}
-                
-                <div className="img-holder">
-                  <img src={vehicle.image} alt={vehicle.name} loading="lazy" />
-                </div>
-
-                <div className="card-details">
-                  <h3>{vehicle.name}</h3>
-                  <div className="passenger-count">
-                    <FaUsers className="icon" />
-                    <span>Up to {vehicle.passengers} passengers</span>
+              <SwiperSlide key={index}>
+                <div className="vehicle-card-premium">
+                  {vehicle.isVip && <div className="vip-tag-badge">VIP Class</div>}
+                  
+                  <div className="img-holder">
+                    <img src={vehicle.image} alt={vehicle.name} loading="lazy" />
                   </div>
-                  <button className="book-vehicle-btn">Book Now</button>
+
+                  <div className="card-details">
+                    <h3>{vehicle.name}</h3>
+                    <div className="passenger-count">
+                      <FaUsers className="icon" />
+                      <span>Up to {vehicle.passengers} passengers</span>
+                    </div>
+                    <button className="book-vehicle-btn">Book Now</button>
+                  </div>
                 </div>
-              </div>
+              </SwiperSlide>
             ))}
-          </div>
+          </Swiper>
         </div>
 
-        {/* Sección de Beneficios Incluidos */}
+        {/* SECCIÓN BENEFICIOS */}
         <div className="fleet-perks-showcase">
           <h3>All Our Transfers Include:</h3>
           <div className="perks-grid">
             {INCLUDED_BENEFITS.map((benefit, idx) => (
               <div key={idx} className="perk-card-item">
-                <FaCheckCircle className="perk-check-icon" />
+                <img 
+                  src={imgCheckInstagram} 
+                  alt="Check Icon" 
+                  className="perk-png-icon" 
+                />
                 <span>{benefit}</span>
               </div>
             ))}
