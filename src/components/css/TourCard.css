@@ -39,39 +39,6 @@
   font-weight: 400;
 }
 
-.tc-filters { 
-  display: flex; 
-  justify-content: center;
-  gap: 12px; 
-  margin-top: 30px; 
-}
-
-.tc-filter {
-  padding: 10px 22px;
-  border-radius: 50px;
-  border: 1px solid #e2e8f0;
-  background: transparent;
-  font-family: var(--font-body);
-  font-size: 0.88rem;
-  font-weight: 600;
-  color: #94a3b8;
-  cursor: pointer;
-  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
-  letter-spacing: 0.02em;
-}
-
-.tc-filter:hover {
-  background: rgba(0, 0, 0, 0.02);
-  color: var(--color-primary);
-  border-color: #cbd5e1;
-}
-
-.tc-filter.active {
-  background: var(--color-primary);
-  color: var(--color-white);
-  border-color: var(--color-primary);
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
-}
 
 .tc-grid {
   display: grid;
@@ -108,30 +75,36 @@
 .tc-card.city    { grid-area: city; }
 .tc-card.portobelo { grid-area: portobelo; }
 
+/* ── CAROUSEL FIX ──────────────────────────────────────── */
 .tc-carousel {
   position: relative;
-  overflow: hidden;
+  overflow: hidden;       /* clips el track */
   flex-shrink: 0;
+  width: 100%;
 }
 
-.tc-card.sanblas .tc-carousel { width: 100%; height: 480px; }
-.tc-card.monkey  .tc-carousel { width: 100%; height: 480px; }
-.tc-card.playas  .tc-carousel { width: 100%; height: 480px; }
-.tc-card.colon   .tc-carousel { width: 100%; height: 480px; }
-.tc-card.city    .tc-carousel { width: 100%; height: 350px; min-height: 260px; }
-.tc-card.portobelo .tc-carousel { width: 100%; height: 350px; }
+/* Altura por card */
+.tc-card.sanblas   .tc-carousel { height: 480px; }
+.tc-card.monkey    .tc-carousel { height: 480px; }
+.tc-card.playas    .tc-carousel { height: 480px; }
+.tc-card.colon     .tc-carousel { height: 480px; }
+.tc-card.city      .tc-carousel { height: 350px; }
+.tc-card.portobelo .tc-carousel { height: 350px; }
 
+/* El track tiene el ancho total de todos los slides (fijado inline) */
 .tc-slides {
   display: flex;
   height: 100%;
-  width: 100%;
+  /* width e transform vienen del style inline en el JSX */
   transition: transform 0.55s cubic-bezier(0.4, 0, 0.2, 1);
+  will-change: transform;
 }
 
+/* Cada slide ocupa exactamente 1/N del track (width inline) */
 .tc-slide {
-  min-width: 100%;
   height: 100%;
   flex-shrink: 0;
+  overflow: hidden;
 }
 
 .tc-card-img {
@@ -140,6 +113,7 @@
   width: 100%;
   height: 100%;
 }
+/* ──────────────────────────────────────────────────────── */
 
 .tc-dots {
   position: absolute;
@@ -302,7 +276,7 @@
   border-bottom: 2px solid var(--color-tertiary);
   transform: rotate(-45deg);
   margin-bottom: 4px;
-
+  flex-shrink: 0;
 }
 
 .tc-tags {
@@ -459,14 +433,7 @@
 
   .tc-header h2 { font-size: 2.2rem; }
 
-  .tc-card.city .tc-carousel,
-  .tc-card.colon .tc-carousel,
-  .tc-card.sanblas .tc-carousel,
-  .tc-card.monkey .tc-carousel,
-  .tc-card.playas .tc-carousel,
-  .tc-card.portobelo .tc-carousel {
-    width: 100% !important;
+  .tc-card .tc-carousel {
     height: 280px !important;
-    min-height: unset !important;
   }
 }

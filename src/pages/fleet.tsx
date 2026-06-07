@@ -63,7 +63,7 @@ export const FleetSection: React.FC = () => {
     : FLEET_DATA.filter(v => v.type === activeFilter || (activeFilter === 'vip' && v.isVip));
 
   return (
-    <section className="fleet-section">
+    <section className="fleet-section" id="fleet-section">
       <div className="fleet-container">
         
         {/* ENCABEZADO */}

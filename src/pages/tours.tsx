@@ -7,6 +7,10 @@ import Navbarwhite from '../components/navbar_fondo.tsx';
 export default function Booking() {
   const [searchParams] = useSearchParams();
 
+  useEffect(() => {
+  window.scrollTo({ top: 0, behavior: 'instant' });
+  }, []);
+
   // Map query param IDs → select option values
   const tourMap: Record<string, string> = {
     'san-blas': 'Pasadía San Blas 2026',

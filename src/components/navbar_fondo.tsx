@@ -2,11 +2,12 @@ import './css/navbar_fondo.css';
 import { useLang } from '../context/LanguageContext';
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import 'flag-icons/css/flag-icons.min.css';
 
 export default function Navbar() {
   const { lang, toggleLang, t } = useLang();
   const [scrolled, setScrolled] = useState(false);
-  const [activeLink, setActiveLink] = useState('home');
+  //const [activeLink, setActiveLink] = useState('home');
   const [menuOpen, setMenuOpen] = useState(false);
 
   useEffect(() => {
@@ -35,25 +36,25 @@ export default function Navbar() {
   const navigate = useNavigate();
 
   const handleNavClick = (key: string) => {
-    return (e: React.MouseEvent<HTMLAnchorElement>) => {
-      e.preventDefault();
-      setActiveLink(key);
-      setMenuOpen(false);
+  return (e: React.MouseEvent<HTMLAnchorElement>) => {
+    e.preventDefault();
+    setMenuOpen(false);
 
-      if (key.startsWith('#')) {
-        const element = document.querySelector(key);
-        if (element) {
-          element.scrollIntoView({
-            behavior: 'smooth',
-            block: 'start',
-          });
-        }
-        return;
+    if (key.startsWith('#')) {
+      const element = document.querySelector(key);
+      if (element) {
+        // Ya estamos en home, scroll directo
+        element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      } else {
+        // Estamos en otra página, ir a home y luego hacer scroll
+        navigate('/', { state: { scrollTo: key } });
       }
+      return;
+    }
 
-      navigate(key);
-    };
+    navigate(key);
   };
+};
 
   return (
     <nav className={`transport-navbar ${scrolled ? 'transport-navbar--scrolled' : ''}`}>
@@ -96,7 +97,7 @@ export default function Navbar() {
           <li key={key}>
             <a
               href={key}
-              className={activeLink === key ? 'active' : ''}
+              className={key}
               onClick={handleNavClick(key)}
             >
               {label}
@@ -107,7 +108,8 @@ export default function Navbar() {
         {/* Lang toggle inside mobile menu */}
         <li className="transport-navbar__links-lang-mobile">
           <button className="transport-navbar__lang-toggle" onClick={toggleLang}>
-            {lang === 'en' ? 'ES/EN' : 'EN/ES'}
+            <span className={`fi fi-${lang === 'en' ? 'us' : 'pa'}`} />
+            {lang === 'en' ? '  EN/ES' : '  ES/EN'}
           </button>
         </li>
       </ul>
@@ -115,9 +117,9 @@ export default function Navbar() {
       {/* Lang toggle desktop — visible only on larger screens */}
       <button
         className="transport-navbar__lang-toggle transport-navbar__lang-toggle--desktop"
-        onClick={toggleLang}
-      >
-        {lang === 'en' ? 'ES/EN' : 'EN/ES'}
+        onClick={toggleLang}>
+        <span className={`fi fi-${lang === 'en' ? 'us' : 'pa'}`} />
+        {lang === 'en' ? '  EN/ES' : '  ES/EN'}
       </button>
 
     </nav>

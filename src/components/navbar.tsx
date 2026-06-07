@@ -2,6 +2,7 @@ import './css/navbar.css';
 import { useLang } from '../context/LanguageContext';
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import 'flag-icons/css/flag-icons.min.css';
 export default function Navbar() {
   const { lang, toggleLang, t } = useLang();
   const [scrolled, setScrolled] = useState(false);
@@ -34,24 +35,25 @@ export default function Navbar() {
   const navigate = useNavigate();
 
   const handleNavClick = (key: string) => {
-    return (e: React.MouseEvent<HTMLAnchorElement>) => {
-      e.preventDefault();
-      setMenuOpen(false);
+  return (e: React.MouseEvent<HTMLAnchorElement>) => {
+    e.preventDefault();
+    setMenuOpen(false);
 
-      if (key.startsWith('#')) {
-        const element = document.querySelector(key);
-        if (element) {
-          element.scrollIntoView({
-            behavior: 'smooth',
-            block: 'start',
-          });
-        }
-        return;
+    if (key.startsWith('#')) {
+      const element = document.querySelector(key);
+      if (element) {
+        // Ya estamos en home, scroll directo
+        element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      } else {
+        // Estamos en otra página, ir a home y luego hacer scroll
+        navigate('/', { state: { scrollTo: key } });
       }
+      return;
+    }
 
-      navigate(key);
-    };
+    navigate(key);
   };
+};
 
   return (
     <nav className={`navbar ${scrolled ? 'navbar--scrolled' : ''}`}>
@@ -105,14 +107,16 @@ export default function Navbar() {
         {/* Lang toggle inside mobile menu */}
         <li className="nav-links__lang-mobile">
           <button className="lang-toggle" onClick={toggleLang}>
-            {lang === 'en' ? 'ES/EN' : 'EN/ES'}
+            <span className={`fi fi-${lang === 'en' ? 'us' : 'pa'}`} />
+            {lang === 'en' ? '  EN/ES' : '  ES/EN'}
           </button>
         </li>
       </ul>
 
       {/* Lang toggle desktop — visible only on larger screens */}
       <button className="lang-toggle lang-toggle--desktop" onClick={toggleLang}>
-        {lang === 'en' ? 'ES/EN' : 'EN/ES'}
+        <span className={`fi fi-${lang === 'en' ? 'us' : 'pa'}`} />
+        {lang === 'en' ? '  EN/ES' : '  ES/EN'}
       </button>
     </nav>
   );
