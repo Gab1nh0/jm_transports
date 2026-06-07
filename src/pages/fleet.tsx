@@ -3,6 +3,7 @@ import { FaUsers, FaChevronLeft, FaChevronRight } from 'react-icons/fa';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay, Navigation, Pagination } from 'swiper/modules'; 
 import type { Swiper as SwiperType } from 'swiper';
+import { useLang } from '../context/LanguageContext';
 
 import 'swiper/css';
 import 'swiper/css/pagination'; 
@@ -43,18 +44,19 @@ const FLEET_DATA: Vehicle[] = [
   { name: "Hyundai Universe", type: "coaster", passengers: "45-49", isVip: false, image: imgUniverse },
 ];
 
-const INCLUDED_BENEFITS = [
-  "Full Air Conditioning",
-  "Real-Time Flight Tracking",
-  "Luggage Assistance",
-  "Complimentary Bottled Water & Snacks",
-  "Child Seats Available Upon Request",
-  "Bilingual Professional Drivers"
-];
-
 export const FleetSection: React.FC = () => {
+  const { t, lang } = useLang();
   const [activeFilter, setActiveFilter] = useState<'all' | 'suv' | 'coaster' | 'vip'>('all');
   const swiperRef = useRef<SwiperType | null>(null);
+
+  const INCLUDED_BENEFITS = [
+    t('fleet.benefit.ac'),
+    t('fleet.benefit.tracking'),
+    t('fleet.benefit.luggage'),
+    t('fleet.benefit.water'),
+    t('fleet.benefit.seats'),
+    t('fleet.benefit.drivers'),
+  ];
 
   const filteredVehicles = activeFilter === 'all' 
     ? FLEET_DATA 
@@ -66,20 +68,27 @@ export const FleetSection: React.FC = () => {
         
         {/* ENCABEZADO */}
         <div className="fleet-header">
-          <span className="subtitle">OUR FLEET</span>
-          <h2>Travel with Style, Comfort & Security</h2>
+          <span className="subtitle">{t('fleet.header.subtitle')}</span>
+          <h2>{t('fleet.header.title')}</h2>
           <p>
-            Discover our diverse lineup of modern, impeccably maintained vehicles tailored 
-            to match your exact corporate, group, or VIP transportation requirements in Panama.
+            {t('fleet.header.desc')}
           </p>
         </div>
 
         {/* FILTROS */}
         <div className="fleet-filters">
-          <button className={activeFilter === 'all' ? 'active' : ''} onClick={() => setActiveFilter('all')}>All Fleet</button>
-          <button className={activeFilter === 'suv' ? 'active' : ''} onClick={() => setActiveFilter('suv')}>SUVs</button>
-          <button className={activeFilter === 'coaster' ? 'active' : ''} onClick={() => setActiveFilter('coaster')}>Group Vans & Coasters</button>
-          <button className={activeFilter === 'vip' ? 'active' : ''} onClick={() => setActiveFilter('vip')}>VIP Experience</button>
+          <button className={activeFilter === 'all' ? 'active' : ''} onClick={() => setActiveFilter('all')}>
+            {t('fleet.filter.all')}
+          </button>
+          <button className={activeFilter === 'suv' ? 'active' : ''} onClick={() => setActiveFilter('suv')}>
+            {t('fleet.filter.suv')}
+          </button>
+          <button className={activeFilter === 'coaster' ? 'active' : ''} onClick={() => setActiveFilter('coaster')}>
+            {t('fleet.filter.coaster')}
+          </button>
+          <button className={activeFilter === 'vip' ? 'active' : ''} onClick={() => setActiveFilter('vip')}>
+            {t('fleet.filter.vip')}
+          </button>
         </div>
 
         {/* CONTENEDOR DINÁMICO */}
@@ -138,7 +147,7 @@ export const FleetSection: React.FC = () => {
             {filteredVehicles.map((vehicle, index) => (
               <SwiperSlide key={index}>
                 <div className="vehicle-card-premium">
-                  {vehicle.isVip && <div className="vip-tag-badge">VIP Class</div>}
+                  {vehicle.isVip && <div className="vip-tag-badge">{t('fleet.vip.tag')}</div>}
                   
                   <div className="img-holder">
                     <img src={vehicle.image} alt={vehicle.name} loading="lazy" />
@@ -148,9 +157,13 @@ export const FleetSection: React.FC = () => {
                     <h3>{vehicle.name}</h3>
                     <div className="passenger-count">
                       <FaUsers className="icon" />
-                      <span>Up to {vehicle.passengers} passengers</span>
+                      <span>
+                        {lang === 'en' 
+                          ? `Up to ${vehicle.passengers} passengers` 
+                          : `Hasta ${vehicle.passengers} pasajeros`}
+                      </span>
                     </div>
-                    <button className="book-vehicle-btn">Book Now</button>
+                    <button className="book-vehicle-btn">{t('fleet.book.btn')}</button>
                   </div>
                 </div>
               </SwiperSlide>
@@ -160,7 +173,7 @@ export const FleetSection: React.FC = () => {
 
         {/* SECCIÓN BENEFICIOS */}
         <div className="fleet-perks-showcase">
-          <h3>All Our Transfers Include:</h3>
+          <h3>{t('fleet.perks.title')}</h3>
           <div className="perks-grid">
             {INCLUDED_BENEFITS.map((benefit, idx) => (
               <div key={idx} className="perk-card-item">
