@@ -1,60 +1,61 @@
 import React, { useState } from 'react';
 import './css/ServicesSection.css';
+import { useLang } from '../context/LanguageContext';
 
 interface ServiceDetail {
   id: string;
-  title: string;
-  subtitle: string;
-  description: string;
-  steps: string[];
-  notes: string[];
+  titleKey: string;
+  subtitleKey: string;
+  descriptionKey: string;
+  stepsKeys: string[];
+  notesKeys: string[];
 }
 
 // Información extendida para el Modal Informativo
 const SERVICES_DETAILS: Record<string, ServiceDetail> = {
   airport: {
     id: "airport",
-    title: "Airport Transfers",
-    subtitle: "Tocumen International (PTY) & Marcos A. Gelabert (Albrook)",
-    description: "Our premium airport service is engineered to eliminate travel stress. We coordinate every detail from flight tracking to luggage handling so your arrival or departure in Panama is completely seamless.",
-    steps: [
-      "Real-Time Flight Tracking: We monitor your flight path. If your arrival is delayed or early, your chauffeur will adjust accordingly.",
-      "Professional Meet & Greets: Your driver will await you at the arrivals gate holding a customized sign with your name or corporate logo.",
-      "Complimentary Wait Time: Includes 60 minutes of complimentary waiting time after your flight lands, giving you ample time for customs and baggage claim.",
-      "Luggage Assistance & Comfort: Full help loading your bags into a climate-controlled premium vehicle equipped with bottled water."
+    titleKey: "services.airport.title",
+    subtitleKey: "services.airport.subtitle",
+    descriptionKey: "services.airport.desc.long",
+    stepsKeys: [
+      "services.airport.step1",
+      "services.airport.step2",
+      "services.airport.step3",
+      "services.airport.step4"
     ],
-    notes: ["Includes toll fees (Corredor Sur).", "Child seats available upon prior request."]
+    notesKeys: ["services.airport.note1", "services.airport.note2"]
   },
   corporate: {
     id: "corporate",
-    title: "Executive Chauffeur",
-    subtitle: "First-Class Corporate Mobility Solutions",
-    description: "Designed for corporate executives, state visits, and business travelers who value absolute punctuality, confidentiality, and flawless execution.",
-    steps: [
-      "By-the-Hour or Full-Day Service: Retain a dedicated vehicle and professional driver for your entire business itinerary.",
-      "Bilingual Professional Chauffeurs: Drivers trained in corporate protocol, navigation, and security, speaking fluent English and Spanish.",
-      "On-Board Executive Perks: Vehicles equipped with Wi-Fi connectivity, device chargers, and refreshing amenities to keep you productive.",
-      "Flawless Logistics Coordination: Ideal for roadshows, corporate summits, and multi-destination meeting schedules."
+    titleKey: "services.corporate.title",
+    subtitleKey: "services.corporate.subtitle",
+    descriptionKey: "services.corporate.desc.long",
+    stepsKeys: [
+      "services.corporate.step1",
+      "services.corporate.step2",
+      "services.corporate.step3",
+      "services.corporate.step4"
     ],
-    notes: ["Discreet, unbranded premium vehicles.", "Confidentiality guaranteed under strict NDA standards."]
+    notesKeys: ["services.corporate.note1", "services.corporate.note2"]
   },
   tours: {
     id: "tours",
-    title: "Custom Panama Tours",
-    subtitle: "Bespoke Private Sightseeing & Experiences",
-    description: "Explore the rich history, modern marvels, and breathtaking nature of Panama through a completely tailored private itinerary built around your pace and preferences.",
-    steps: [
-      "Tailored Itinerary Planning: Choose from iconic spots like the Panama Canal (Miraflores Locks), Casco Antiguo, Amador Causeway, or Gamboa Rainforest.",
-      "Flexible Timing: No rigid schedules. Spend as much or as little time at each landmark as you wish.",
-      "Expert Local Guidance: Travel alongside knowledgeable drivers who share deep historical and cultural insights about each destination.",
-      "Premium Group Accommodations: Perfect for families, corporate groups, or VIP travelers wanting a relaxed, private excursion."
+    titleKey: "services.tours.title",
+    subtitleKey: "services.tours.subtitle",
+    descriptionKey: "services.tours.desc.long",
+    stepsKeys: [
+      "services.tours.step1",
+      "services.tours.step2",
+      "services.tours.step3",
+      "services.tours.step4"
     ],
-    notes: ["Entrance tickets to museums or the Canal are coordinated separately.", "Custom lunch stop recommendations included."]
+    notesKeys: ["services.tours.note1", "services.tours.note2"]
   }
 };
 
 export const ServicesSection: React.FC = () => {
-  // Estado para rastrear qué modal de servicio está abierto (null si está cerrado)
+  const { t } = useLang();
   const [activeService, setActiveService] = useState<ServiceDetail | null>(null);
 
   const openModal = (id: string) => {
@@ -68,8 +69,8 @@ export const ServicesSection: React.FC = () => {
   return (
     <section className="services-section">
       <div className="services-header">
-        <span>OUR SERVICES</span>
-        <h2>Premium Mobility Solutions in Panama</h2>
+        <span>{t('services.header')}</span>
+        <h2>{t('services.title')}</h2>
       </div>
 
 <div className="services-grid">
@@ -77,10 +78,10 @@ export const ServicesSection: React.FC = () => {
   <div className="service-card card-large bg-airport" onClick={() => openModal('airport')}>
     <div className="card-overlay"></div>
     <div className="card-info">
-      <div className="card-tag">Most Popular</div>
-      <h3>Airport Transfers</h3>
-      <p>Punctual door-to-door pickup at Tocumen International (PTY). Tracked flights and professional meet & greet.</p>
-      <span className="card-link">Book Transfer →</span> 
+      <div className="card-tag">{t('services.airport.tag')}</div>
+      <h3>{t('services.airport.title')}</h3>
+      <p>{t('services.airport.desc')}</p>
+      <span className="card-link">{t('services.airport.link')}</span> 
     </div>
   </div>
 
@@ -88,9 +89,9 @@ export const ServicesSection: React.FC = () => {
   <div className="service-card card-small bg-corporate" onClick={() => openModal('corporate')}>
     <div className="card-overlay"></div>
     <div className="card-info">
-      <h3>Executive Chauffeur</h3>
-      <p>First-class mobility for business meetings, corporate events, and VIP itineraries.</p>
-      <span className="card-link">Learn More →</span> 
+      <h3>{t('services.corporate.title')}</h3>
+      <p>{t('services.corporate.desc')}</p>
+      <span className="card-link">{t('services.corporate.link')}</span> 
     </div>
   </div>
 
@@ -98,9 +99,9 @@ export const ServicesSection: React.FC = () => {
   <div className="service-card card-small bg-tours" onClick={() => openModal('tours')}>
     <div className="card-overlay"></div>
     <div className="card-info">
-      <h3>Custom Panama Tours</h3>
-      <p>Discover the Canal, Casco Antiguo, and tropical destinations with flexible private guides.</p>
-      <span className="card-link">Explore Tours →</span> 
+      <h3>{t('services.tours.title')}</h3>
+      <p>{t('services.tours.desc')}</p>
+      <span className="card-link">{t('services.tours.link')}</span> 
     </div>
   </div>
 </div>
@@ -111,18 +112,19 @@ export const ServicesSection: React.FC = () => {
           <div className="service-modal-window" onClick={(e) => e.stopPropagation()}>
             <button className="modal-close-btn" onClick={closeModal}>&times;</button>
             
-            <span className="modal-tag">Service Details</span>
-            <h2>{activeService.title}</h2>
-            <p className="modal-subtitle">{activeService.subtitle}</p>
+            <span className="modal-tag">{t('services.modal.tag')}</span>
+            <h2>{t(activeService.titleKey)}</h2>
+            <p className="modal-subtitle">{t(activeService.subtitleKey)}</p>
             
             <hr className="modal-divider" />
             
-            <p className="modal-description">{activeService.description}</p>
+            <p className="modal-description">{t(activeService.descriptionKey)}</p>
             
-            <h3>How It Works:</h3>
+            <h3>{t('services.modal.howworks')}</h3>
             <ul className="modal-steps-list">
-              {activeService.steps.map((step, index) => {
-                const [title, text] = step.split(': ');
+              {activeService.stepsKeys.map((stepKey, index) => {
+                const stepText = t(stepKey);
+                const [title, text] = stepText.split(': ');
                 return (
                   <li key={index}>
                     <strong>{title}:</strong> {text}
@@ -131,17 +133,17 @@ export const ServicesSection: React.FC = () => {
               })}
             </ul>
 
-            {activeService.notes.length > 0 && (
+            {activeService.notesKeys.length > 0 && (
               <div className="modal-notes-box">
-                {activeService.notes.map((note, index) => (
-                  <p key={index}>* {note}</p>
+                {activeService.notesKeys.map((noteKey, index) => (
+                  <p key={index}>* {t(noteKey)}</p>
                 ))}
               </div>
             )}
 
             <div className="modal-actions">
-              <a href="https://wa.me/YOUR_NUMBER" target="_blank" rel="noreferrer" className="modal-btn-quote">
-                Quote via WhatsApp
+              <a href="https://wa.me/50762166675" target="_blank" rel="noreferrer" className="modal-btn-quote">
+                {t('services.modal.quote')}
               </a>
             </div>
           </div>

@@ -1,10 +1,11 @@
 import React, { useState, useRef } from 'react';
 import { FaUsers, FaChevronLeft, FaChevronRight } from 'react-icons/fa';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { Autoplay, Navigation } from 'swiper/modules';
+import { Autoplay, Navigation, Pagination } from 'swiper/modules'; 
 import type { Swiper as SwiperType } from 'swiper';
 
 import 'swiper/css';
+import 'swiper/css/pagination'; 
 import './css/fleet.css';
 import imgCheckInstagram from '../assets/check.png'; 
 
@@ -105,24 +106,31 @@ export const FleetSection: React.FC = () => {
           )}
 
           <Swiper
-            modules={[Autoplay, Navigation]}
+            modules={[Autoplay, Navigation, Pagination]} // ── MODULOS ACTIVO
             onBeforeInit={(swiper) => { swiperRef.current = swiper; }}
             key={activeFilter} 
-            spaceBetween={30}
+            spaceBetween={24}
+            speed={800} // ── HACE QUE LA ANIMACIÓN DEL DESLIZAMIENTO SEA ULTRA FLUIDA (Por defecto es 300ms, muy rápido)
+            touchReleaseOnEdges={true}
+            resistanceRatio={0.5}
             loop={activeFilter === 'all'} 
             autoplay={
               activeFilter === 'all'
                 ? {
-                    delay: 3500,
+                    delay: 4000,
                     disableOnInteraction: false,
                     pauseOnMouseEnter: true,
                   }
                 : false
             }
+            pagination={{
+              clickable: true,
+              dynamicBullets: true, // ── EFECTO MODERNO: Hace que los puntitos se hagan más pequeños o grandes dinámicamente
+            }}
             breakpoints={{
-              0: { slidesPerView: 1, allowTouchMove: true },
-              640: { slidesPerView: 1.5, allowTouchMove: true },
-              850: { slidesPerView: 2.2, allowTouchMove: true },
+              0: { slidesPerView: 1.15, spaceBetween: 16, allowTouchMove: true }, // ── PEEK EFFECT EN MÓVIL (Muestra un pedacito del siguiente carro)
+              640: { slidesPerView: 1.6, spaceBetween: 20, allowTouchMove: true },
+              850: { slidesPerView: 2.3, allowTouchMove: true },
               1100: { slidesPerView: 3.2, allowTouchMove: activeFilter === 'all' }
             }}
             className={`fleet-swiper-container ${activeFilter === 'all' ? 'is-carousel' : 'is-grid'}`}

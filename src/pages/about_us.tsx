@@ -5,29 +5,29 @@ import { useLang } from '../context/LanguageContext';
 const teamMembers = [
   {
     name: 'Nombre Apellido',
-    role: 'Founder & Lead Guide',
-    bio: 'Born in Panama City, Carlos has spent over 15 years exploring every corner of the isthmus. His local knowledge and logistics expertise are the backbone of every tour.',
+    roleKey: 'about.team.member1.role',
+    bioKey: 'about.team.member1.bio',
     photo: '', // agregar url
   },
   {
     name: 'Nombre Apellido',
-    role: 'Operations & Concierge',
-    bio: 'With a background in luxury hospitality, Valeria ensures every detail is confirmed before you arrive — from airport pickup to that last sunset on Isla Perro.',
+    roleKey: 'about.team.member2.role',
+    bioKey: 'about.team.member2.bio',
     photo: '',
   },
   {
     name: 'Nombre Apellido',
-    role: 'Corporate Travel Specialist',
-    bio: 'Diego manages our corporate accounts and group logistics, coordinating multi-day retreats with the precision that executive teams demand.',
+    roleKey: 'about.team.member3.role',
+    bioKey: 'about.team.member3.bio',
     photo: '',
   },
 ];
 
 const stats = [
-  { num: '12+', label: 'Years of experience' },
-  { num: '4k',  label: 'Guests served' },
-  { num: '18',  label: 'Curated destinations' },
-  { num: '100%', label: 'Private experiences' },
+  { numLabel: '12+', labelKey: 'about.stats.exp' },
+  { numLabel: '4k',  labelKey: 'about.stats.guests' },
+  { numLabel: '18',  labelKey: 'about.stats.destinations' },
+  { numLabel: '100%', labelKey: 'about.stats.experiences' },
 ];
 
 
@@ -43,19 +43,23 @@ export default function AboutUs() {
       {/* ── Hero ── */}
       <div className="ab-hero">
         <div className="ab-hero-left">
-          <div className="ab-eyebrow">About us</div>
-          <h1>Panama through<br /><em>local eyes</em></h1>
+          <div className="ab-eyebrow">{t('about.eyebrow')}</div>
+          <h1>
+            {lang === 'en' ? (
+              <>Panama through<br /><em>local eyes</em></>
+            ) : (
+              <>Panamá a través de<br /><em>ojos locales</em></>
+            )}
+          </h1>
           <p>
-            We are a boutique tour operator born in Panama City, dedicated to crafting
-            extraordinary experiences for luxury and corporate travelers who want to go
-            beyond the ordinary.
+            {t('about.hero.desc')}
           </p>
         </div>
         <div className="ab-hero-right">
           {stats.map(s => (
-            <div className="ab-stat-cell" key={s.label}>
-              <div className="ab-stat-num">{s.num}</div>
-              <div className="ab-stat-label">{s.label}</div>
+            <div className="ab-stat-cell" key={s.labelKey}>
+              <div className="ab-stat-num">{s.numLabel}</div>
+              <div className="ab-stat-label">{t(s.labelKey)}</div>
             </div>
           ))}
         </div>
@@ -65,26 +69,21 @@ export default function AboutUs() {
       <div className="ab-section">
         <div className="ab-section-header">
           <span className="ab-section-num">01</span>
-          <h2>Our story</h2>
+          <h2>{t('about.story.header')}</h2>
         </div>
         <div className="ab-story-grid">
           <div className="ab-story-col">
-            <div className="ab-story-year">Founded 2012</div>
-            <h3>From a passion for Panama to a curated travel brand</h3>
+            <div className="ab-story-year">{t('about.story.year1')}</div>
+            <h3>{t('about.story.title1')}</h3>
             <p>
-              Panama Master Tours was born out of a simple frustration: the country's most
-              spectacular places were either unknown or inaccessible to travelers who expected
-              more. We set out to change that — one private, well-designed experience at a time.
+              {t('about.story.desc1')}
             </p>
           </div>
           <div className="ab-story-col">
-            <div className="ab-story-year">Today</div>
-            <h3>Specialists in luxury and corporate travel</h3>
+            <div className="ab-story-year">{t('about.story.year2')}</div>
+            <h3>{t('about.story.title2')}</h3>
             <p>
-              Over a decade later, we have built a reputation among corporate travel managers,
-              five-star hotels, and discerning travelers for delivering seamless, deeply personal
-              experiences across San Blas, the Panama Canal, and the capital — always with a
-              local guide, never on a schedule that isn't yours.
+              {t('about.story.desc2')}
             </p>
           </div>
         </div>
@@ -139,7 +138,7 @@ export default function AboutUs() {
       <div className="ab-section">
         <div className="ab-section-header">
           <span className="ab-section-num">03</span>
-          <h2>Meet the team</h2>
+          <h2>{t('about.team.header')}</h2>
         </div>
         <div className="ab-team-grid">
           {teamMembers.map(m => (
@@ -150,8 +149,8 @@ export default function AboutUs() {
               }
               <div className="ab-team-body">
                 <div className="ab-team-name">{m.name}</div>
-                <div className="ab-team-role">{m.role}</div>
-                <p className="ab-team-bio">{m.bio}</p>
+                <div className="ab-team-role">{t(m.roleKey)}</div>
+                <p className="ab-team-bio">{t(m.bioKey)}</p>
               </div>
             </div>
           ))}
@@ -161,8 +160,18 @@ export default function AboutUs() {
       {/* ── CTA ── */}
       <div className="ab-cta">
         <div className="ab-cta-left">
-          <h2>Ready to plan<br />your experience?</h2>
-          <p>Talk to our concierge and let's design something remarkable.</p>
+          <h2>
+            {lang === 'en' ? (
+              <>Ready to plan<br />your experience?</>
+            ) : (
+              <>¿Listo para planificar<br />tu experiencia?</>
+            )}
+          </h2>
+          <p>
+            {lang === 'en' 
+              ? "Talk to our concierge and let's design something remarkable."
+              : 'Habla con nuestro conserje y diseñemos algo extraordinario.'}
+          </p>
         </div>
         <a
           className="ab-cta-btn"
@@ -170,7 +179,7 @@ export default function AboutUs() {
           target="_blank"
           rel="noreferrer"
         >
-          Contact us on WhatsApp →
+          {lang === 'en' ? 'Contact us on WhatsApp →' : 'Contáctanos por WhatsApp →'}
         </a>
       </div>
 

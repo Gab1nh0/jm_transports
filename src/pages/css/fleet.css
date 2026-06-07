@@ -1,4 +1,6 @@
-/* ESTRUCTURA GENERAL */
+/* ==========================================================================
+   ESTRUCTURA GENERAL
+   ========================================================================== */
 .fleet-section {
   width: 100%;
   padding: 100px 80px;
@@ -13,7 +15,9 @@
   position: relative;
 }
 
-/* ENCABEZADO */
+/* ==========================================================================
+   ENCABEZADO
+   ========================================================================== */
 .fleet-header {
   text-align: center;
   max-width: 750px;
@@ -46,7 +50,9 @@
   opacity: 0.85;
 }
 
-/* FILTROS (PÍLDORAS) */
+/* ==========================================================================
+   FILTROS (PÍLDORAS)
+   ========================================================================== */
 .fleet-filters {
   display: flex;
   justify-content: center;
@@ -65,7 +71,7 @@
   font-size: 0.95rem;
   border-radius: 50px;
   cursor: pointer;
-  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .fleet-filters button:hover {
@@ -81,18 +87,21 @@
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
 }
 
-/* ENVOLTURA DE SWIPER */
+/* ==========================================================================
+   ENVOLTURA DE SWIPER
+   ========================================================================== */
 .fleet-display-wrapper {
   position: relative;
   width: 100%;
   margin-bottom: 80px;
-  padding: 10px 0;
 }
 
-/* BOTONES DEL CARRUSEL (ELEGANTES Y TRANSPARENTES) */
+/* ==========================================================================
+   BOTONES DEL CARRUSEL (FLECHAS PC)
+   ========================================================================== */
 .carousel-arrow {
   position: absolute;
-  top: 50%;
+  top: 45%; 
   transform: translateY(-50%);
   background: rgba(255, 255, 255, 0.1); 
   backdrop-filter: blur(8px);
@@ -108,7 +117,7 @@
   cursor: pointer;
   z-index: 10;
   box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
-  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .carousel-arrow:hover {
@@ -121,12 +130,52 @@
 .carousel-arrow.left { left: -25px; }
 .carousel-arrow.right { right: -25px; }
 
-/* LAYOUT DE SWIPER (CARRUSEL VS REJILLA) */
+/* ==========================================================================
+   CONFIGURACIÓN NATIVA DE LAS CLASES DE SWIPER (DISEÑO MODERNO ORIGINAL)
+   ========================================================================== */
 .fleet-swiper-container.is-carousel {
   width: 100%;
   overflow: visible; 
+  /* ── SOLUCIÓN DEFINITIVA: Esto obliga a dejar espacio libre real abajo de las tarjetas ── */
+  padding-bottom: 55px !important; 
 }
 
+/* Posicionamiento de la barra de puntos dentro de ese nuevo espacio libre */
+.fleet-swiper-container .swiper-pagination {
+  bottom: 5px !important; 
+  left: 0;
+  width: 100%;
+}
+
+/* PUNTOS DESACTIVADOS (Blancos transparentes muy limpios) */
+.fleet-swiper-container .swiper-pagination-bullet {
+  background: rgba(255, 255, 255, 0.35) !important; /* Totalmente blanco con opacidad */
+  opacity: 1 !important;
+  width: 8px !important;
+  height: 8px !important;
+  margin: 0 5px !important;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+
+.fleet-swiper-container .swiper-pagination-bullet:hover {
+  background: rgba(255, 255, 255, 0.7) !important;
+}
+
+/* PUNTO ACTIVO (Estilo píldora moderna horizontal en Blanco Brillante) */
+.fleet-swiper-container .swiper-pagination-bullet-active {
+  background: #ffffff !important; /* BLANCO PURO FIJO */
+  width: 26px !important;
+  border-radius: 6px !important;
+}
+
+/* Ocultar la paginación de forma limpia en modo rejilla (Filtros activos) */
+.fleet-swiper-container.is-grid .swiper-pagination {
+  display: none !important;
+}
+
+/* ==========================================================================
+   LAYOUT DE SWIPER (CARRUSEL VS REJILLA)
+   ========================================================================== */
 .fleet-swiper-container.is-grid {
   width: 100%;
 }
@@ -139,7 +188,9 @@
   transform: none !important; 
 }
 
-/* TARJETAS DE VEHÍCULOS */
+/* ==========================================================================
+   TARJETAS DE VEHÍCULOS
+   ========================================================================== */
 .vehicle-card-premium {
   background: rgba(255, 255, 255, 0.05);
   backdrop-filter: blur(10px);
@@ -151,7 +202,11 @@
   display: flex;
   flex-direction: column;
   height: 100%; 
-  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.3s ease, box-shadow 0.3s ease;
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.4s ease, box-shadow 0.4s ease;
+}
+
+.vehicle-card-premium :not(button) {
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .vehicle-card-premium:hover {
@@ -193,7 +248,7 @@
   max-width: 100%;
   max-height: 100%;
   object-fit: contain;
-  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .vehicle-card-premium:hover .img-holder img {
@@ -250,7 +305,9 @@
   color: var(--color-primary);
 }
 
-/* SECCIÓN BENEFICIOS */
+/* ==========================================================================
+   SECCIÓN BENEFICIOS
+   ========================================================================== */
 .fleet-perks-showcase {
   border-top: 1px solid rgba(255, 255, 255, 0.1);
   padding-top: 60px;
@@ -283,7 +340,6 @@
   text-align: left;
 }
 
-/* ADAPTACIÓN DEL PNG: Moderno, grande y estilizado */
 .perk-png-icon {
   width: 38px;
   height: 38px;
@@ -304,7 +360,9 @@
   opacity: 0.9;
 }
 
-/* RESPONSIVE DESIGN */
+/* ==========================================================================
+   RESPONSIVE DESIGN
+   ========================================================================== */
 @media (max-width: 1024px) {
   .perks-grid { grid-template-columns: repeat(2, 1fr); }
   .fleet-section { padding: 80px 40px; }
@@ -318,4 +376,8 @@
   .fleet-filters { gap: 8px; }
   .fleet-filters button { padding: 10px 18px; font-size: 0.85rem; }
   .fleet-perks-showcase h3 { font-size: 1.5rem; }
+  
+  .fleet-swiper-container.is-carousel {
+    padding-bottom: 45px !important;
+  }
 }

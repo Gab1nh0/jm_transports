@@ -51,7 +51,7 @@
 }
 
 .footer-brand__logo:hover .footer-brand__char {
-  color: #0073ff;
+  color: var(--color-secondary);
   transition-delay: calc(var(--i) * 35ms);
 }
 
@@ -76,7 +76,7 @@
   font-weight: 500;
   letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: #0073ff;
+  color: var(--color-secondary);
   margin: 0 0 18px;
   display: block;
 }
@@ -97,7 +97,7 @@
   font-weight: 600;
   letter-spacing: 0.16em;
   text-transform: uppercase;
-  color: #0073ff;
+  color: var(--color-secondary);
   margin: 0 0 24px;
   position: relative;
   padding-bottom: 14px;
@@ -110,7 +110,7 @@
   left: 0;
   width: 20px;
   height: 1px;
-  background: #0073ff;
+  background: var(--color-secondary);
   opacity: 0.5;
 }
 
@@ -161,7 +161,7 @@
 }
 
 .footer-phone a:hover {
-  color: #0073ff;
+  color: var(--color-secondary);
 }
 
 /* ── Social buttons ── */
@@ -186,8 +186,8 @@
 }
 
 .social-btn:hover {
-  border-color: #0073ff;
-  color: #0073ff;
+  border-color: var(--color-secondary);
+  color: var(--color-secondary);
   background: rgba(0, 115, 255, 0.08);
   transform: translateY(-3px);
   box-shadow: 0 8px 20px rgba(0, 115, 255, 0.2);
@@ -215,7 +215,7 @@
 }
 
 .footer-bottom span {
-  color: #0073ff;
+  color: var(--color-secondary);
   opacity: 0.7;
 }
 

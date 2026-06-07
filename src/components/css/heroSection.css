@@ -13,7 +13,7 @@
   color: var(--color-white);
 }
 
-/* Video de Fondo */
+/* Video de Fondo General */
 .hero-video {
   position: absolute;
   top: 50%;
@@ -24,6 +24,15 @@
   z-index: 1;
   transform: translate(-50%, -50%) scale(1.25);
   transform-origin: center center;
+}
+
+/* --- CONTROL VISUAL DE VIDEOS POR DEFECTO (PC) --- */
+.video-pc {
+  display: block; /* Se muestra en PC */
+}
+
+.video-mobile {
+  display: none;  /* Se oculta en PC */
 }
 
 /* Capa oscura */
@@ -135,88 +144,89 @@
 }
 
 /* ==========================================================================
-   RESPONSIVE EXCLUSIVO (AÑADIR AL FINAL DE TU ARCHIVO SIN TOCAR LO ANTERIOR)
+   RESPONSIVE EXCLUSIVO
    ========================================================================== */
 
 /* Tablets y Laptops Pequeñas */
 @media (max-width: 1024px) {
   .hero-content {
-    padding-left: 60px; /* Reducimos el espacio izquierdo gradualmente */
+    padding-left: 60px;
     padding-right: 40px;
   }
   
   .hero-content h1 {
-    font-size: 2.5rem; /* Ajuste intermedio para tablets */
+    font-size: 2.5rem;
   }
 }
 
 /* Celulares y Dispositivos Móviles */
 @media (max-width: 768px) {
-  /* Evita cualquier desbordamiento horizontal en el contenedor principal */
   .hero-main-container {
-    padding-left: 24px;   /* Margen elegante y compacto a la izquierda */
-    padding-right: 24px;  /* Margen a la derecha */
-    justify-content: flex-start; /* Mantiene la alineación premium a la izquierda */
+    padding-left: 24px;   
+    padding-right: 24px;  
+    justify-content: flex-start;
   }
 
-  /* Ajuste de escala óptimo para el Video en pantallas verticales */
-  .hero-video {
+  /* ── INTERCAMBIO DE VIDEOS REAL ── */
+  .video-pc {
+    display: none !important;    /* Ocultamos por completo el de PC */
+  }
+
+  .video-mobile {
+    display: block !important;   /* Mostramos el video vertical */
     width: 100%;
     height: 100%;
     top: 0;
     left: 0;
-    transform: scale(1.1); /* Escala reducida para que el video respire y quepa perfecto */
+    transform: none;            /* Quitamos transformaciones pesadas para el 9:16 */
     object-fit: cover;
   }
 
-  /* Contenedor de Texto */
+  /* Ajustes de contenido */
   .hero-content {
-    padding-left: 0; /* Eliminamos el padding de desktop para usar el del contenedor */
+    padding-left: 0; 
     padding-right: 0;
     max-width: 100%;
+    text-align: left;
   }
 
-  /* Reducción proporcional y elegante del título */
   .hero-content h1 {
-    font-size: 1.85rem; /* Tamaño estilizado, no abultado, cabe en pocas líneas */
-    margin-bottom: 16px;
+    font-size: 2.2rem; 
+    margin-bottom: 20px;
     line-height: 1.2;
     letter-spacing: -0.01em;
   }
 
-  /* Reducción proporcional del párrafo */
   .hero-content p {
-    font-size: 1rem; /* Texto limpio, legible y sutil */
-    margin-bottom: 32px;
+    font-size: 1.05rem; 
+    margin-bottom: 35px;
     line-height: 1.5;
   }
 
-  /* Botones estilizados en línea (No apilados, no toscos) */
+  /* Botones adaptados para mobile */
   .hero-buttons {
-    display: flex;
-    flex-direction: row; /* Se mantienen uno al lado del otro */
-    gap: 12px;           /* Espacio más estrecho y delicado */
-    justify-content: flex-start;
+    flex-direction: column; 
+    gap: 14px;           
+    justify-content: center;
     width: 100%;
   }
 
-  /* Escala proporcional para los botones */
   .hero-buttons button,
   .btn-whatsapp,
   .btn-tours {
-    padding: 12px 20px !important; /* Más compactos y refinados */
-    font-size: 0.88rem !important;  /* Fuente ligeramente más pequeña para equilibrar */
-    white-space: nowrap;           /* Evita que el texto del botón se rompa en dos líneas */
+    width: 100%; 
+    padding: 16px 32px !important; 
+    font-size: 1.05rem !important;  
+    box-sizing: border-box;
   }
 
-  /* Ajuste del tamaño del icono de WhatsApp en móvil */
   .btn-icon {
-    width: 20px !important;
-    height: 20px !important;
+    width: 24px !important;
+    height: 24px !important;
   }
 }
 
-/* Optimización para celulares en modo horizontal (Landscape) */
+/* Optimización landscape */
 @media (max-height: 500px) and (orientation: landscape) {
   .hero-main-container {
     height: auto;
