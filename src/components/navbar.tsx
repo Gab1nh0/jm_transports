@@ -26,8 +26,8 @@ export default function Navbar() {
 
   const navLinks = [
     { key: '/',    label: t('nav.home') },
-    { key: 'tc-header',   label: t('nav.tours') },
-    { key: 'fleet-section',   label: t('nav.fleet') },
+    { key: '#tc-header',   label: t('nav.tours') },
+    { key: '#fleet-section',   label: t('nav.fleet') },
     { key: '/booking', label: t('nav.booking') },
     { key: '/about-us',   label: t('nav.about') },
   ];
@@ -36,12 +36,10 @@ export default function Navbar() {
   const handleNavClick = (key: string) => {
     return (e: React.MouseEvent<HTMLAnchorElement>) => {
       e.preventDefault();
-      //setActiveLink(key);
       setMenuOpen(false);
 
       if (key.startsWith('#')) {
         const element = document.querySelector(key);
-
         if (element) {
           element.scrollIntoView({
             behavior: 'smooth',
@@ -95,7 +93,7 @@ export default function Navbar() {
         {navLinks.map(({ key, label }) => (
           <li key={key}>
             <a
-              href={key.startsWith('/') ? key : `#${key}`}
+              href={key}
               //className={activeLink === key ? 'active' : ''}
               onClick={handleNavClick(key)}
             >

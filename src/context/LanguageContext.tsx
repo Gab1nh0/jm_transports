@@ -211,11 +211,13 @@ const translations = {
   },
   es: {
     // Navbar
+    'nav.home': 'Inicio',
     'nav.services': 'Servicios',
     'nav.tours': 'Tours',
     'nav.fleet': 'Flota',
     'nav.about': 'Nosotros',
     'nav.contact': 'Contacto',
+    'nav.booking': 'Reservas',
 
     // Hero
     'hero.title': 'Explora Panamá con Comodidad, Seguridad y Estilo',

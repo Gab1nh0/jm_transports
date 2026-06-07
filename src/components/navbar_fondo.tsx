@@ -42,20 +42,6 @@ export default function Navbar() {
 
       if (key.startsWith('#')) {
         const element = document.querySelector(key);
-
-        if (key === '#tc-header') {
-          navigate('/#tc-header');
-          if (element) {
-          element.scrollIntoView({
-            behavior: 'smooth',
-            block: 'start',
-          });
-        }
-        return;       
-      }
-
-      
-
         if (element) {
           element.scrollIntoView({
             behavior: 'smooth',
@@ -109,7 +95,7 @@ export default function Navbar() {
         {navLinks.map(({ key, label }) => (
           <li key={key}>
             <a
-              href={key.startsWith('/') ? key : `#${key}`}
+              href={key}
               className={activeLink === key ? 'active' : ''}
               onClick={handleNavClick(key)}
             >
