@@ -106,21 +106,26 @@ export default function Tours() {
     <div className="tc-root">
       
       <div className="tc-header">
-        <span className="subtitle tc-yellow-subtitle">EXCLUSIVE TOURS</span>
-        <h2>Selected Premium Experiences</h2>
-        <p>Curated luxury and corporate itineraries across Panama's most iconic destinations.</p>
+        <span className="subtitle tc-yellow-subtitle">{t('tours.header.subtitle')}</span>
+        <h2>{t('tours.header.title')}</h2>
+        <p>{t('tours.header.desc')}</p>
         
         <div className="tc-filters">
-          {['All', 'Beach', 'Nature', 'Urban'].map(f => (
+          {[
+            { key: 'all', label: t('tours.filter.all') },
+            { key: 'beach', label: t('tours.filter.beach') },
+            { key: 'nature', label: t('tours.filter.nature') },
+            { key: 'urban', label: t('tours.filter.urban') }
+          ].map(f => (
             <button
-              key={f}
-              className={`tc-filter ${f === 'All' ? 'active' : ''}`}
+              key={f.key}
+              className={`tc-filter ${f.key === 'all' ? 'active' : ''}`}
               onClick={e => {
                 document.querySelectorAll('.tc-filter').forEach(b => b.classList.remove('active'));
                 (e.target as HTMLButtonElement).classList.add('active');
               }}
             >
-              {f}
+              {f.label}
             </button>
           ))}
         </div>
@@ -133,30 +138,31 @@ export default function Tours() {
           <ImageCarousel images={sanBlasImages} />
           <div className="tc-card-body">
             <div className="tc-badges">
-              <span className="tc-badge featured">Featured</span>
-              <span className="tc-badge rated">Top Rated</span>
+              <span className="tc-badge featured">{t('tours.sanblas.badge1')}</span>
+              <span className="tc-badge rated">{t('tours.sanblas.badge2')}</span>
             </div>
             <div className="tc-card-top">
-              <h3>Pasadía San Blas 2026</h3>
+              <h3>{t('tours.sanblas.title')}</h3>
               <div className="tc-price">
-                <span>From</span>
+                <span>{lang === 'en' ? 'From' : 'Desde'}</span>
                 <strong>$125</strong>
               </div>
             </div>
             <div className="tc-meta">
-              <span className="tc-meta-item">⏱ Full day</span>
-              <span className="tc-meta-item">👥 Private group</span>
+              <span className="tc-meta-item">⏱ {t('tours.sanblas.meta1')}</span>
+              <span className="tc-meta-item">👥 {t('tours.sanblas.meta2')}</span>
             </div>
             <p className="tc-desc">
-              Escape to the paradise of Guna Yala — crystal-clear waters, white sand beaches,
-              and a unique indigenous culture across an archipelago of 365 islands.
+              {t('tours.sanblas.desc')}
             </p>
             <div className="tc-tags">
-              <span className="tc-tag">4×4 Transport</span>
-              <span className="tc-tag">Lunch included</span>
-              <span className="tc-tag">Boat rides</span>
+              <span className="tc-tag">{t('tours.sanblas.tag1')}</span>
+              <span className="tc-tag">{t('tours.sanblas.tag2')}</span>
+              <span className="tc-tag">{t('tours.sanblas.tag3')}</span>
             </div>
-            <button className="tc-btn" onClick={() => navigate('/booking?tour=san-blas')}>Book Now</button>
+            <button className="tc-btn" onClick={() => navigate('/booking?tour=san-blas')}>
+              {lang === 'en' ? 'Book Now' : 'Reservar Ahora'}
+            </button>
           </div>
         </div>
 
@@ -165,22 +171,23 @@ export default function Tours() {
           <ImageCarousel images={monkeyImages} />
           <div className="tc-card-body">
             <div className="tc-card-top">
-              <h3>Monkey Tour</h3>
+              <h3>{t('tours.monkey.title')}</h3>
               <div className="tc-price"><strong>$65</strong></div>
             </div>
             <div className="tc-meta">
-              <span className="tc-meta-item">⏱ Half day</span>
+              <span className="tc-meta-item">⏱ {t('tours.monkey.price_label')}</span>
             </div>
             <p className="tc-desc">
-              Discover the biodiversity of the Panama Canal and meet its most famous
-              residents up close in their natural habitat.
+              {t('tours.monkey.desc')}
             </p>
             <div className="tc-includes">
-              <span className="tc-include">Boat ride on the Canal</span>
-              <span className="tc-include">Wildlife spotting</span>
-              <span className="tc-include">Hotel pickup &amp; drop-off</span>
+              <span className="tc-include">{t('tours.monkey.inc1')}</span>
+              <span className="tc-include">{t('tours.monkey.inc2')}</span>
+              <span className="tc-include">{t('tours.monkey.inc3')}</span>
             </div>
-            <button className="tc-btn" onClick={() => navigate('/booking?tour=monkey-tour')}>Book Now</button>
+            <button className="tc-btn" onClick={() => navigate('/booking?tour=monkey-tour')}>
+              {lang === 'en' ? 'Book Now' : 'Reservar Ahora'}
+            </button>
           </div>
         </div>
 
@@ -251,26 +258,27 @@ export default function Tours() {
           <ImageCarousel images={cityImages} />
           <div className="tc-card-body">
             <div className="tc-card-top">
-              <h3>City Tour Panamá</h3>
+              <h3>{t('tours.city.title')}</h3>
               <div className="tc-price">
-                <span>Up to 3 pax</span>
-                <strong>$140</strong>
+                <span>{t('tours.city.price_label')}</span>
+                <strong>{t('tours.city.price')}</strong>
               </div>
             </div>
             <div className="tc-meta">
-              <span className="tc-meta-item">⏱ 5 hours</span>
-              <span className="tc-meta-item">🚗 Pro driver</span>
+              <span className="tc-meta-item">⏱ {t('tours.city.meta1')}</span>
+              <span className="tc-meta-item">🚗 {t('tours.city.meta2')}</span>
             </div>
             <p className="tc-desc">
-              A perfect mix of history, engineering marvels, and modern skyscrapers
-              across the highlights of Panama City.
+              {t('tours.city.desc')}
             </p>
             <div className="tc-includes">
-              <span className="tc-include">Panama Canal — Miraflores</span>
-              <span className="tc-include">Casco Antiguo walking tour</span>
-              <span className="tc-include">Amador Causeway &amp; skyline</span>
+              <span className="tc-include">{t('tours.city.inc1')}</span>
+              <span className="tc-include">{t('tours.city.inc2')}</span>
+              <span className="tc-include">{t('tours.city.inc3')}</span>
             </div>
-            <button className="tc-btn" onClick={() => navigate('/booking?tour=city-tour')}>Book Now</button>
+            <button className="tc-btn" onClick={() => navigate('/booking?tour=city-tour')}>
+              {lang === 'en' ? 'Book Now' : 'Reservar Ahora'}
+            </button>
           </div>
         </div>
 
@@ -313,10 +321,11 @@ export default function Tours() {
               <path d="M16 19c0-1.5-1.5-2.5-4-2.5s-4 1-4 2.5" />
             </svg>
           </div>
-          <h3>Need a Custom Experience?</h3>
+          <h3>{lang === 'en' ? 'Need a Custom Experience?' : '¿Necesitas una Experiencia Personalizada?'}</h3>
           <p>
-            We specialize in tailoring luxury tours for corporate retreats,
-            family gatherings, and VIP guests.
+            {lang === 'en' 
+              ? 'We specialize in tailoring luxury tours for corporate retreats, family gatherings, and VIP guests.'
+              : 'Nos especializamos en diseñar tours de lujo para retiros corporativos, reuniones familiares e invitados VIP.'}
           </p>
           
           {/* MODIFICADO: Cambiado a Contact Support con enlace directo y clase verde tornasol */}
@@ -324,7 +333,7 @@ export default function Tours() {
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" fill="currentColor" className="tc-wa-icon">
               <path d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L0 480l117.7-30.9c32.4 17.7 68.9 27 106.1 27h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-157zm-157 341.6c-33.2 0-65.7-8.9-94-25.7l-6.7-4-69.8 18.3L72 359.2l-4.4-7c-18.5-29.4-28.2-63.3-28.2-98.2 0-101.7 82.8-184.5 184.6-184.5 49.3 0 95.6 19.2 130.4 54.1 34.8 34.9 56.2 81.2 56.1 130.5 0 101.8-84.9 184.6-186.6 184.6zm101.2-138.2c-5.5-2.8-32.8-16.2-37.9-18-5.1-1.9-8.8-2.8-12.5 2.8-3.7 5.6-14.3 18-17.6 21.8-3.2 3.7-6.5 4.2-12 1.4-32.6-16.3-54-29.1-75.5-66-5.7-9.8 5.7-9.1 16.3-30.3 1.8-3.7 .9-6.9-.5-9.7-1.4-2.8-12.5-30.1-17.1-41.2-4.5-10.8-9.1-9.3-12.5-9.5-3.2-.2-6.9-.2-10.6-.2-3.7 0-9.7 1.4-14.8 6.9-5.1 5.6-19.4 19-19.4 46.3 0 27.3 19.9 53.7 22.6 57.4 2.8 3.7 39.1 59.7 94.8 83.8 35.2 15.2 49 16.5 66.6 13.9 10.7-1.6 32.8-13.4 37.4-26.4 4.6-13 4.6-24.1 3.2-26.4-1.3-2.5-5-3.9-10.5-6.6z"/>
             </svg>
-            Contact Support
+            {lang === 'en' ? 'Contact Support' : 'Contactar Soporte'}
           </a>
         </div>
 

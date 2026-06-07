@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router-dom';
 export default function Navbar() {
   const { lang, toggleLang, t } = useLang();
   const [scrolled, setScrolled] = useState(false);
-  const [activeLink, setActiveLink] = useState('home');
+  //const [activeLink, setActiveLink] = useState('home');
   const [menuOpen, setMenuOpen] = useState(false);
 
   useEffect(() => {
@@ -26,8 +26,8 @@ export default function Navbar() {
 
   const navLinks = [
     { key: '/',    label: t('nav.home') },
-    { key: '#tc-header',   label: t('nav.tours') },
-    { key: '#fleet-section',   label: t('nav.fleet') },
+    { key: 'tc-header',   label: t('nav.tours') },
+    { key: 'fleet-section',   label: t('nav.fleet') },
     { key: '/booking', label: t('nav.booking') },
     { key: '/about-us',   label: t('nav.about') },
   ];
@@ -36,7 +36,7 @@ export default function Navbar() {
   const handleNavClick = (key: string) => {
     return (e: React.MouseEvent<HTMLAnchorElement>) => {
       e.preventDefault();
-      setActiveLink(key);
+      //setActiveLink(key);
       setMenuOpen(false);
 
       if (key.startsWith('#')) {
@@ -96,7 +96,7 @@ export default function Navbar() {
           <li key={key}>
             <a
               href={key.startsWith('/') ? key : `#${key}`}
-              className={activeLink === key ? 'active' : ''}
+              //className={activeLink === key ? 'active' : ''}
               onClick={handleNavClick(key)}
             >
               {label}

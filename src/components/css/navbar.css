@@ -89,14 +89,14 @@
 
 /* Active — color secundario con pill sutil */
 .nav-links a.active {
-  color: var(--color-secondary, #f0b429);
-  background: rgba(240, 180, 41, 0.12);
+  color: var(--color-secondary);
+  background: rgba(255, 255, 255, 0.1);
   font-weight: 600;
 }
 
 /* Hover sobre el link activo — se mantiene el color activo */
 .nav-links a.active:hover {
-  color: var(--color-secondary, #f0b429);
+  color: var(--color-secondary);
   background: rgba(240, 180, 41, 0.18);
 }
 
