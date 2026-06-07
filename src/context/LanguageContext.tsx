@@ -12,10 +12,12 @@ const translations = {
   en: {
     // Navbar
     'nav.home': 'Home',
+    'nav.services': 'Services',
     'nav.tours': 'Tours',
     'nav.fleet': 'Fleet',
-    'nav.about': 'About',
     'nav.booking': 'Booking',
+    'nav.about': 'About',
+    'nav.contact': 'Contact',
 
     // Hero
     'hero.title': 'Explore Panama with Comfort, Safety & Style',
@@ -187,6 +189,25 @@ const translations = {
     'about.address.label': 'Address',
     'about.phone.label': 'Landline',
     'about.whatsapp': 'WhatsApp',
+
+    // Fleet Section
+    'fleet.header.subtitle': 'OUR FLEET',
+    'fleet.header.title': 'Travel with Style, Comfort & Security',
+    'fleet.header.desc': 'Discover our diverse lineup of modern, impeccably maintained vehicles tailored to match your exact corporate, group, or VIP transportation requirements in Panama.',
+    'fleet.filter.all': 'All Fleet',
+    'fleet.filter.suv': 'SUVs',
+    'fleet.filter.coaster': 'Group Vans & Coasters',
+    'fleet.filter.vip': 'VIP Experience',
+    'fleet.vip.tag': 'VIP Class',
+    'fleet.passenger.label': 'Up to {passengers} passengers',
+    'fleet.book.btn': 'Book Now',
+    'fleet.perks.title': 'All Our Transfers Include:',
+    'fleet.benefit.ac': 'Full Air Conditioning',
+    'fleet.benefit.tracking': 'Real-Time Flight Tracking',
+    'fleet.benefit.luggage': 'Luggage Assistance',
+    'fleet.benefit.water': 'Complimentary Bottled Water & Snacks',
+    'fleet.benefit.seats': 'Child Seats Available Upon Request',
+    'fleet.benefit.drivers': 'Bilingual Professional Drivers',
   },
   es: {
     // Navbar
@@ -366,6 +387,25 @@ const translations = {
     'about.address.label': 'Dirección',
     'about.phone.label': 'Teléfono Fijo',
     'about.whatsapp': 'WhatsApp',
+    
+    // Fleet Section
+    'fleet.header.subtitle': 'NUESTRA FLOTA',
+    'fleet.header.title': 'Viaja con Estilo, Comodidad y Seguridad',
+    'fleet.header.desc': 'Descubre nuestra diversa flota de vehículos modernos, impecablemente mantenidos y adaptados a tus necesidades exactas de transporte corporativo, grupal o VIP en Panamá.',
+    'fleet.filter.all': 'Toda la Flota',
+    'fleet.filter.suv': 'SUVs',
+    'fleet.filter.coaster': 'Furgonetas y Autobuses',
+    'fleet.filter.vip': 'Experiencia VIP',
+    'fleet.vip.tag': 'Clase VIP',
+    'fleet.passenger.label': 'Hasta {passengers} pasajeros',
+    'fleet.book.btn': 'Reservar Ahora',
+    'fleet.perks.title': 'Todos Nuestros Traslados Incluyen:',
+    'fleet.benefit.ac': 'Aire Acondicionado Completo',
+    'fleet.benefit.tracking': 'Rastreo de Vuelos en Tiempo Real',
+    'fleet.benefit.luggage': 'Asistencia de Equipaje',
+    'fleet.benefit.water': 'Agua Embotellada y Snacks Cortesía',
+    'fleet.benefit.seats': 'Asientos para Niños Disponibles Bajo Solicitud',
+    'fleet.benefit.drivers': 'Conductores Profesionales Bilingües',
   },
 };
 
