@@ -1,5 +1,6 @@
 import './css/heroSection.css';
 import heroVideo from '../assets/hero-video.mp4';
+import heroVideoMobile from '../assets/hero-video-mobile.mp4';
 
 export const Hero = () => {
   return (
@@ -7,14 +8,20 @@ export const Hero = () => {
       <section className="hero-section-wrapper">
         
         <div className="hero-main-container">
-          <video className="hero-video" autoPlay loop muted playsInline>
+          {/* VIDEO PARA PC */}
+          <video className="hero-video video-pc" autoPlay loop muted playsInline>
             <source src={heroVideo} type="video/mp4" />
+          </video>
+
+          {/* VIDEO PARA RESPONSIVE (MÓVIL) */}
+          <video className="hero-video video-mobile" autoPlay loop muted playsInline>
+            <source src={heroVideoMobile} type="video/mp4" />
           </video>
 
           <div className="hero-overlay"></div>
 
           <div className="hero-content">
-            <h1>Explore Panama with Comfort, Safety & Style</h1>
+            <h1>Explore Panama with Comfort, Safety &amp; Style</h1>
             <p>Private transportation, airport transfers and unforgettable tours across Panama. Experience the best of the tropics with a first-class executive touch.</p>
             
             <div className="hero-buttons">

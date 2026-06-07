@@ -71,13 +71,13 @@
 @media (max-width: 480px) {
   .social-pill-container {
     bottom: 24px; 
-    padding: 6px 12px;
-    gap: 8px;
+    padding: 8px 16px;
+    gap: 12px;
   }
   
   .social-icon {
-    width: 28px;
-    height: 28px;
-    font-size: 0.85rem;
+    width: 34px;
+    height: 34px;
+    font-size: 1rem;
   }
 }
