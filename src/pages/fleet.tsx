@@ -4,6 +4,7 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay, Navigation, Pagination } from 'swiper/modules'; 
 import type { Swiper as SwiperType } from 'swiper';
 import { useLang } from '../context/LanguageContext';
+import { useNavigate } from 'react-router-dom';
 
 import 'swiper/css';
 import 'swiper/css/pagination'; 
@@ -46,8 +47,14 @@ const FLEET_DATA: Vehicle[] = [
 
 export const FleetSection: React.FC = () => {
   const { t, lang } = useLang();
+  const navigate = useNavigate();
   const [activeFilter, setActiveFilter] = useState<'all' | 'suv' | 'coaster' | 'vip'>('all');
   const swiperRef = useRef<SwiperType | null>(null);
+
+    const handleBookVehicle = (vehicleName: string) => {
+    const slug = vehicleName.toLowerCase().replace(/[\s-]+/g, '-').replace(/[^a-z0-9-]/g, '');
+    navigate(`/booking?tour=${slug}`);
+  };
 
   const INCLUDED_BENEFITS = [
     t('fleet.benefit.ac'),
@@ -163,7 +170,9 @@ export const FleetSection: React.FC = () => {
                           : `Hasta ${vehicle.passengers} pasajeros`}
                       </span>
                     </div>
-                    <button className="book-vehicle-btn">{t('fleet.book.btn')}</button>
+                    <button className="book-vehicle-btn" onClick={() => handleBookVehicle(vehicle.name)}>
+                      {t('fleet.book.btn')}
+                    </button>
                   </div>
                 </div>
               </SwiperSlide>

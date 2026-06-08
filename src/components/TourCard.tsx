@@ -129,7 +129,7 @@ export default function Tours() {
                 <h3>{t('tours.sanblas.title')}</h3>
                 <div className="tc-price">
                   <span>{lang === 'en' ? 'From' : 'Desde'}</span>
-                  <strong>$125</strong>
+                  <strong>{t('tours.sanblas.price_label')}</strong>
                 </div>
               </div>
               <div className="tc-meta">
@@ -154,7 +154,7 @@ export default function Tours() {
             <div className="tc-card-body">
               <div className="tc-card-top">
                 <h3>{t('tours.monkey.title')}</h3>
-                <div className="tc-price"><strong>$65</strong></div>
+                <div className="tc-price"><strong>{t('tours.monkey.price')}</strong></div>
               </div>
               <div className="tc-meta">
                 <span className="tc-meta-item">⏱ {t('tours.monkey.price_label')}</span>
@@ -183,8 +183,8 @@ export default function Tours() {
                 </div>
               </div>
               <div className="tc-meta">
-                <span className="tc-meta-item">⏱ Oneway / Roundtrip</span>
-                <span className="tc-meta-item">👥 Private</span>
+                <span className="tc-meta-item">{t('tours.playas.meta1')}</span>
+                <span className="tc-meta-item">👥 {t('tours.playas.meta2')}</span>
               </div>
               <p className="tc-desc">{t('tours.playas.desc')}</p>
               <p className="tc-destinations-text">
@@ -213,8 +213,8 @@ export default function Tours() {
                 </div>
               </div>
               <div className="tc-meta">
-                <span className="tc-meta-item">⏱ Full day</span>
-                <span className="tc-meta-item">🚗 Private Tour</span>
+                <span className="tc-meta-item">{t('tours.colon.meta1')}</span>
+                <span className="tc-meta-item">🚗 {t('tours.colon.meta2')}</span>
               </div>
               <p className="tc-desc">{t('tours.colon.desc')}</p>
               <div className="tc-includes">
@@ -268,8 +268,8 @@ export default function Tours() {
                 </div>
               </div>
               <div className="tc-meta">
-                <span className="tc-meta-item">⏱ Full day</span>
-                <span className="tc-meta-item">⛵ Adventure</span>
+                <span className="tc-meta-item">{t('tours.portobelo.meta1')}</span>
+                <span className="tc-meta-item">⛵ {t('tours.portobelo.meta2')}</span>
               </div>
               <p className="tc-desc">{t('tours.portobelo.desc')}</p>
               <div className="tc-includes">
