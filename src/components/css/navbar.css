@@ -252,7 +252,7 @@
     margin-top: 12px;
     padding-top: 16px;
     border-top: 1px solid rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(24px);
+
   }
 
   .nav-links__lang-mobile .lang-toggle {
@@ -307,6 +307,7 @@
 
   .nav-links--open {
     transform: translateX(0);
+    backdrop-filter: blur(24px);
   }
 
   .nav-links li {
