@@ -6,6 +6,7 @@ import App from './App.tsx'
 import { LanguageProvider } from './context/LanguageContext.tsx';
 import Booking from './pages/tours.tsx';
 import AboutUs from './pages/about_us.tsx';
+import 'react-phone-input-2/lib/style.css';
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>

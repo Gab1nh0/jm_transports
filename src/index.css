@@ -1,12 +1,13 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Montserrat:wght@600;700;800&display=swap');
 
+
 :root {
   --font-headlines: 'Syne', sans-serif;
   --font-body: 'Space Grotesk', sans-serif;
 
   --color-primary: #000000;       
-  --color-secondary: #1877f2;     
-  --color-tertiary: #FFD700;      
+  --color-secondary: #121212;     
+  --color-tertiary: #D89C1D;      
   --color-neutral-bg: #F5F7F8;    
   --color-white: #FFFFFF;
 }

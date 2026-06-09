@@ -214,7 +214,7 @@
   font-family: var(--font-headlines);
   font-size: 2.2rem;
   font-weight: 800;
-  color: var(--color-secondary); 
+  color: var(--color-tertiary); 
   line-height: 1;
 }
 
@@ -336,7 +336,7 @@
 .tc-btn:hover::after { left: 130%; }
 
 .tc-btn:hover {
-  background: #000000; 
+  background: var(--color-tertiary); 
   color: var(--color-white);
 }
 

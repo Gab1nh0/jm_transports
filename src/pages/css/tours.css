@@ -1,9 +1,19 @@
+/* ==========================================================================
+   CONFIGURACIÓN FUENTES Y RAÍZ
+   ========================================================================== */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
 .bk-root {
-  background: #f8fafc;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  background: var(--color-neutral-bg, #F5F7F8);
   min-height: 100vh;
+  color: var(--color-primary, #000000);
+  -webkit-font-smoothing: antialiased;
 }
 
-/* Hero */
+/* ==========================================================================
+   HERO SECTION (Mantenido Layout Original)
+   ========================================================================== */
 .bk-hero {
   position: relative;
   width: 100%;
@@ -34,10 +44,9 @@
 }
 
 .bk-hero-content h1 {
-  font-family: var(--font-headlines);
   font-size: 2.2rem;
   font-weight: 800;
-  color: var(--color-white);
+  color: var(--color-white, #FFFFFF);
   margin-bottom: 10px;
   letter-spacing: -0.02em;
 }
@@ -50,7 +59,9 @@
   line-height: 1.6;
 }
 
-/* Body layout */
+/* ==========================================================================
+   BODY LAYOUT
+   ========================================================================== */
 .bk-body {
   display: grid;
   grid-template-columns: 1.4fr 1fr;
@@ -60,19 +71,22 @@
   margin: 0 auto;
 }
 
-/* Form card */
+/* ==========================================================================
+   TARJETA DEL FORMULARIO PREMIUM
+   ========================================================================== */
 .bk-form-card {
-  background: var(--color-white);
+  background: var(--color-white, #FFFFFF);
   border-radius: 16px;
-  border: 0.5px solid #e2e8f0;
+  border: 1px solid #e2e8f0;
   padding: 32px;
+  height: fit-content;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.02);
 }
 
 .bk-form-card h2 {
-  font-family: var(--font-headlines);
   font-size: 1.3rem;
-  font-weight: 800;
-  color: var(--color-primary);
+  font-weight: 700;
+  color: var(--color-primary, #000000);
   margin-bottom: 24px;
 }
 
@@ -92,81 +106,225 @@
 .bk-field.full { grid-column: 1 / -1; }
 
 .bk-field label {
-  font-size: 0.75rem;
+  font-size: 0.78rem;
   font-weight: 500;
   color: #64748b;
-  letter-spacing: 0.03em;
+  letter-spacing: 0.02em;
 }
 
 .bk-field input,
 .bk-field select,
 .bk-field textarea {
   width: 100%;
-  padding: 10px 14px;
+  padding: 11px 14px;
   border-radius: 8px;
-  border: 0.5px solid #e2e8f0;
-  background: #f8fafc;
-  font-family: var(--font-body);
+  border: 1px solid #cbd5e1;
+  background: var(--color-neutral-bg, #F5F7F8);
+  font-family: 'Inter', sans-serif;
   font-size: 0.9rem;
-  color: var(--color-primary);
+  color: var(--color-primary, #000000);
   outline: none;
-  transition: border 0.2s, background 0.2s;
+  box-sizing: border-box;
+  transition: border-color 0.2s, background-color 0.2s, box-shadow 0.2s;
 }
 
 .bk-field input:focus,
 .bk-field select:focus,
 .bk-field textarea:focus {
-  border-color: var(--color-secondary);
-  background: var(--color-white);
+  border-color: var(--color-tertiary, #D89C1D);
+  background: var(--color-white, #FFFFFF);
+  box-shadow: 0 0 0 4px rgba(216, 156, 29, 0.08);
 }
 
 .bk-field textarea {
   resize: vertical;
-  height: 100px;
+  height: 110px;
 }
 
-.bk-phone-wrap {
+/* Sub-selector (Tabs del formulario mutable) */
+.bk-sub-selector {
   display: flex;
   gap: 8px;
+  background: #e2e8f0;
+  padding: 4px;
+  border-radius: 10px;
+}
+
+.bk-tab-btn {
+  flex: 1;
+  padding: 10px;
+  font-size: 0.85rem;
+  font-weight: 500;
+  border: none;
+  background: transparent;
+  color: #64748b;
+  border-radius: 7px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.bk-tab-btn.active {
+  background: var(--color-white, #FFFFFF);
+  color: var(--color-tertiary, #D89C1D);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04);
+  font-weight: 600;
+}
+
+/* ==========================================================================
+   SELECTOR DE TELÉFONO INTERNACIONAL NATIVO
+   ========================================================================== */
+.bk-phone-custom-wrapper {
+  position: relative;
+  display: flex;
+  width: 100%;
   align-items: center;
 }
 
-.bk-phone-prefix {
-  padding: 10px 12px;
-  border-radius: 8px;
-  border: 0.5px solid #e2e8f0;
-  background: #f8fafc;
+.bk-phone-flag-trigger {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 0 12px;
+  height: 43px;
+  background: #e2e8f0;
+  border: 1px solid #cbd5e1;
+  border-right: none;
+  border-radius: 8px 0 0 8px;
+  cursor: pointer;
   font-size: 0.9rem;
-  color: #64748b;
-  white-space: nowrap;
-  font-family: var(--font-body);
+  color: var(--color-primary, #000000);
+  font-weight: 500;
+  transition: background 0.2s;
 }
 
+.bk-phone-flag-trigger:hover {
+  background: #cbd5e1;
+}
+
+.bk-trigger-arrow {
+  font-size: 0.65rem;
+  color: #64748b;
+}
+
+.bk-phone-number-input {
+  flex: 1;
+  height: 43px;
+  border-radius: 0 8px 8px 0 !important;
+  border-left: 1px solid #cbd5e1 !important;
+}
+
+/* Dropdown de países flotante */
+.bk-phone-countries-dropdown {
+  position: absolute;
+  top: 48px;
+  left: 0;
+  z-index: 50;
+  width: 280px;
+  background: var(--color-white, #FFFFFF);
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+  padding: 8px;
+}
+
+.bk-phone-dropdown-search {
+  width: 100%;
+  padding: 8px 12px;
+  font-size: 0.85rem;
+  border: 1px solid #cbd5e1;
+  border-radius: 6px;
+  background: var(--color-neutral-bg, #F5F7F8);
+  margin-bottom: 8px;
+  outline: none;
+}
+
+.bk-phone-dropdown-search:focus {
+  border-color: var(--color-tertiary, #D89C1D);
+  background: var(--color-white, #FFFFFF);
+}
+
+.bk-phone-countries-list {
+  max-height: 200px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.bk-phone-country-option {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  padding: 8px 10px;
+  background: transparent;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  text-align: left;
+  font-size: 0.85rem;
+  color: #334155;
+}
+
+.bk-phone-country-option:hover {
+  background: var(--color-neutral-bg, #F5F7F8);
+}
+
+.bk-phone-country-option.selected {
+  background: #fef3c7;
+  color: var(--color-tertiary, #D89C1D);
+  font-weight: 500;
+}
+
+.bk-opt-name {
+  flex: 1;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.bk-opt-prefix {
+  color: #64748b;
+  font-size: 0.8rem;
+}
+
+/* ==========================================================================
+   BOTÓN DE ENVÍO PRINCIPAL
+   ========================================================================== */
 .bk-submit {
   width: 100%;
   padding: 14px;
   margin-top: 8px;
-  background: var(--color-secondary);
-  color: var(--color-white);
+  background: var(--color-secondary, #121212);
+  color: var(--color-white, #FFFFFF);
   border: none;
   border-radius: 8px;
-  font-family: var(--font-headlines);
   font-size: 1rem;
-  font-weight: 700;
+  font-weight: 600;
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 10px;
-  transition: all 0.2s;
+  transition: background-color 0.2s, transform 0.1s;
 }
 
-.bk-submit:hover { background: #222; }
-.bk-submit svg { width: 18px; height: 18px; }
+.bk-submit:hover { 
+  background: var(--color-tertiary, #D89C1D); 
+  color: var(--color-white, #FFFFFF);
+}
+
+.bk-submit:active { 
+  transform: scale(0.99); 
+}
+
+.bk-submit svg { 
+  width: 18px; 
+  height: 18px; 
+}
 
 .bk-note {
   text-align: center;
-  margin-top: 10px;
+  margin-top: 12px;
   font-size: 0.78rem;
   color: #94a3b8;
   display: flex;
@@ -175,21 +333,27 @@
   gap: 6px;
 }
 
-/* Sidebar */
-.bk-sidebar { display: flex; flex-direction: column; gap: 16px; }
+/* ==========================================================================
+   SIDEBAR (Mantenido Original de tu amigo)
+   ========================================================================== */
+.bk-sidebar { 
+  display: flex; 
+  flex-direction: column; 
+  gap: 16px; 
+}
 
 .bk-contact-card {
-  background: var(--color-white);
+  background: var(--color-white, #FFFFFF);
   border-radius: 16px;
-  border: 0.5px solid #e2e8f0;
+  border: 1px solid #e2e8f0;
   padding: 24px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.02);
 }
 
 .bk-contact-card h3 {
-  font-family: var(--font-headlines);
   font-size: 1rem;
-  font-weight: 800;
-  color: var(--color-primary);
+  font-weight: 700;
+  color: var(--color-primary, #000000);
   margin-bottom: 18px;
 }
 
@@ -212,20 +376,19 @@
 
 .bk-contact-icon.wa { background: #e8fdf3; }
 .bk-contact-icon.em { background: #f0f4ff; }
-.bk-contact-icon.ig { background: #fff0f5; }
 .bk-contact-icon svg { width: 18px; height: 18px; }
 
 .bk-contact-info strong {
   display: block;
   font-size: 0.85rem;
   font-weight: 600;
-  color: var(--color-secondary);
+  color: var(--color-tertiary, #D89C1D);
   margin-bottom: 2px;
 }
 
 .bk-contact-info span {
   font-size: 0.82rem;
-  color: var(--color-primary);
+  color: var(--color-primary, #000000);
   display: block;
 }
 
@@ -236,15 +399,14 @@
 
 .bk-divider {
   border: none;
-  border-top: 0.5px solid #e2e8f0;
+  border-top: 1px solid #e2e8f0;
   margin: 16px 0;
 }
 
 .bk-why h4 {
-  font-family: var(--font-headlines);
   font-size: 0.85rem;
   font-weight: 700;
-  color: var(--color-primary);
+  color: var(--color-primary, #000000);
   margin-bottom: 12px;
 }
 
@@ -255,12 +417,16 @@
   font-size: 0.82rem;
   color: #4a5568;
   margin-bottom: 8px;
-  font-family: var(--font-body);
 }
 
-.bk-why-item svg { width: 16px; height: 16px; flex-shrink: 0; }
+/* El check lateral ahora toma tu color dorado terciario */
+.bk-why-item svg { 
+  width: 16px; 
+  height: 16px; 
+  flex-shrink: 0; 
+  stroke: var(--color-tertiary, #D89C1D) !important;
+}
 
-/* Fleet card */
 .bk-fleet-card {
   border-radius: 16px;
   padding: 24px;
@@ -281,13 +447,15 @@
   background: rgba(0, 0, 0, 0.65);
 }
 
-.bk-fleet-card-content { position: relative; z-index: 1; }
+.bk-fleet-card-content { 
+  position: relative; 
+  z-index: 1; 
+}
 
 .bk-fleet-card h3 {
-  font-family: var(--font-headlines);
   font-size: 1rem;
   font-weight: 800;
-  color: var(--color-white);
+  color: var(--color-white, #FFFFFF);
   margin-bottom: 6px;
 }
 
@@ -298,13 +466,11 @@
   line-height: 1.5;
 }
 
-/* Responsive */
+/* ==========================================================================
+   MEDIA QUERIES (Responsive)
+   ========================================================================== */
 @media (max-width: 768px) {
-  .bk-body {
-    grid-template-columns: 1fr;
-    padding: 24px 20px;
-  }
-
+  .bk-body { grid-template-columns: 1fr; padding: 24px 20px; }
   .bk-hero-content { padding: 0 24px; }
   .bk-hero-content h1 { font-size: 1.6rem; }
   .bk-grid { grid-template-columns: 1fr; }

@@ -43,11 +43,12 @@ const translations = {
     'footer.events': 'Special Events',
     'footer.location': 'Location',
     'footer.address': 'Ave. Federico Boyd & Calle 51,\nScotia Plaza Building, 7th Floor,\nBella Vista, Panama City',
-    'footer.phone': 'Landline: 3104785',
+    'footer.phone': 'Landline: 310-4785',
     'footer.rights': '© 2025 JM Transport Group Panama. All rights reserved.',
     'about.contact.title': 'Contact & Location',
     'about.contact.address': 'Ave. Federico Boyd & Calle 51,\nScotia Plaza Building, 7th Floor,\nBella Vista, Panama City',
-    'about.contact.phone': 'Landline: 3104785',
+    'about.contact.phone': 'Landline: 310-4785',
+    
     // Tours
     'tours.playas.title': 'Beach Transfers',
     'tours.playas.desc': 'Private, comfortable, and punctual transportation service to major beach areas and resorts.',
@@ -82,8 +83,6 @@ const translations = {
     'tours.portobelo.meta1': '⏱ Fullday',
     'tours.portobelo.meta2': 'Adventure',
 
-
-    // San Blas Tour
     'tours.sanblas.title': 'San Blas Getaway 2026',
     'tours.sanblas.desc': 'Escape to the paradise of Guna Yala — crystal-clear waters, white sand beaches, and a unique indigenous culture across an archipelago of 365 islands.',
     'tours.sanblas.badge1': 'Featured',
@@ -95,7 +94,6 @@ const translations = {
     'tours.sanblas.tag3': 'Boat rides',
     'tours.sanblas.price_label': '$125/pax',
 
-    // Monkey Tour
     'tours.monkey.title': 'Monkey Tour',
     'tours.monkey.price_label': 'Half day',
     'tours.monkey.price': '$65/pax',
@@ -104,7 +102,6 @@ const translations = {
     'tours.monkey.inc2': 'Wildlife spotting',
     'tours.monkey.inc3': 'Hotel pickup & drop-off',
 
-    // City Tour
     'tours.city.title': 'City Tour Panamá',
     'tours.city.price_label': 'Up to 3 pax',
     'tours.city.price': '$140/pax',
@@ -115,7 +112,6 @@ const translations = {
     'tours.city.inc2': 'Casco Antiguo walking tour',
     'tours.city.inc3': 'Amador Causeway & skyline',
 
-    // Tours Section Header
     'tours.header.subtitle': 'EXCLUSIVE TOURS',
     'tours.header.title': 'Selected Premium Experiences',
     'tours.header.desc': 'Curated luxury and corporate itineraries across Panama\'s most iconic destinations.',
@@ -124,7 +120,6 @@ const translations = {
     'tours.filter.nature': 'Nature',
     'tours.filter.urban': 'Urban',
 
-    // Services Section
     'services.header': 'OUR SERVICES',
     'services.title': 'Premium Mobility Solutions in Panama',
     'services.airport.tag': 'Most Popular',
@@ -141,17 +136,15 @@ const translations = {
     'services.modal.howworks': 'How It Works:',
     'services.modal.quote': 'Quote via WhatsApp',
     
-    // Airport Service Details
     'services.airport.subtitle': 'Tocumen International (PTY) & Marcos A. Gelabert (Albrook)',
     'services.airport.desc.long': 'Our premium airport service is engineered to eliminate travel stress. We coordinate every detail from flight tracking to luggage handling so your arrival or departure in Panama is completely seamless.',
     'services.airport.step1': 'Real-Time Flight Tracking: We monitor your flight path. If your arrival is delayed or early, your chauffeur will adjust accordingly.',
     'services.airport.step2': 'Professional Meet & Greets: Your driver will await you at the arrivals gate holding a customized sign with your name or corporate logo.',
-    'services.airport.step3': 'Complimentary Wait Time: Includes 60 minutes of complimentary waiting time after your flight lands, giving you ample time for customs and baggage claim.',
+    'services.airport.step3': 'Includes 60 minutes of complimentary waiting time after your flight lands, giving you ample time for customs and baggage claim.',
     'services.airport.step4': 'Luggage Assistance & Comfort: Full help loading your bags into a climate-controlled premium vehicle equipped with bottled water.',
     'services.airport.note1': 'Includes toll fees (Corredor Sur).',
     'services.airport.note2': 'Child seats available upon prior request.',
     
-    // Corporate Service Details
     'services.corporate.subtitle': 'First-Class Corporate Mobility Solutions',
     'services.corporate.desc.long': 'Designed for corporate executives, state visits, and business travelers who value absolute punctuality, confidentiality, and flawless execution.',
     'services.corporate.step1': 'By-the-Hour or Full-Day Service: Retain a dedicated vehicle and professional driver for your entire business itinerary.',
@@ -161,7 +154,6 @@ const translations = {
     'services.corporate.note1': 'Discreet, unbranded premium vehicles.',
     'services.corporate.note2': 'Confidentiality guaranteed under strict NDA standards.',
     
-    // Tours Service Details
     'services.tours.subtitle': 'Bespoke Private Sightseeing & Experiences',
     'services.tours.desc.long': 'Explore the rich history, modern marvels, and breathtaking nature of Panama through a completely tailored private itinerary built around your pace and preferences.',
     'services.tours.step1': 'Tailored Itinerary Planning: Choose from iconic spots like the Panama Canal (Miraflores Locks), Casco Antiguo, Amador Causeway, or Gamboa Rainforest.',
@@ -171,7 +163,6 @@ const translations = {
     'services.tours.note1': 'Entrance tickets to museums or the Canal are coordinated separately.',
     'services.tours.note2': 'Custom lunch stop recommendations included.',
 
-    // About Us
     'about.eyebrow': 'About us',
     'about.hero.title': 'Panama through local eyes',
     'about.hero.desc': 'We are a boutique tour operator born in Panama City, dedicated to crafting extraordinary experiences for luxury and corporate travelers who want to go beyond the ordinary.',
@@ -200,7 +191,6 @@ const translations = {
     'about.phone.label': 'Landline',
     'about.whatsapp': 'WhatsApp',
 
-    // Fleet Section
     'fleet.header.subtitle': 'OUR FLEET',
     'fleet.header.title': 'Travel with Style, Comfort & Security',
     'fleet.header.desc': 'Discover our diverse lineup of modern, impeccably maintained vehicles tailored to match your exact corporate, group, or VIP transportation requirements in Panama.',
@@ -218,6 +208,62 @@ const translations = {
     'fleet.benefit.water': 'Complimentary Bottled Water & Snacks',
     'fleet.benefit.seats': 'Child Seats Available Upon Request',
     'fleet.benefit.drivers': 'Bilingual Professional Drivers',
+
+    // ── NUEVAS CLAVES PARA EL FORMULARIO DE RESERVAS (BOOKING) EN INGLÉS ──
+    'bk.heroTitle': "Book Your Premium Journey",
+    'bk.heroDesc': "Experience Panama with the highest standards of reliability and luxury. Fill out the form below to secure your private transport or curated tour.",
+    'bk.formTitle': "Reservation Details",
+    'bk.alertFields': "Please fill in all required fields marked with an asterisk (*).",
+    'bk.serviceTypeLabel': "What service do you need? *",
+    'bk.selectServiceType': "Select a service type...",
+    'bk.serviceTransfer': "Shuttle Service (One-way / Roundtrip)",
+    'bk.serviceTour': "Curated Tour / Sightseeing",
+    'bk.serviceCorporate': "Custom & Corporate Services",
+    'bk.nameLabel': "Full Name *",
+    'bk.emailLabel': "Email Address",
+    'bk.phoneLabel': "Phone / WhatsApp Number *",
+    'bk.peopleLabel': "Number of Passengers *",
+    'bk.dateLabel': "Preferred Date *",
+    'bk.notesLabel': "Special Requests or Dietary Requirements",
+    'bk.notesPlaceholder:': "Any specific requests for our team...",
+    'bk.transferRouteLabel': "Transfer Route *",
+    'bk.selectRoute': "Select route...",
+    'bk.routeToHotel': "Airport ➔ Hotel / Destination",
+    'bk.routeToAirport': "Hotel / Origin ➔ Airport",
+    'bk.routeRoundtrip': "Roundtrip (Airport ➔ Hotel ➔ Airport)",
+    'bk.airportLabel': "Panama Airport *",
+    'bk.selectAirport': "Select airport...",
+    'bk.flightNumLabel': "Flight Number *",
+    'bk.flightTimeLabel': "Flight Arrival/Departure Time *",
+    'bk.fleetLabel': "Select Preferred Vehicle Fleet *",
+    'bk.selectVehicle': "Select a vehicle from our fleet...",
+    'bk.tourSelectLabel': "Choose a Curated Tour *",
+    'bk.selectTour': "Select a tour...",
+    'bk.tourCustom': "Custom Personalized Tour",
+    'bk.pickupLabel': "Pickup Location / Hotel *",
+    'bk.tourDurationLabel': "Estimated Duration (Hours/Days) *",
+    'bk.tourPlacesLabel': "Places of Interest *",
+    'bk.tourPlacesPlaceholder': "e.g., Casco Viejo, Panama Canal, Amador Causeway...",
+    'bk.budgetLabel': "Approximate Budget (USD)",
+    'bk.budgetPlaceholder': "e.g., $500, $1500 (Optional)",
+    'bk.experienceTypeLabel': "Desired Experience Type *",
+    'bk.selectExperience': "Select style...",
+    'bk.expVacation': "Leisure & Family Vacation",
+    'bk.expAdventure': "Eco-Adventure & Nature",
+    'bk.expLuxury': "VIP & Luxury Experience",
+    'bk.corpNameLabel': "Company / Organization Name *",
+    'bk.corpTypeLabel': "Type of Event *",
+    'bk.corpTypePlaceholder': "e.g., Executive Retreat, Conference, Team Building",
+    'bk.corpStaffLabel': "Staff or On-Site Coordination Requirements",
+    'bk.corpStaffPlaceholder': "e.g., Bilingual coordinators, meet & greet staff at airport...",
+    'bk.detailsLabel': "Detailed Description of Your Requirements *",
+    'bk.detailsPlaceholder': "Please describe your ideal itinerary, schedules, or logistics plan in detail...",
+    'bk.submitBtn': "Submit Booking Request",
+    'bk.waNote': "⚡ After submission, you will be redirected to WhatsApp for instant coordination.",
+    'bk.sidebarTitle': "Direct Contact",
+    'bk.sidebarWhy': "Why choose JM Transport Group?",
+    'bk.fleetTitle': "Our Premium Fleet",
+    'bk.fleetDesc': "From executive SUVs to luxury sprinter vans and high-capacity buses."
   },
   es: {
     // Navbar
@@ -253,11 +299,12 @@ const translations = {
     'footer.events': 'Eventos Especiales',
     'footer.location': 'Ubicación',
     'footer.address': 'Ave. Federico Boyd y Calle 51,\nEdificio Scotia Plaza, Piso 7,\nBella Vista, Ciudad de Panamá',
-    'footer.phone': 'Teléfono fijo: 3104785',
+    'footer.phone': 'Teléfono fijo: 310-4785',
     'footer.rights': '© 2025 JM Transport Group Panamá. Todos los derechos reservados.',
     'about.contact.title': 'Contacto y Ubicación',
     'about.contact.address': 'Ave. Federico Boyd y Calle 51,\nEdificio Scotia Plaza, Piso 7,\nBella Vista, Ciudad de Panamá',
-    'about.contact.phone': 'Teléfono fijo: 3104785',
+    'about.contact.phone': 'Teléfono fijo: 310-4785',
+    
     // Tours
     'tours.playas.title': 'Traslados a Playas',
     'tours.playas.desc': 'Servicio de transporte privado, cómodo y puntual hacia las principales zonas de playa y resorts.',
@@ -397,7 +444,7 @@ const translations = {
     'about.story.desc2': 'Una década después, hemos construido una reputación entre gerentes de viajes corporativos, hoteles de cinco estrellas y viajeros exigentes por entregar experiencias sin problemas y profundamente perles en San Blas, el Canal de Panamá y la capital — siempre con un guía local, nunca en un horario que no sea el tuyo.',
     'about.team.header': 'Conoce al equipo',
     'about.team.member1.role': 'Fundador y Guía Principal',
-    'about.team.member1.bio': 'Nacido en la Ciudad de Panamá, Carlos ha pasado más de 15 años explorando cada rincón del istmo. Su conocimiento local y experiencia en logística son la base de cada tour.',
+    'about.team.member1.bio': 'Nacido en la Ciudad de Panamá, Carlos has pasado más de 15 años explorando cada rincón del istmo. Su conocimiento local y experiencia en logística son la base de cada tour.',
     'about.team.member2.role': 'Operaciones y Conserjería',
     'about.team.member2.bio': 'Con experiencia en hospitalidad de lujo, Valeria asegura que cada detalle esté confirmado antes de tu llegada — desde la recogida en el aeropuerto hasta ese último atardecer en Isla Perro.',
     'about.team.member3.role': 'Especialista en Viajes Corporativos',
@@ -427,7 +474,63 @@ const translations = {
     'fleet.benefit.water': 'Agua Embotellada y Snacks Cortesía',
     'fleet.benefit.seats': 'Asientos para Niños Disponibles Bajo Solicitud',
     'fleet.benefit.drivers': 'Conductores Profesionales Bilingües',
-  },
+
+    // ── NUEVAS CLAVES PARA EL FORMULARIO DE RESERVAS (BOOKING) EN ESPAÑOL ──
+    'bk.heroTitle': "Reserva tu Viaje Premium",
+    'bk.heroDesc': "Experimenta Panamá con los más altos estándares de confiabilidad y lujo. Llena el formulario a continuación para asegurar tu transporte privado o servicio personalizado.",
+    'bk.formTitle': "Detalles de la Reservación",
+    'bk.alertFields': "Por favor, completa todos los campos obligatorios marcados con un asterisco (*).",
+    'bk.serviceTypeLabel': "¿Qué servicio necesita? *",
+    'bk.selectServiceType': "Seleccione un tipo de servicio...",
+    'bk.serviceTransfer': "Servicio de Traslado",
+    'bk.serviceTour': "Tours Organizados / Paseos",
+    'bk.serviceCorporate': "Servicios Personalizados y Corporativos",
+    'bk.nameLabel': "Nombre Completo *",
+    'bk.emailLabel': "Correo Electrónico",
+    'bk.phoneLabel': "Número de Teléfono / WhatsApp *",
+    'bk.peopleLabel': "Cantidad de Personas / Asistentes *",
+    'bk.dateLabel': "Fecha Estimada *",
+    'bk.notesLabel': "Solicitudes Especiales o Preferencias",
+    'bk.notesPlaceholder': "Cualquier detalle adicional para nuestro equipo...",
+    'bk.transferRouteLabel': "Ruta del Traslado *",
+    'bk.selectRoute': "Seleccione la ruta...",
+    'bk.routeToHotel': "Aeropuerto ➔ Hotel / Destino",
+    'bk.routeToAirport': "Hotel / Origen ➔ Aeropuerto",
+    'bk.routeRoundtrip': "Ida y Vuelta (Aeropuerto ➔ Hotel ➔ Aeropuerto)",
+    'bk.airportLabel': "Aeropuerto en Panamá *",
+    'bk.selectAirport': "Seleccione el aeropuerto...",
+    'bk.flightNumLabel': "Número de Vuelo *",
+    'bk.flightTimeLabel': "Hora del Vuelo *",
+    'bk.fleetLabel': "Seleccione el Tipo de Vehículo de la Flota *",
+    'bk.selectVehicle': "Seleccione un vehículo de nuestra flota...",
+    'bk.tourSelectLabel': "Elija un Tour *",
+    'bk.selectTour': "Seleccione un tour...",
+    'bk.tourCustom': "Tour Personalizado a Medida",
+    'bk.pickupLabel': "Lugar de Recogida / Hotel *",
+    'bk.tourDurationLabel': "Duración Estimada (Horas/Días) *",
+    'bk.tourPlacesLabel': "Lugares de Interés *",
+    'bk.tourPlacesPlaceholder': "Ej: Casco Viejo, Canal de Panamá, Calzada de Amador...",
+    'bk.budgetLabel': "Presupuesto Aproximado (USD)",
+    'bk.budgetPlaceholder': "Ej: $500, $1500 (Opcional)",
+    'bk.experienceTypeLabel': "Tipo de Experiencia Deseada *",
+    'bk.selectExperience': "Seleccione un estilo...",
+    'bk.expVacation': "Vacacional y Familiar",
+    'bk.expAdventure': "Eco-Aventura y Naturaleza",
+    'bk.expLuxury': "Experiencia VIP y de Lujo",
+    'bk.corpNameLabel': "Nombre de la Empresa / Organización *",
+    'bk.corpTypeLabel': "Tipo de Evento *",
+    'bk.corpTypePlaceholder': "Ej: Retiro Ejecutivo, Congreso, Team Building",
+    'bk.corpStaffLabel': "Requerimientos de Personal o Coordinación",
+    'bk.corpStaffPlaceholder': "Ej: Coordinadores bilingües, personal de bienvenida en aeropuerto...",
+    'bk.detailsLabel': "Descripción Detallada de lo que Busca *",
+    'bk.detailsPlaceholder': "Describa detalladamente el itinerario ideal, horarios o plan logístico que requiere...",
+    'bk.submitBtn': "Enviar Solicitud de Reserva",
+    'bk.waNote': "⚡ Después del envío, serás redirigido a WhatsApp para una confirmación instantánea.",
+    'bk.sidebarTitle': "Contacto Directo",
+    'bk.sidebarWhy': "¿Por qué elegir JM Transport Group?",
+    'bk.fleetTitle': "Nuestra Flota Premium",
+    'bk.fleetDesc': "Desde SUVs ejecutivas hasta vans de lujo y autobuses de alta capacidad."
+  }
 };
 
 const LanguageContext = createContext<LanguageContextType | null>(null);
@@ -440,6 +543,7 @@ export function LanguageProvider({ children }: { children: React.ReactNode }) {
   const t = (key: string): string => {
     return (translations[lang] as Record<string, string>)[key] ?? key;
   };
+
   return (
     <LanguageContext.Provider value={{ lang, toggleLang, t }}>
       {children}

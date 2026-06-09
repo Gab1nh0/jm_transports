@@ -50,7 +50,7 @@ export const SocialPill: React.FC = () => {
       </a>
     
       <a 
-        href="https://linkedin.com/company/tu_usuario" 
+        href="https://www.linkedin.com/company/jm-transport-panama/" 
         target="_blank" 
         rel="noopener noreferrer" 
         className="social-icon linkedin"
