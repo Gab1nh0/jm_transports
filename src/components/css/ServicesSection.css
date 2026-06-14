@@ -15,7 +15,7 @@
   font-size: 0.9rem;
   font-weight: 700;
   letter-spacing: 0.2em;
-  color: var(--color-tertiary);
+  color: var(--color-secondary);
   text-transform: uppercase;
 }
 
@@ -87,7 +87,7 @@ position: absolute;
 
 .card-tag {
   align-self: flex-start;
-  background-color: rgba(255, 242, 0, 0.385);
+  background-color: rgba(255, 255, 255, 0.385);
   color: var(--color-white);
   padding: 6px 12px;
   font-size: 0.8rem;

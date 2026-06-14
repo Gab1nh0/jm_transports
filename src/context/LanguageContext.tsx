@@ -354,11 +354,12 @@ const translations = {
     // Monkey Tour
     'tours.monkey.title': 'Tour de Monos',
     'tours.monkey.price_label': 'Medio día',
-    'tours.monkey.price': '$65/per',
+    'tours.monkey.price': '$85/per',
     'tours.monkey.desc': 'Descubre la biodiversidad del Canal de Panamá y conoce a sus residentes más famosos de cerca en su hábitat natural.',
     'tours.monkey.inc1': 'Paseo en bote por el Canal',
     'tours.monkey.inc2': 'Avistamiento de fauna',
     'tours.monkey.inc3': 'Recogida y regreso al hotel',
+    'tours.monkey.inc4': 'Minimo 2 personas',
 
     // City Tour
     'tours.city.title': 'Tour por la Ciudad de Panamá',

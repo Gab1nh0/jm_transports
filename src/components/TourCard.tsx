@@ -3,6 +3,8 @@ import { useNavigate } from 'react-router-dom';
 import { useRef, useState, useEffect, useCallback } from 'react';
 import { useLang } from '../context/LanguageContext';
 
+import imgCustomExperience from '../assets/tour_icon.png';
+
 interface CarouselProps {
   images: { src: string; alt: string }[];
   className?: string;
@@ -287,11 +289,11 @@ export default function Tours() {
         {/* ── Custom Experience ── */}
         <div className="tc-custom">
           <div className="tc-custom-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="custom-appointment-svg yellow-svg">
-              <path d="M16 2v4M8 2v4M3 10h18M5 4h14a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2z" />
-              <circle cx="12" cy="14" r="2" />
-              <path d="M16 19c0-1.5-1.5-2.5-4-2.5s-4 1-4 2.5" />
-            </svg>
+            <img 
+                  src={imgCustomExperience} 
+                  alt="Check Icon" 
+                  className="custom-appointment-svg yellow-svg"
+                />
           </div>
           <h3>{lang === 'en' ? 'Need a Custom Experience?' : '¿Necesitas una Experiencia Personalizada?'}</h3>
           <p>
