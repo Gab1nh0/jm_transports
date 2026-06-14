@@ -5,40 +5,16 @@ import Footer from '../components/footer.tsx';
 import Navbarwhite from '../components/navbar_fondo.tsx';
 import { useLang } from '../context/LanguageContext.tsx'; 
 
-// Lista optimizada y ordenada alfabéticamente de los prefijos más comunes del mundo
-const ALL_COUNTRIES = [
-  { code: 'DE', prefix: '+49', flag: '🇩🇪', name: 'Alemania' },
-  { code: 'AR', prefix: '+54', flag: '🇦🇷', name: 'Argentina' },
-  { code: 'BO', prefix: '+591', flag: '🇧🇴', name: 'Bolivia' },
-  { code: 'BR', prefix: '+55', flag: '🇧🇷', name: 'Brasil' },
-  { code: 'CA', prefix: '+1', flag: '🇨🇦', name: 'Canadá' },
-  { code: 'CL', prefix: '+56', flag: '🇨🇱', name: 'Chile' },
-  { code: 'CO', prefix: '+57', flag: '🇨🇴', name: 'Colombia' },
-  { code: 'CR', prefix: '+506', flag: '🇨🇷', name: 'Costa Rica' },
-  { code: 'CU', prefix: '+593', flag: '🇨🇺', name: 'Cuba' },
-  { code: 'EC', prefix: '+593', flag: '🇪🇨', name: 'Ecuador' },
-  { code: 'SV', prefix: '+503', flag: '🇸🇻', name: 'El Salvador' },
-  { code: 'ES', prefix: '+34', flag: '🇪🇸', name: 'España' },
-  { code: 'US', prefix: '+1', flag: '🇺🇸', name: 'Estados Unidos' },
-  { code: 'FR', prefix: '+33', flag: '🇫🇷', name: 'Francia' },
-  { code: 'GT', prefix: '+502', flag: '🇬🇹', name: 'Guatemala' },
-  { code: 'HN', prefix: '+504', flag: '🇭🇳', name: 'Honduras' },
-  { code: 'IT', prefix: '+39', flag: '🇮🇹', name: 'Italia' },
-  { code: 'MX', prefix: '+52', flag: '🇲🇽', name: 'México' },
-  { code: 'NI', prefix: '+505', flag: '🇳🇮', name: 'Nicaragua' },
-  { code: 'PA', prefix: '+507', flag: '🇵🇦', name: 'Panamá' },
-  { code: 'PY', prefix: '+595', flag: '🇵🇾', name: 'Paraguay' },
-  { code: 'PE', prefix: '+51', flag: '🇵🇪', name: 'Perú' },
-  { code: 'PR', prefix: '+1-787', flag: '🇵🇷', name: 'Puerto Rico' },
-  { code: 'GB', prefix: '+44', flag: '🇬🇧', name: 'Reino Unido' },
-  { code: 'DO', prefix: '+1-809', flag: '🇩🇴', name: 'República Dominicana' },
-  { code: 'UY', prefix: '+598', flag: '🇺🇾', name: 'Uruguay' },
-  { code: 'VE', prefix: '+58', flag: '🇻🇪', name: 'Venezuela' }
-];
+// Librería internacional de teléfono
+import { PhoneInput } from 'react-international-phone';
+import 'react-international-phone/style.css';
 
 export default function Booking() {
   const [searchParams] = useSearchParams();
-  const { t } = useLang();
+  const { lang, t } = useLang();
+  const dropdownRef = useRef<HTMLDivElement>(null);
+
+  const companyPhone = '50762166675';
 
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: 'instant' });
@@ -51,30 +27,7 @@ export default function Booking() {
   const [people, setPeople] = useState('1');
   const [date, setDate] = useState('');
   const [notes, setNotes] = useState('');
-
-  // ── SISTEMA NATIVO DE TELÉFONO CUSTOM ──
-  const [selectedCountry, setSelectedCountry] = useState(ALL_COUNTRIES.find(c => c.code === 'PA') || ALL_COUNTRIES[0]);
   const [phoneNumber, setPhoneNumber] = useState('');
-  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
-  const [searchQuery, setSearchQuery] = useState('');
-  const dropdownRef = useRef<HTMLDivElement>(null);
-
-  // Cerrar el selector de países si se hace clic afuera
-  useEffect(() => {
-    function handleClickOutside(event: MouseEvent) {
-      if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
-        setIsDropdownOpen(false);
-      }
-    }
-    document.addEventListener('mousedown', handleClickOutside);
-    return () => document.removeEventListener('mousedown', handleClickOutside);
-  }, []);
-
-  // Filtrar países en base a la búsqueda del usuario
-  const filteredCountries = ALL_COUNTRIES.filter(country =>
-    country.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-    country.prefix.includes(searchQuery)
-  );
 
   // Estados - Servicio de Traslado
   const [transferRoute, setTransferRoute] = useState('');
@@ -140,10 +93,19 @@ export default function Booking() {
     }
   }, [searchParams]);
 
+  const handleSupportRedirect = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    e.preventDefault();
+    const supportMessage = lang === 'en'
+      ? 'Hello, JM Transport Group! I am on the booking page and would like to request premium assistance to coordinate an active itinerary.'
+      : '¡Hola, JM Transport Group! Estoy en la página de reservas y me gustaría solicitar asistencia premium para coordinar un itinerario activo.';
+    
+    window.open(`https://wa.me/${companyPhone}?text=${encodeURIComponent(supportMessage)}`, '_blank');
+  };
+
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
 
-    if (!serviceType || !fullName.trim() || !phoneNumber.trim() || !date) {
+    if (!serviceType || !fullName.trim() || phoneNumber.length < 5 || !date) {
       alert(t('bk.alertFields'));
       return;
     }
@@ -167,83 +129,87 @@ export default function Booking() {
       }
     }
 
-    const waPhone = '50762166675';
-    const fullPhoneString = `${selectedCountry.prefix} ${phoneNumber.trim()}`;
     let lines: string[] = [];
 
     if (serviceType === 'transfer') {
       lines = [
-        '🚐 *JM Transport Group — Servicio de Traslado*',
+        ' *JM Transport Group — Servicio de Traslado*',
+        '__________________________________________',
         '',
-        `👤 *Cliente:* ${fullName.trim()}`,
-        `📧 *Correo:* ${email.trim() || 'No provisto'}`,
-        `📱 *Teléfono:* ${fullPhoneString}`,
-        `👥 *Pasajeros:* ${people}`,
-        `📅 *Fecha:* ${date}`,
-        `🔄 *Ruta:* ${transferRoute}`,
-        `🛫 *Aeropuerto:* ${airport}`,
-        `🔢 *Nº Vuelo:* ${flightNum.trim().toUpperCase()}`,
-        `⏰ *Hora:* ${flightTime}`,
-        `🚗 *Vehículo Preseleccionado:* ${selectedVehicle}`,
+        ` *Cliente:* ${fullName.trim()}`,
+        ` *Correo:* ${email.trim() || 'No provisto'}`,
+        ` *Teléfono:* ${phoneNumber.trim()}`,
+        ` *Pasajeros:* ${people}`,
+        ` *Fecha:* ${date}`,
+        ` *Ruta:* ${transferRoute}`,
+        ` *Aeropuerto:* ${airport}`,
+        ` *Nº Vuelo:* ${flightNum.trim().toUpperCase()}`,
+        ` *Hora de Vuelo:* ${flightTime}`,
+        ` *Vehículo:* ${selectedVehicle}`,
       ];
     } else if (serviceType === 'tour') {
       lines = [
-        '🚐 *JM Transport Group — Reserva de Tour*',
+        ' *JM Transport Group — Reserva de Tour*',
+        '__________________________________________',
         '',
-        `👤 *Cliente:* ${fullName.trim()}`,
-        `📧 *Correo:* ${email.trim() || 'No provisto'}`,
-        `📱 *Teléfono:* ${fullPhoneString}`,
-        `👥 *Pasajeros:* ${people}`,
-        `📅 *Fecha Estimada:* ${date}`,
-        `🎯 *Tour Seleccionado:* ${selectedTour}`,
-        `⏱️ *Duración Estimada:* ${tourDuration}`,
-        `📍 *Lugar de Recogida:* ${pickupLocation.trim()}`,
-        `🗺️ *Lugares de Interés:* ${tourPlaces.trim()}`,
+        ` *Cliente:* ${fullName.trim()}`,
+        ` *Correo:* ${email.trim() || 'No provisto'}`,
+        ` *Teléfono:* ${phoneNumber.trim()}`,
+        ` *Pasajeros:* ${people}`,
+        ` *Fecha Estimada:* ${date}`,
+        ` *Tour Seleccionado:* ${selectedTour}`,
+        ` *Duración Estimada:* ${tourDuration}`,
+        ` *Lugar de Recogida:* ${pickupLocation.trim()}`,
+        ` *Lugares de Interés:* ${tourPlaces.trim()}`,
         '',
-        `📋 *Descripción Detallada:*`,
+        ` *Descripción Detallada:*`,
         detailedDescription.trim()
       ];
     } else if (serviceType === 'corporate') {
       if (subCategory === 'personal') {
         lines = [
-          '🚐 *JM Transport Group — Servicio Personalizado*',
+          ' *JM Transport Group — Servicio Personalizado*',
+          '__________________________________________',
           '',
-          `👤 *Cliente:* ${fullName.trim()}`,
-          `📧 *Correo:* ${email.trim() || 'No provisto'}`,
-          `📱 *Teléfono:* ${fullPhoneString}`,
-          `👥 *Participantes:* ${people}`,
-          `📅 *Fechas del Viaje:* ${date}`,
-          `✨ *Estilo de Experiencia:* ${experienceType}`,
-          `💰 *Presupuesto Aprox:* ${budget.trim() || 'No especificado'}`,
+          ` *Cliente:* ${fullName.trim()}`,
+          ` *Correo:* ${email.trim() || 'No provisto'}`,
+          ` *Teléfono:* ${phoneNumber.trim()}`,
+          ` *Participantes:* ${people}`,
+          ` *Fechas del Viaje:* ${date}`,
+          ` *Estilo de Experiencia:* ${experienceType}`,
+          ` *Presupuesto Aprox:* ${budget.trim() || 'No especificado'}`,
           '',
-          `📋 *Descripción del Viaje:*`,
+          ` *Descripción del Viaje:*`,
           detailedDescription.trim()
         ];
       } else {
         lines = [
-          '🚐 *JM Transport Group — Evento Corporativo*',
+          ' *JM Transport Group — Evento Corporativo*',
+          '__________________________________________',
           '',
-          `🏢 *Empresa:* ${companyName.trim()}`,
-          `👤 *Contacto:* ${fullName.trim()}`,
-          `📧 *Correo:* ${email.trim() || 'No provisto'}`,
-          `📱 *Teléfono:* ${fullPhoneString}`,
-          `👥 *Asistentes Estimados:* ${people}`,
-          `📅 *Fecha del Evento:* ${date}`,
-          `💼 *Tipo de Evento:* ${corporateType.trim()}`,
-          `🛠️ *Requerimientos de Personal:* ${staffRequirements.trim() || 'Ninguno'}`,
+          ` *Empresa:* ${companyName.trim()}`,
+          ` *Contacto:* ${fullName.trim()}`,
+          ` *Correo:* ${email.trim() || 'No provisto'}`,
+          ` *Teléfono:* ${phoneNumber.trim()}`,
+          ` *Asistentes Estimados:* ${people}`,
+          ` *Fecha del Evento:* ${date}`,
+          ` *Tipo de Evento:* ${corporateType.trim()}`,
+          ` *Requerimientos de Personal:* ${staffRequirements.trim() || 'Ninguno'}`,
           '',
-          `📋 *Logística y Detalles:*`,
+          ` *Logística y Detalles:*`,
           detailedDescription.trim()
         ];
       }
     }
 
     if (notes.trim()) {
-      lines.push('', `💬 *Notas / Solicitudes Especiales:* ${notes.trim()}`);
+      lines.push('', ` *Notas Especiales:* ${notes.trim()}`);
     }
 
+    lines.push('', '__________________________________________', ' *JM Transport Group* — *Panama Premium Mobility*');
+
     const message = encodeURIComponent(lines.join('\n'));
-    window.open(`https://wa.me/${waPhone}?text=${message}`, '_blank');
+    window.open(`https://wa.me/${companyPhone}?text=${message}`, '_blank');
   };
 
   return (
@@ -251,19 +217,33 @@ export default function Booking() {
       <Navbarwhite />
       <div className="bk-root">
 
-        <div className="bk-hero">
-          <img src="https://firebasestorage.googleapis.com/v0/b/jmtransport-df658.firebasestorage.app/o/kunayala53925.jpg?alt=media&token=c5111d87-fbb1-48d0-83f6-3f75ab1ca004" alt="Panama" />
-          <div className="bk-hero-overlay" />
-          <div className="bk-hero-content">
-            <h1>{t('bk.heroTitle')}</h1>
-            <p>{t('bk.heroDesc')}</p>
+        {/* ── HEADER CON CAPA VISUAL CINEMÁTICA PREMIUM ── */}
+        <header className="bk-editorial-header">
+          <div className="bk-editorial-overlay" />
+          <div className="bk-canvas-container">
+            <span className="bk-meta-tag">SECURE RESERVATIONS</span>
+            <h1 className="bk-display-title">
+              {lang === 'en' ? (
+                <>PLAN YOUR <span className="bk-stroke-text">JOURNEY</span></>
+              ) : (
+                <>PLANIFICA TU <span className="bk-stroke-text">TRAYECTO</span></>
+              )}
+            </h1>
+            <p className="bk-lead-subtitle">
+              {lang === 'en'
+                ? 'Coordinate your private transfer, corporate event logistics, or custom tours with absolute synchrony and local transparency.'
+                : 'Coordina tu traslado privado, logística de eventos corporativos o paseos personalizados bajo una sincronía absoluta y transparencia local.'}
+            </p>
           </div>
-        </div>
+        </header>
 
         <div className="bk-body">
           
           <form className="bk-form-card" onSubmit={handleSubmit}>
-            <h2>{t('bk.formTitle')}</h2>
+            <div className="bk-form-header">
+              <h2>{t('bk.formTitle')}</h2>
+              <div className="bk-accent-line-mini" />
+            </div>
             
             <div className="bk-grid">
               
@@ -315,58 +295,14 @@ export default function Booking() {
                     <input type="email" placeholder="client@example.com" value={email} onChange={e => setEmail(e.target.value)} />
                   </div>
 
-                  {/* ── SELECTOR DE TELÉFONO 100% NATIVO Y PREMIUM ── */}
-                  <div className="bk-field full">
+                  {/* Teléfono Internacional integrado */}
+                  <div className="bk-field full" ref={dropdownRef}>
                     <label>{t('bk.phoneLabel')}</label>
-                    <div className="bk-phone-custom-wrapper" ref={dropdownRef}>
-                      <button
-                        type="button"
-                        className="bk-phone-flag-trigger"
-                        onClick={() => setIsDropdownOpen(!isDropdownOpen)}
-                      >
-                        <span className="bk-trigger-flag">{selectedCountry.flag}</span>
-                        <span className="bk-trigger-prefix">{selectedCountry.prefix}</span>
-                        <span className="bk-trigger-arrow">▼</span>
-                      </button>
-
-                      {isDropdownOpen && (
-                        <div className="bk-phone-countries-dropdown">
-                          <input
-                            type="text"
-                            className="bk-phone-dropdown-search"
-                            placeholder={t('nav.booking') === 'Reservas' ? 'Buscar país...' : 'Search country...'}
-                            value={searchQuery}
-                            onChange={e => setSearchQuery(e.target.value)}
-                            autoFocus
-                          />
-                          <div className="bk-phone-countries-list">
-                            {filteredCountries.map((country) => (
-                              <button
-                                key={country.code}
-                                type="button"
-                                className={`bk-phone-country-option ${selectedCountry.code === country.code ? 'selected' : ''}`}
-                                onClick={() => {
-                                  setSelectedCountry(country);
-                                  setIsDropdownOpen(false);
-                                  setSearchQuery('');
-                                }}
-                              >
-                                <span className="bk-opt-flag">{country.flag}</span>
-                                <span className="bk-opt-name">{country.name}</span>
-                                <span className="bk-opt-prefix">{country.prefix}</span>
-                              </button>
-                            ))}
-                          </div>
-                        </div>
-                      )}
-
-                      <input
-                        type="tel"
-                        className="bk-phone-number-input"
-                        placeholder={selectedCountry.code === 'US' || selectedCountry.code === 'CA' ? '201 555 0123' : '6000 0000'}
+                    <div className="bk-phone-library-wrapper">
+                      <PhoneInput
+                        defaultCountry="pa"
                         value={phoneNumber}
-                        onChange={e => setPhoneNumber(e.target.value.replace(/[^0-9\s-]/g, ''))}
-                        required
+                        onChange={(phone) => setPhoneNumber(phone)}
                       />
                     </div>
                   </div>
@@ -527,73 +463,57 @@ export default function Booking() {
               <>
                 <button type="submit" className="bk-submit">
                   {t('bk.submitBtn')}
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
                     <line x1="22" y1="2" x2="11" y2="13" />
                     <polygon points="22 2 15 22 11 13 2 9 22 2" />
                   </svg>
                 </button>
-                <p className="bk-note">{t('bk.waNote')}</p>
+                <p className="bk-note">⚡ {t('bk.waNote')}</p>
               </>
             )}
           </form>
 
-          <div className="bk-sidebar">
+          {/* Sidebar */}
+          <aside className="bk-sidebar">
             <div className="bk-contact-card">
-              <h3>{t('bk.sidebarTitle')}</h3>
+              <h3>{lang === 'en' ? 'VIP Chauffeur & Logistics Support' : 'Soporte y Conserjería de Movilidad'}</h3>
+              <p className="bk-sidebar-lead">
+                {lang === 'en'
+                  ? 'Do you have custom security guidelines, tight corporate timelines, or specific VIP requests? Talk with an executive operator immediately.'
+                  : '¿Tiene pautas de seguridad estrictas, agendas corporativas complejas o solicitudes VIP específicas? Coordine con un operador ejecutivo en tiempo real.'}
+              </p>
 
               <div className="bk-contact-item">
                 <div className="bk-contact-icon wa">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"><path fill="currentColor" d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21c5.46 0 9.91-4.45 9.91-9.91c0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2m.01 1.67c2.2 0 4.26.86 5.82 2.42a8.23 8.23 0 0 1 2.41 5.83c0 4.54-3.7 8.23-8.24 8.23c-1.48 0-2.93-.39-4.19-1.15l-.3-.17l-3.12.82l.83-3.04l-.2-.32a8.2 8.2 0 0 1-1.26-4.38c.01-4.54 3.7-8.24 8.25-8.24M8.53 7.33c-.16 0-.43.06-.66.31c-.22.25-.87.86-.87 2.07c0 1.22.89 2.39 1 2.56c.14.17 1.76 2.67 4.25 3.73c.59.27 1.05.42 1.41.53c.59.19 1.13.16 1.56.1c.48-.07 1.46-.6 1.67-1.18s.21-1.07.15-1.18c-.07-.1-.23-.16-.48-.27c-.25-.14-1.47-.74-1.69-.82c-.23-.08-.37-.12-.56.12c-.16.25-.64.81-.78.97c-.15.17-.29.19-.53.07c-.26-.13-1.06-.39-2-1.23c-.74-.66-1.23-1.47-1.38-1.72c-.12-.24-.01-.39.11-.5c.11-.11.27-.29.37-.44c.13-.14.17-.25.25-.41c.08-.17.04-.31-.02-.43c-.06-.11-.56-1.35-.77-1.84c-.2-.48-.4-.42-.56-.43c-.14 0-.3-.01-.47-.01"/></svg>
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21c5.46 0 9.91-4.45 9.91-9.91c0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2m.01 1.67c2.2 0 4.26.86 5.82 2.42a8.23 8.23 0 0 1 2.41 5.83c0 4.54-3.7 8.23-8.24 8.23c-1.48 0-2.93-.39-4.19-1.15l-.3-.17l-3.12.82l.83-3.04l-.2-.32a8.2 8.2 0 0 1-1.26-4.38c.01-4.54 3.7-8.24 8.25-8.24M8.53 7.33c-.16 0-.43.06-.66.31c-.22.25-.87.86-.87 2.07c0 1.22.89 2.39 1 2.56c.14.17 1.76 2.67 4.25 3.73c.59.27 1.05.42 1.41.53c.59.19 1.13.16 1.56.1c.48-.07 1.46-.6 1.67-1.18s.21-1.07.15-1.18c-.07-.1-.23-.16-.48-.27c-.25-.14-1.47-.74-1.69-.82c-.23-.08-.37-.12-.56.12c-.16.25-.64.81-.78.97c-.15.17-.29.19-.53.07c-.26-.13-1.06-.39-2-1.23c-.74-.66-1.23-1.47-1.38-1.72c-.12-.24-.01-.39.11-.5c.11-.11.27-.29.37-.44c.13-.14.17-.25.25-.41c.08-.17.04-.31-.02-.43c-.06-.11-.56-1.35-.77-1.84c-.2-.48-.4-.42-.56-.43c-.14 0-.3-.01-.47-.01"/>
+                  </svg>
                 </div>
                 <div className="bk-contact-info">
-                  <strong>WhatsApp Support</strong>
+                  <strong>{lang === 'en' ? 'Instant Helpline' : 'Línea Directa'}</strong>
                   <span>+507 6216-6675</span>
-                  <small>Available 24/7 for active bookings</small>
                 </div>
               </div>
 
               <div className="bk-contact-item">
                 <div className="bk-contact-icon em">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="#4f6ef7" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
                     <rect x="2" y="4" width="20" height="16" rx="2" />
                     <path d="M2 7l10 7 10-7" />
                   </svg>
                 </div>
                 <div className="bk-contact-info">
-                  <strong>Email Inquiries</strong>
+                  <strong>{lang === 'en' ? 'Email Desk' : 'Soporte vía Correo'}</strong>
                   <span>jmtransport.pa@gmail.com</span>
                 </div>
               </div>
 
-              <hr className="bk-divider" />
-
-              <div className="bk-why">
-                <h4>{t('bk.sidebarWhy')}</h4>
-                {[
-                  t('fleet.benefit.ac'),
-                  t('fleet.benefit.tracking'),
-                  t('fleet.benefit.luggage'),
-                  t('fleet.benefit.drivers')
-                ].map(item => (
-                  <div key={item} className="bk-why-item">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="#00D2E6" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                      <path d="M22 11.08V12a10 10 0 11-5.93-9.14" />
-                      <polyline points="22 4 12 14.01 9 11.01" />
-                    </svg>
-                    {item}
-                  </div>
-                ))}
-              </div>
+              <a href="#" onClick={handleSupportRedirect} className="bk-whatsapp-editorial-btn">
+                <span className="bk-pulse-gold-dot" /> WhatsApp Concierge 24/7
+              </a>
             </div>
+          </aside>
 
-            <div className="bk-fleet-card">
-              <div className="bk-fleet-card-content">
-                <h3>{t('bk.fleetTitle')}</h3>
-                <p>{t('bk.fleetDesc')}</p>
-              </div>
-            </div>
-
-          </div>
         </div>
       </div>
       <Footer />

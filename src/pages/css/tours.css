@@ -1,477 +1,437 @@
 /* ==========================================================================
-   CONFIGURACIÓN FUENTES Y RAÍZ
+   CONFIGURACIÓN PREMIUM Y RAÍZ EDITORIAL (INTER FONT)
    ========================================================================== */
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
 
 .bk-root {
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
   background: var(--color-neutral-bg, #F5F7F8);
   min-height: 100vh;
-  color: var(--color-primary, #000000);
+  color: var(--color-primary, #121212);
   -webkit-font-smoothing: antialiased;
 }
 
 /* ==========================================================================
-   HERO SECTION (Mantenido Layout Original)
+   HEADER CINEMÁTICO PREMIUM CON ENFOQUE MODERNO (MÁSCARA DE COLOR O IMAGEN)
    ========================================================================== */
-.bk-hero {
+.bk-editorial-header {
   position: relative;
-  width: 100%;
-  height: 400px;
+  padding: 180px 0 100px; 
+  box-sizing: border-box;
+  /* Degradado asfáltico premium. Si deseas colocar una imagen de fondo real, 
+     descomenta la siguiente línea y reemplaza el link */
+  background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+  background-image: url('../../assets/portobelo.png');
+  background-size: cover;
+  background-position: center;
   overflow: hidden;
-  display: flex;
-  align-items: center;
 }
 
-.bk-hero img {
+/* Capa oscura sutil para garantizar la legibilidad perfecta del texto */
+.bk-editorial-overlay {
   position: absolute;
-  inset: 0;
+  top: 0;
+  left: 0;
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  background: rgba(0, 0, 0, 0.675); 
+  backdrop-filter: blur(2px); 
+  z-index: 1;
 }
 
-.bk-hero-overlay {
-  position: absolute;
-  inset: 0;
-  background: rgba(0, 0, 0, 0.30);
-}
-
-.bk-hero-content {
+/* ── CONTENEDOR CENTRAL DE ALINEACIÓN (ARREGLA EL PROBLEMA DEL BORDE IZQUIERDO) ── */
+.bk-canvas-container {
   position: relative;
-  z-index: 2;
-  padding: 0 48px;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 40px;
+  box-sizing: border-box;
+  z-index: 2; 
 }
 
-.bk-hero-content h1 {
-  font-size: 2.2rem;
-  font-weight: 800;
-  color: var(--color-white, #FFFFFF);
-  margin-bottom: 10px;
-  letter-spacing: -0.02em;
+.bk-meta-tag {
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--color-tertiary, #ffdd00); 
+  display: block;
+  margin-bottom: 20px;
 }
 
-.bk-hero-content p {
-  color: rgba(255, 255, 255, 0.75);
-  font-size: 0.92rem;
-  font-weight: 300;
-  max-width: 420px;
-  line-height: 1.6;
+.bk-display-title {
+  font-size: 4.2rem;
+  font-weight: 900;
+  line-height: 1.1;
+  letter-spacing: -0.03em;
+  margin: 0 0 24px 0;
+  text-transform: uppercase;
+  color: #FFFFFF; 
+}
+
+.bk-stroke-text {
+  color: transparent;
+  -webkit-text-stroke: 1.5px var(--color-white, #FFFFFF);
+;
+}
+
+.bk-lead-subtitle {
+  font-size: 1.2rem;
+  line-height: 1.8;
+  color: #cbd5e1; 
+  max-width: 650px;
+  margin: 0;
+  font-weight: 400;
 }
 
 /* ==========================================================================
-   BODY LAYOUT
+   BODY LAYOUT ASIMÉTRICO CENTRADO
    ========================================================================== */
 .bk-body {
   display: grid;
-  grid-template-columns: 1.4fr 1fr;
-  gap: 24px;
-  padding: 32px 48px 48px;
-  max-width: 1100px;
-  margin: 0 auto;
+  grid-template-columns: 1.25fr 0.75fr;
+  gap: 48px;
+  padding: 80px 40px;
+  max-width: 1200px;
+  margin: -40px auto 0; /* Sube un poco para superponerse elegantemente al header */
+  position: relative;
+  z-index: 3;
+  box-sizing: border-box;
 }
 
 /* ==========================================================================
-   TARJETA DEL FORMULARIO PREMIUM
+   TARJETA DEL FORMULARIO DE ALTO CONTRASTE
    ========================================================================== */
 .bk-form-card {
   background: var(--color-white, #FFFFFF);
-  border-radius: 16px;
-  border: 1px solid #e2e8f0;
-  padding: 32px;
+  border-radius: 24px;
+  border: 1px solid rgba(18, 18, 18, 0.08);
+  padding: 48px;
   height: fit-content;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.02);
+  box-shadow: 0 20px 40px rgba(15, 23, 42, 0.06);
+}
+
+.bk-form-header {
+  margin-bottom: 36px;
 }
 
 .bk-form-card h2 {
-  font-size: 1.3rem;
-  font-weight: 700;
-  color: var(--color-primary, #000000);
-  margin-bottom: 24px;
+  font-size: 1.6rem;
+  font-weight: 800;
+  color: var(--color-primary, #121212);
+  letter-spacing: -0.02em;
+  margin: 0 0 12px 0;
+  text-transform: uppercase;
+}
+
+.bk-accent-line-mini {
+  width: 40px;
+  height: 4px;
+  background-color: var(--color-secondary, #0a65fe);
+  border-radius: 2px;
 }
 
 .bk-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 16px;
-  margin-bottom: 16px;
+  gap: 20px;
+  margin-bottom: 24px;
 }
 
 .bk-field {
   display: flex;
   flex-direction: column;
-  gap: 6px;
+  gap: 8px;
 }
 
-.bk-field.full { grid-column: 1 / -1; }
+.bk-field.full { 
+  grid-column: 1 / -1; 
+}
 
 .bk-field label {
-  font-size: 0.78rem;
-  font-weight: 500;
-  color: #64748b;
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--color-primary, #121212);
   letter-spacing: 0.02em;
+  text-transform: uppercase;
 }
 
 .bk-field input,
 .bk-field select,
 .bk-field textarea {
   width: 100%;
-  padding: 11px 14px;
-  border-radius: 8px;
-  border: 1px solid #cbd5e1;
+  padding: 14px 18px;
+  border-radius: 10px;
+  border: 1.5px solid rgba(18, 18, 18, 0.15);
   background: var(--color-neutral-bg, #F5F7F8);
   font-family: 'Inter', sans-serif;
-  font-size: 0.9rem;
-  color: var(--color-primary, #000000);
+  font-size: 0.95rem;
+  color: var(--color-primary, #121212);
   outline: none;
   box-sizing: border-box;
-  transition: border-color 0.2s, background-color 0.2s, box-shadow 0.2s;
+  transition: all 0.25s ease;
 }
 
 .bk-field input:focus,
 .bk-field select:focus,
 .bk-field textarea:focus {
-  border-color: var(--color-tertiary, #D89C1D);
+  border-color: var(--color-secondary, #0a65fe);
   background: var(--color-white, #FFFFFF);
-  box-shadow: 0 0 0 4px rgba(216, 156, 29, 0.08);
+  box-shadow: 0 0 0 5px rgba(10, 101, 254, 0.08);
+}
+
+.bk-field select {
+  cursor: pointer;
+  padding-right: 44px;
+  appearance: none !important;
+  -webkit-appearance: none !important;
+  -moz-appearance: none !important;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%23121212' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'><polyline points='6 9 12 15 18 9'></polyline></svg>") !important;
+  background-repeat: no-repeat !important;
+  background-position: right 18px center !important;
+  background-size: 16px !important;
+}
+
+.bk-field select::-ms-expand {
+  display: none; 
 }
 
 .bk-field textarea {
   resize: vertical;
-  height: 110px;
+  height: 120px;
 }
 
-/* Sub-selector (Tabs del formulario mutable) */
+/* Tabs mutables */
 .bk-sub-selector {
   display: flex;
   gap: 8px;
   background: #e2e8f0;
-  padding: 4px;
-  border-radius: 10px;
+  padding: 6px;
+  border-radius: 12px;
+  border: 1px solid rgba(18, 18, 18, 0.05);
 }
 
 .bk-tab-btn {
   flex: 1;
-  padding: 10px;
-  font-size: 0.85rem;
-  font-weight: 500;
+  padding: 12px;
+  font-size: 0.88rem;
+  font-weight: 700;
   border: none;
   background: transparent;
   color: #64748b;
-  border-radius: 7px;
+  border-radius: 8px;
   cursor: pointer;
   transition: all 0.2s ease;
 }
 
 .bk-tab-btn.active {
   background: var(--color-white, #FFFFFF);
-  color: var(--color-secondary, #D89C1D);
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04);
-  font-weight: 600;
+  color: var(--color-secondary, #0a65fe);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
 }
 
 /* ==========================================================================
-   SELECTOR DE TELÉFONO INTERNACIONAL NATIVO
+   ESTILIZACIÓN AVANZADA SOBRE LA LIBRERÍA "REACT-INTERNATIONAL-PHONE"
    ========================================================================== */
-.bk-phone-custom-wrapper {
-  position: relative;
-  display: flex;
+.bk-phone-library-wrapper {
   width: 100%;
+}
+
+.bk-phone-library-wrapper .react-international-phone-container {
+  width: 100%;
+  display: flex;
   align-items: center;
 }
 
-.bk-phone-flag-trigger {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  padding: 0 12px;
-  height: 43px;
-  background: #e2e8f0;
-  border: 1px solid #cbd5e1;
-  border-right: none;
-  border-radius: 8px 0 0 8px;
-  cursor: pointer;
-  font-size: 0.9rem;
-  color: var(--color-primary, #000000);
-  font-weight: 500;
-  transition: background 0.2s;
+.bk-phone-library-wrapper .react-international-phone-country-selector-button {
+  height: 49px !important;
+  background-color: #e2e8f0 !important;
+  border: 1.5px solid rgba(18, 18, 18, 0.15) !important;
+  border-right: none !important;
+  border-radius: 10px 0 0 10px !important;
+  padding: 0 14px !important;
 }
 
-.bk-phone-flag-trigger:hover {
-  background: #cbd5e1;
+.bk-phone-library-wrapper .react-international-phone-country-selector-button:hover {
+  background-color: #cbd5e1 !important;
 }
 
-.bk-trigger-arrow {
-  font-size: 0.65rem;
-  color: #64748b;
+.bk-phone-library-wrapper .react-international-phone-input {
+  flex: 1 !important;
+  width: 100% !important;
+  height: 49px !important;
+  border: 1.5px solid rgba(18, 18, 18, 0.15) !important;
+  border-radius: 0 10px 10px 0 !important;
+  background: var(--color-neutral-bg, #F5F7F8) !important;
+  font-family: 'Inter', sans-serif !important;
+  font-size: 0.95rem !important;
+  color: var(--color-primary, #121212) !important;
+  padding: 14px 18px !important;
+  outline: none !important;
 }
 
-.bk-phone-number-input {
-  flex: 1;
-  height: 43px;
-  border-radius: 0 8px 8px 0 !important;
-  border-left: 1px solid #cbd5e1 !important;
-}
-
-/* Dropdown de países flotante */
-.bk-phone-countries-dropdown {
-  position: absolute;
-  top: 48px;
-  left: 0;
-  z-index: 50;
-  width: 280px;
-  background: var(--color-white, #FFFFFF);
-  border: 1px solid #e2e8f0;
-  border-radius: 12px;
-  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
-  padding: 8px;
-}
-
-.bk-phone-dropdown-search {
-  width: 100%;
-  padding: 8px 12px;
-  font-size: 0.85rem;
-  border: 1px solid #cbd5e1;
-  border-radius: 6px;
-  background: var(--color-neutral-bg, #F5F7F8);
-  margin-bottom: 8px;
-  outline: none;
-}
-
-.bk-phone-dropdown-search:focus {
-  border-color: var(--color-tertiary, #D89C1D);
-  background: var(--color-white, #FFFFFF);
-}
-
-.bk-phone-countries-list {
-  max-height: 200px;
-  overflow-y: auto;
-  display: flex;
-  flex-direction: column;
-}
-
-.bk-phone-country-option {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  width: 100%;
-  padding: 8px 10px;
-  background: transparent;
-  border: none;
-  border-radius: 6px;
-  cursor: pointer;
-  text-align: left;
-  font-size: 0.85rem;
-  color: #334155;
-}
-
-.bk-phone-country-option:hover {
-  background: var(--color-neutral-bg, #F5F7F8);
-}
-
-.bk-phone-country-option.selected {
-  background: #fef3c7;
-  color: var(--color-tertiary, #D89C1D);
-  font-weight: 500;
-}
-
-.bk-opt-name {
-  flex: 1;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
-.bk-opt-prefix {
-  color: #64748b;
-  font-size: 0.8rem;
+.bk-phone-library-wrapper .react-international-phone-input:focus {
+  border-color: var(--color-secondary, #0a65fe) !important;
+  background-color: var(--color-white, #FFFFFF) !important;
+  box-shadow: 0 0 0 5px rgba(10, 101, 254, 0.08) !important;
 }
 
 /* ==========================================================================
-   BOTÓN DE ENVÍO PRINCIPAL
+   BOTÓN DE ENVÍO Y SIDEBAR
    ========================================================================== */
 .bk-submit {
   width: 100%;
-  padding: 14px;
-  margin-top: 8px;
-  background: var(--color-secondary, #121212);
+  padding: 16px;
+  margin-top: 12px;
+  background: var(--color-primary, #121212);
   color: var(--color-white, #FFFFFF);
   border: none;
-  border-radius: 8px;
+  border-radius: 10px;
   font-size: 1rem;
-  font-weight: 600;
+  font-weight: 700;
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 10px;
-  transition: background-color 0.2s, transform 0.1s;
-}
-
-.bk-submit:hover { 
-  background: var(--color-primary, #D89C1D); 
-  color: var(--color-white, #FFFFFF);
-}
-
-.bk-submit:active { 
-  transform: scale(0.99); 
+  gap: 12px;
+  transition: all 0.2s ease;
 }
 
 .bk-submit svg { 
   width: 18px; 
   height: 18px; 
+  flex-shrink: 0; /* Evita que se deforme en pantallas pequeñas */
+  display: inline-block;
+}
+
+.bk-submit:hover { 
+  background: var(--color-secondary, #0a65fe); 
+  transform: translateY(-1px);
 }
 
 .bk-note {
   text-align: center;
-  margin-top: 12px;
-  font-size: 0.78rem;
-  color: #94a3b8;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 6px;
+  margin-top: 16px;
+  font-size: 0.8rem;
+  color: #64748b;
+  font-weight: 600;
 }
 
-/* ==========================================================================
-   SIDEBAR (Mantenido Original de tu amigo)
-   ========================================================================== */
 .bk-sidebar { 
   display: flex; 
   flex-direction: column; 
-  gap: 16px; 
+  gap: 24px; 
 }
 
 .bk-contact-card {
   background: var(--color-white, #FFFFFF);
-  border-radius: 16px;
-  border: 1px solid #e2e8f0;
-  padding: 24px;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.02);
+  border-radius: 24px;
+  border: 1px solid rgba(18, 18, 18, 0.08);
+  padding: 40px 32px;
+  box-shadow: 0 20px 40px rgba(15, 23, 42, 0.04);
 }
 
 .bk-contact-card h3 {
-  font-size: 1rem;
-  font-weight: 700;
-  color: var(--color-primary, #000000);
-  margin-bottom: 18px;
+  font-size: 1.15rem;
+  font-weight: 800;
+  color: var(--color-primary, #121212);
+  margin-bottom: 12px;
+  text-transform: uppercase;
+}
+
+.bk-sidebar-lead {
+  font-size: 0.92rem;
+  line-height: 1.6;
+  color: #64748b;
+  margin-bottom: 32px;
 }
 
 .bk-contact-item {
   display: flex;
-  align-items: flex-start;
-  gap: 12px;
-  margin-bottom: 16px;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 20px;
 }
 
 .bk-contact-icon {
-  width: 36px;
-  height: 36px;
-  border-radius: 8px;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
+  border: 1px solid rgba(18, 18, 18, 0.08);
 }
 
-.bk-contact-icon.wa { background: #e8fdf3; }
-.bk-contact-icon.em { background: #f0f4ff; }
-.bk-contact-icon svg { width: 18px; height: 18px; }
+.bk-contact-icon.wa { background: #e8fdf3; color: #25d366; }
+.bk-contact-icon.em { background: rgba(10, 101, 254, 0.05); color: var(--color-secondary, #0a65fe); }
+.bk-contact-icon svg { width: 20px; height: 20px; }
 
 .bk-contact-info strong {
   display: block;
-  font-size: 0.85rem;
-  font-weight: 600;
-  color: var(--color-secondary, #D89C1D);
+  font-size: 0.8rem;
+  font-weight: 800;
+  color: var(--color-primary, #121212);
+  text-transform: uppercase;
   margin-bottom: 2px;
 }
 
 .bk-contact-info span {
-  font-size: 0.82rem;
-  color: var(--color-primary, #000000);
-  display: block;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--color-primary, #121212);
 }
 
-.bk-contact-info small {
-  font-size: 0.72rem;
-  color: #94a3b8;
-}
-
-.bk-divider {
-  border: none;
-  border-top: 1px solid #e2e8f0;
-  margin: 16px 0;
-}
-
-.bk-why h4 {
-  font-size: 0.85rem;
-  font-weight: 700;
-  color: var(--color-primary, #000000);
-  margin-bottom: 12px;
-}
-
-.bk-why-item {
+.bk-whatsapp-editorial-btn {
   display: flex;
   align-items: center;
-  gap: 8px;
-  font-size: 0.82rem;
-  color: #4a5568;
-  margin-bottom: 8px;
-}
-
-/* El check lateral ahora toma tu color dorado terciario */
-.bk-why-item svg { 
-  width: 16px; 
-  height: 16px; 
-  flex-shrink: 0; 
-  stroke: var(--color-secondary, #D89C1D) !important;
-}
-
-.bk-fleet-card {
-  border-radius: 16px;
-  padding: 24px;
-  background-image: url('https://di-uploads-pod37.dealerinspire.com/defouwchevrolet/uploads/2022/08/2023-Chevrolet-Suburban.png');
-  background-size: cover;
-  background-position: center;
-  position: relative;
-  overflow: hidden;
-  min-height: 120px;
-  display: flex;
-  align-items: flex-end;
-}
-
-.bk-fleet-card::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: rgba(0, 0, 0, 0.65);
-}
-
-.bk-fleet-card-content { 
-  position: relative; 
-  z-index: 1; 
-}
-
-.bk-fleet-card h3 {
-  font-size: 1rem;
-  font-weight: 800;
+  justify-content: center;
+  gap: 12px;
+  background-color: var(--color-primary, #121212);
   color: var(--color-white, #FFFFFF);
-  margin-bottom: 6px;
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 0.88rem;
+  padding: 14px;
+  border-radius: 12px;
+  margin-top: 36px;
+  transition: all 0.3s ease;
 }
 
-.bk-fleet-card p {
-  font-size: 0.8rem;
-  color: rgba(255, 255, 255, 0.65);
-  font-weight: 300;
-  line-height: 1.5;
+.bk-whatsapp-editorial-btn:hover {
+  background-color: var(--color-secondary, #0a65fe);
+  transform: translateY(-2px);
+}
+
+.bk-pulse-gold-dot {
+  width: 8px;
+  height: 8px;
+  background-color: #ffdd00; 
+  border-radius: 50%;
+  animation: bkPulseDot 1.6s infinite;
+}
+
+@keyframes bkPulseDot {
+  0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(255, 221, 0, 0.6); }
+  70% { transform: scale(1); box-shadow: 0 0 0 8px rgba(255, 221, 0, 0); }
+  100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(255, 221, 0, 0); }
 }
 
 /* ==========================================================================
-   MEDIA QUERIES (Responsive)
+   SISTEMA RESPONSIVO SÓLIDO Y LIMPIO
    ========================================================================== */
+@media (max-width: 1024px) {
+  .bk-editorial-header { padding: 140px 0 80px; }
+  .bk-display-title { font-size: 3.2rem; }
+  .bk-canvas-container { padding: 0 24px; }
+  .bk-body { grid-template-columns: 1fr; padding: 40px 24px; gap: 40px; margin-top: 0; }
+}
+
 @media (max-width: 768px) {
-  .bk-body { grid-template-columns: 1fr; padding: 24px 20px; }
-  .bk-hero-content { padding: 0 24px; }
-  .bk-hero-content h1 { font-size: 1.6rem; }
-  .bk-grid { grid-template-columns: 1fr; }
+  .bk-editorial-header { padding: 120px 0 60px; }
+  .bk-display-title { font-size: 2.4rem; }
+  .bk-canvas-container { padding: 0 16px; }
+  .bk-grid { grid-template-columns: 1fr; gap: 16px; }
+  .bk-form-card { padding: 32px 20px; }
 }
