@@ -283,7 +283,6 @@
 
 .ab-pillar-row.active-row {
   border-bottom-width: 2px;
-  border-color: var(--color-primary, #121212);
 }
 
 .ab-pillar-meta {

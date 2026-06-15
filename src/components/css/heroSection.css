@@ -169,11 +169,11 @@
 
   /* ── INTERCAMBIO DE VIDEOS REAL ── */
   .video-pc {
-    display: none !important;    /* Ocultamos por completo el de PC */
+    display: none !important;    
   }
 
   .video-mobile {
-    display: block !important;   /* Mostramos el video vertical */
+    display: block !important;    
     width: 100%;
     height: 100%;
     top: 0;

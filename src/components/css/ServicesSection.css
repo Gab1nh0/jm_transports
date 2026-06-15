@@ -1,7 +1,7 @@
 .services-section {
   width: 100%;
   padding: 100px 80px;
-  background-color: var(--color-primary);
+  background-color: #000000;
   color: var(--color-white);
 }
 
@@ -87,7 +87,7 @@ position: absolute;
 
 .card-tag {
   align-self: flex-start;
-  background-color: rgba(255, 255, 255, 0.385);
+  background-color: rgba(255, 242, 0, 0.385);
   color: var(--color-white);
   padding: 6px 12px;
   font-size: 0.8rem;

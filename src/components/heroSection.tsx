@@ -8,10 +8,9 @@ export const Hero = () => {
   const { lang, t } = useLang();
   const navigate = useNavigate();
 
-  // Número oficial de WhatsApp de la empresa (JM Transport Group)
   const companyPhone = '50762166675';
 
-  // 1. Redirección inmediata a WhatsApp con mensaje premium y amigable
+  
   const handleWhatsAppContact = () => {
     const customMessage = lang === 'en'
       ? 'Hello, JM Transport Group!  I just visited your website and would like to get custom information regarding private transport services in Panama. '
@@ -21,18 +20,18 @@ export const Hero = () => {
     window.open(`https://wa.me/${companyPhone}?text=${encodedMessage}`, '_blank');
   };
 
-  // 2. Desplazamiento suave (Smooth Scroll) apuntando al ID real del catálogo "tc-header"
+  
   const handleScrollToTours = () => {
     const toursSection = document.getElementById('tc-header');
     
     if (toursSection) {
-      // Si el componente TourCard está presente en la vista actual, desplaza la pantalla suavemente
+  
       toursSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
     } else {
-      // Fallback: Si el usuario está en otra ruta (ej. /about-us), navega al home o al catálogo
+      
       navigate('/');
       
-      // Espera una fracción de segundo a que el DOM monte el componente y desplaza
+
       setTimeout(() => {
         const dynamicSection = document.getElementById('tc-header');
         if (dynamicSection) {

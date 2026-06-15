@@ -44,7 +44,7 @@ const translations = {
     'footer.location': 'Location',
     'footer.address': 'Ave. Federico Boyd & Calle 51,\nScotia Plaza Building, 7th Floor,\nBella Vista, Panama City',
     'footer.phone': 'Landline: 310-4785',
-    'footer.rights': '© 2025 JM Transport Group Panama. All rights reserved.',
+    'footer.rights': '© 2026 JM Transport Group Panama. All rights reserved.',
     'about.contact.title': 'Contact & Location',
     'about.contact.address': 'Ave. Federico Boyd & Calle 51,\nScotia Plaza Building, 7th Floor,\nBella Vista, Panama City',
     'about.contact.phone': 'Landline: 310-4785',
@@ -69,7 +69,7 @@ const translations = {
     'tours.colon.inc2': 'Agua Clara visitor center',
     'tours.colon.inc3': 'Roundtrip A/C transport',
     'tours.colon.inc4': 'Certified drivers & water bottle',
-    'tours.colon.meta1': '⏱ Fullday',
+    'tours.colon.meta1': '⏱ Full day',
     'tours.colon.meta2': 'Private Trip',
 
     'tours.portobelo.title': 'Portobelo & Its Charms (Full Tour)',
@@ -80,7 +80,7 @@ const translations = {
     'tours.portobelo.inc2': 'Venas Azules mangrove boat ride',
     'tours.portobelo.inc3': 'Playa Blanca (Colon) beach time',
     'tours.portobelo.inc4': 'Roundtrip transport & water',
-    'tours.portobelo.meta1': '⏱ Fullday',
+    'tours.portobelo.meta1': '⏱ Full day',
     'tours.portobelo.meta2': 'Adventure',
 
     'tours.sanblas.title': 'San Blas Getaway 2026',
@@ -176,7 +176,7 @@ const translations = {
     'about.story.desc1': 'Panama Master Tours was born out of a simple frustration: the country\'s most spectacular places were either unknown or inaccessible to travelers who expected more. We set out to change that — one private, well-designed experience at a time.',
     'about.story.year2': 'Today',
     'about.story.title2': 'Specialists in luxury and corporate travel',
-    'about.story.desc2': 'Over a decade later, we have built a reputation among corporate travel managers, five-star hotels, and discerning travelers for delivering seamless, deeply perl experiences across San Blas, the Panama Canal, and the capital — always with a local guide, never on a schedule that isn\'t yours.',
+    'about.story.desc2': 'Over a decade later, we have built a reputation among corporate travel managers, five-star hotels, and discerning travelers for delivering seamless, deeply personalized experiences across San Blas, the Panama Canal, and the capital — always with a local guide, never on a schedule that isn\'t yours.',
     'about.team.header': 'Meet the team',
     'about.team.member1.role': 'Founder & Lead Guide',
     'about.team.member1.bio': 'Born in Panama City, Carlos has spent over 15 years exploring every corner of the isthmus. His local knowledge and logistics expertise are the backbone of every tour.',
@@ -209,7 +209,7 @@ const translations = {
     'fleet.benefit.seats': 'Child Seats Available Upon Request',
     'fleet.benefit.drivers': 'Bilingual Professional Drivers',
 
-    // ── NUEVAS CLAVES PARA EL FORMULARIO DE RESERVAS (BOOKING) EN INGLÉS ──
+    // Booking translations (English)
     'bk.heroTitle': "Book Your Premium Journey",
     'bk.heroDesc': "Experience Panama with the highest standards of reliability and luxury. Fill out the form below to secure your private transport or curated tour.",
     'bk.formTitle': "Reservation Details",
@@ -225,7 +225,7 @@ const translations = {
     'bk.peopleLabel': "Number of Passengers *",
     'bk.dateLabel': "Preferred Date *",
     'bk.notesLabel': "Special Requests or Dietary Requirements",
-    'bk.notesPlaceholder:': "Any specific requests for our team...",
+    'bk.notesPlaceholder': "Any specific requests for our team...",
     'bk.transferRouteLabel': "Transfer Route *",
     'bk.selectRoute': "Select route...",
     'bk.routeToHotel': "Airport ➔ Hotel / Destination",
@@ -300,7 +300,7 @@ const translations = {
     'footer.location': 'Ubicación',
     'footer.address': 'Ave. Federico Boyd y Calle 51,\nEdificio Scotia Plaza, Piso 7,\nBella Vista, Ciudad de Panamá',
     'footer.phone': 'Teléfono fijo: 310-4785',
-    'footer.rights': '© 2025 JM Transport Group Panamá. Todos los derechos reservados.',
+    'footer.rights': '© 2026 JM Transport Group Panamá. Todos los derechos reservados.',
     'about.contact.title': 'Contacto y Ubicación',
     'about.contact.address': 'Ave. Federico Boyd y Calle 51,\nEdificio Scotia Plaza, Piso 7,\nBella Vista, Ciudad de Panamá',
     'about.contact.phone': 'Teléfono fijo: 310-4785',
@@ -309,7 +309,7 @@ const translations = {
     'tours.playas.title': 'Traslados a Playas',
     'tours.playas.desc': 'Servicio de transporte privado, cómodo y puntual hacia las principales zonas de playa y resorts.',
     'tours.playas.price_label': 'Hasta 4 pasajeros',
-    'tours.playas.price': '$125/per',
+    'tours.playas.price': '$125/pers',
     'tours.playas.meta1': '⏱ Ida / Vuelta',
     'tours.playas.meta2': 'Privado',
     'tours.playas.tag1': 'Vehículos Modernos',
@@ -320,19 +320,19 @@ const translations = {
     'tours.colon.title': 'Tour Colón Histórico (Fuerte San Lorenzo + Agua Clara)',
     'tours.colon.desc': 'Un viaje enfocado en la historia, la ingeniería del canal y la naturaleza, con salida desde la Ciudad de Panamá.',
     'tours.colon.price_label': 'Mínimo 2 pers',
-    'tours.colon.price': '$125/per',
+    'tours.colon.price': '$125/pers',
     'tours.colon.inc1': 'Fuerte San Lorenzo (UNESCO)',
     'tours.colon.inc2': 'Centro de Visitantes Agua Clara',
     'tours.colon.inc3': 'Transporte climatizado A/C',
-    'tours.colon.inc4': 'Chofer certificado y agua',
+    'tours.colon.inc4': 'Chófer certificado y agua',
     'tours.colon.meta1': '⏱ Día completo',
     'tours.colon.meta2': 'Tour Privado',
     
     'tours.portobelo.title': 'Portobelo y sus Encantos (Tour Completo)',
     'tours.portobelo.desc': 'Un tour integral por la Costa Caribe que combina historia, cultura y playas paradisíacas.',
     'tours.portobelo.price_label': 'Mínimo 2 pers',
-    'tours.portobelo.price': '$125/per',
-    'tours.portobelo.inc1': 'Historia de Portobelo e Iglesia Cristo Negro',
+    'tours.portobelo.price': '$125/pers',
+    'tours.portobelo.inc1': 'Historia de Portobelo e Iglesia del Cristo Negro',
     'tours.portobelo.inc2': 'Paseo en lancha por Venas Azules',
     'tours.portobelo.inc3': 'Relajación en Playa Blanca (Colón)',
     'tours.portobelo.inc4': 'Transporte de ida/vuelta y agua',
@@ -342,7 +342,7 @@ const translations = {
     // San Blas Tour
     'tours.sanblas.title': 'Pasadía San Blas 2026',
     'tours.sanblas.desc': 'Escapa al paraíso de Guna Yala — aguas cristalinas, playas de arena blanca, y una cultura indígena única en un archipiélago de 365 islas.',
-    'tours.sanblas.price_label': '$125/per',
+    'tours.sanblas.price_label': '$125/pers',
     'tours.sanblas.badge1': 'Destacado',
     'tours.sanblas.badge2': 'Mejor Valorado',
     'tours.sanblas.meta1': 'Día completo',
@@ -354,22 +354,22 @@ const translations = {
     // Monkey Tour
     'tours.monkey.title': 'Tour de Monos',
     'tours.monkey.price_label': 'Medio día',
-    'tours.monkey.price': '$85/per',
+    'tours.monkey.price': '$85/pers',
     'tours.monkey.desc': 'Descubre la biodiversidad del Canal de Panamá y conoce a sus residentes más famosos de cerca en su hábitat natural.',
     'tours.monkey.inc1': 'Paseo en bote por el Canal',
     'tours.monkey.inc2': 'Avistamiento de fauna',
     'tours.monkey.inc3': 'Recogida y regreso al hotel',
-    'tours.monkey.inc4': 'Minimo 2 personas',
+    'tours.monkey.inc4': 'Mínimo 2 personas',
 
     // City Tour
     'tours.city.title': 'Tour por la Ciudad de Panamá',
     'tours.city.price_label': 'Hasta 3 pasajeros',
-    'tours.city.price': '$140/per',
+    'tours.city.price': '$140/pers',
     'tours.city.desc': 'Una mezcla perfecta de historia, maravillas de la ingeniería y modernos rascacielos en los lugares destacados de la Ciudad de Panamá.',
     'tours.city.meta1': '5 horas',
     'tours.city.meta2': 'Conductor profesional',
     'tours.city.inc1': 'Canal de Panamá — Esclusas de Miraflores',
-    'tours.city.inc2': 'Tour a pie por Casco Antiguo',
+    'tours.city.inc2': 'Tour a pie por el Casco Antiguo',
     'tours.city.inc3': 'Calzada de Amador y vista de la ciudad',
 
     // Tours Section Header
@@ -388,10 +388,10 @@ const translations = {
     'services.airport.title': 'Traslados al Aeropuerto',
     'services.airport.desc': 'Recogida de puerta a puerta puntual en Tocumen Internacional (PTY). Vuelos rastreados y recepción profesional.',
     'services.airport.link': 'Reservar Traslado →',
-    'services.corporate.title': 'Chofer Ejecutivo',
+    'services.corporate.title': 'Chófer Ejecutivo',
     'services.corporate.desc': 'Movilidad de primera clase para reuniones de negocios, eventos corporativos e itinerarios VIP.',
     'services.corporate.link': 'Más Información →',
-    'services.tours.title': 'Tours perlizados de Panamá',
+    'services.tours.title': 'Tours personalizados de Panamá',
     'services.tours.desc': 'Descubre el Canal, Casco Antiguo y destinos tropicales con guías privados flexibles.',
     'services.tours.link': 'Explorar Tours →',
     'services.modal.tag': 'Detalles del Servicio',
@@ -402,31 +402,31 @@ const translations = {
     'services.airport.subtitle': 'Tocumen Internacional (PTY) y Marcos A. Gelabert (Albrook)',
     'services.airport.desc.long': 'Nuestro servicio de aeropuerto premium está diseñado para eliminar el estrés de los viajes. Coordinamos cada detalle desde el rastreo de vuelos hasta el manejo del equipaje para que tu llegada o salida de Panamá sea completamente fluida.',
     'services.airport.step1': 'Rastreo de Vuelos en Tiempo Real: Monitoreamos la ruta de tu vuelo. Si tu llegada se retrasa o adelanta, tu chófer se ajustará en consecuencia.',
-    'services.airport.step2': 'Recepción Profesional: Tu conductor te esperará en la puerta de llegadas con un cartel perlizado con tu nombre o logo corporativo.',
+    'services.airport.step2': 'Recepción Profesional: Tu conductor te esperará en la puerta de llegadas con un cartel personalizado con tu nombre o logo corporativo.',
     'services.airport.step3': 'Tiempo de Espera Gratuito: Incluye 60 minutos de tiempo de espera gratuito después de que tu vuelo aterrice, dándote tiempo suficiente para aduanas y reclamación de equipaje.',
-    'services.airport.step4': 'Asistencia de Equipaje y Comodidad: Asistencia completa para cargar tus bolsas en un vehículo premium con aire acondicionado equipado con agua embotellada.',
+    'services.airport.step4': 'Asistencia de Equipaje y Comodidad: Asistencia completa para cargar tus maletas en un vehículo premium con aire acondicionado equipado con agua embotellada.',
     'services.airport.note1': 'Incluye peajes (Corredor Sur).',
     'services.airport.note2': 'Asientos para niños disponibles bajo solicitud previa.',
     
     // Corporate Service Details
     'services.corporate.subtitle': 'Soluciones de Movilidad Corporativa de Primera Clase',
-    'services.corporate.desc.long': 'Diseñado para ejecutivos corporativos, visitas de estado y viajeros de negocios que valoran la puntualidad absoluta, confidencialidad y ejecución impecable.',
+    'services.corporate.desc.long': 'Diseñado para ejecutivos corporativos, visitas de Estado y viajeros de negocios que valoran la puntualidad absoluta, confidencialidad y ejecución impecable.',
     'services.corporate.step1': 'Servicio por Hora o Día Completo: Retén un vehículo dedicado y conductor profesional para todo tu itinerario comercial.',
-    'services.corporate.step2': 'Choferes Profesionales Bilingües: Conductores capacitados en protocolo corporativo, navegación y seguridad, hablando fluidamente inglés y español.',
+    'services.corporate.step2': 'Chóferes Profesionales Bilingües: Conductores capacitados en protocolo corporativo, navegación y seguridad, hablando fluidamente inglés y español.',
     'services.corporate.step3': 'Beneficios Ejecutivos a Bordo: Vehículos equipados con conectividad Wi-Fi, cargadores de dispositivos y comodidades refrescantes para mantenerte productivo.',
     'services.corporate.step4': 'Coordinación Logística Impecable: Ideal para encuentros de negocios, cumbres corporativas y agendas de reuniones en múltiples destinos.',
     'services.corporate.note1': 'Vehículos premium discretos y sin marca.',
     'services.corporate.note2': 'Confidencialidad garantizada bajo estándares estrictos de NDA.',
     
     // Tours Service Details
-    'services.tours.subtitle': 'Experiencias Privadas perlizadas',
-    'services.tours.desc.long': 'Explora la rica historia, maravillas modernas y la naturaleza impresionante de Panamá a través de un itinerario completamente perlizado diseñado alrededor de tu ritmo y preferencias.',
-    'services.tours.step1': 'Planificación de Itinerario perlizado: Elige entre lugares icónicos como el Canal de Panamá (Esclusas de Miraflores), Casco Antiguo, Calzada de Amador o la Selva de Gamboa.',
+    'services.tours.subtitle': 'Experiencias Privadas Personalizadas',
+    'services.tours.desc.long': 'Explora la rica historia, maravillas modernas y la naturaleza impresionante de Panamá a través de un itinerario completamente personalizado diseñado alrededor de tu ritmo y preferencias.',
+    'services.tours.step1': 'Planificación de Itinerario Personalizado: Elige entre lugares icónicos como el Canal de Panamá (Esclusas de Miraflores), Casco Antiguo, Calzada de Amador o la Selva de Gamboa.',
     'services.tours.step2': 'Horarios Flexibles: Sin horarios rígidos. Pasa tanto o tan poco tiempo como desees en cada sitio de interés.',
     'services.tours.step3': 'Orientación de Expertos Locales: Viaja junto a conductores conocedores que comparten profundas perspectivas históricas y culturales sobre cada destino.',
     'services.tours.step4': 'Acomodaciones para Grupos Premium: Perfecto para familias, grupos corporativos o viajeros VIP que desean una excursión privada y relajada.',
-    'services.tours.note1': 'Las entradas a museos o el Canal se coordinan por separado.',
-    'services.tours.note2': 'Recomendaciones de paradas para almuerzo perlizado incluidas.',
+    'services.tours.note1': 'Las entradas a museos o al Canal se coordinan por separado.',
+    'services.tours.note2': 'Recomendaciones de paradas para almuerzo personalizado incluidas.',
 
     // About Us
     'about.eyebrow': 'Acerca de nosotros',
@@ -442,10 +442,10 @@ const translations = {
     'about.story.desc1': 'Panama Master Tours nació de una simple frustración: los lugares más espectaculares del país eran desconocidos o inaccesibles para viajeros que esperaban más. Nos propusimos cambiar eso — una experiencia privada y bien diseñada a la vez.',
     'about.story.year2': 'Hoy',
     'about.story.title2': 'Especialistas en viajes de lujo y corporativos',
-    'about.story.desc2': 'Una década después, hemos construido una reputación entre gerentes de viajes corporativos, hoteles de cinco estrellas y viajeros exigentes por entregar experiencias sin problemas y profundamente perles en San Blas, el Canal de Panamá y la capital — siempre con un guía local, nunca en un horario que no sea el tuyo.',
+    'about.story.desc2': 'Una década después, hemos construido una reputación entre gerentes de viajes corporativos, hoteles de cinco estrellas y viajeros exigentes por entregar experiencias sin problemas y profundamente personalizadas en San Blas, el Canal de Panamá y la capital — siempre con un guía local, nunca en un horario que no sea el tuyo.',
     'about.team.header': 'Conoce al equipo',
     'about.team.member1.role': 'Fundador y Guía Principal',
-    'about.team.member1.bio': 'Nacido en la Ciudad de Panamá, Carlos has pasado más de 15 años explorando cada rincón del istmo. Su conocimiento local y experiencia en logística son la base de cada tour.',
+    'about.team.member1.bio': 'Nacido en la Ciudad de Panamá, Carlos ha pasado más de 15 años explorando cada rincón del istmo. Su conocimiento local y experiencia en logística son la base de cada tour.',
     'about.team.member2.role': 'Operaciones y Conserjería',
     'about.team.member2.bio': 'Con experiencia en hospitalidad de lujo, Valeria asegura que cada detalle esté confirmado antes de tu llegada — desde la recogida en el aeropuerto hasta ese último atardecer en Isla Perro.',
     'about.team.member3.role': 'Especialista en Viajes Corporativos',
@@ -472,11 +472,11 @@ const translations = {
     'fleet.benefit.ac': 'Aire Acondicionado Completo',
     'fleet.benefit.tracking': 'Rastreo de Vuelos en Tiempo Real',
     'fleet.benefit.luggage': 'Asistencia de Equipaje',
-    'fleet.benefit.water': 'Agua Embotellada y Snacks Cortesía',
+    'fleet.benefit.water': 'Agua Embotellada y Snacks de Cortesía',
     'fleet.benefit.seats': 'Asientos para Niños Disponibles Bajo Solicitud',
     'fleet.benefit.drivers': 'Conductores Profesionales Bilingües',
 
-    // ── NUEVAS CLAVES PARA EL FORMULARIO DE RESERVAS (BOOKING) EN ESPAÑOL ──
+    // Booking translations (Spanish)
     'bk.heroTitle': "Reserva tu Viaje Premium",
     'bk.heroDesc': "Experimenta Panamá con los más altos estándares de confiabilidad y lujo. Llena el formulario a continuación para asegurar tu transporte privado o servicio personalizado.",
     'bk.formTitle': "Detalles de la Reservación",
@@ -539,7 +539,7 @@ const LanguageContext = createContext<LanguageContextType | null>(null);
 export function LanguageProvider({ children }: { children: React.ReactNode }) {
   const [lang, setLang] = useState<Language>('es');
 
-  const toggleLang = () => setLang(prev => prev === 'es' ? 'en' : 'es');
+  const toggleLang = () => setLang(prev => (prev === 'es' ? 'en' : 'es'));
 
   const t = (key: string): string => {
     return (translations[lang] as Record<string, string>)[key] ?? key;

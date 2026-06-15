@@ -16,7 +16,7 @@ export default function Navbar() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // Lock body scroll when mobile menu is open
+  
   useEffect(() => {
     if (menuOpen) {
       document.body.style.overflow = 'hidden';
@@ -43,10 +43,10 @@ export default function Navbar() {
     if (key.startsWith('#')) {
       const element = document.querySelector(key);
       if (element) {
-        // Ya estamos en home, scroll directo
+  
         element.scrollIntoView({ behavior: 'smooth', block: 'start' });
       } else {
-        // Estamos en otra página, ir a home y luego hacer scroll
+        
         navigate('/', { state: { scrollTo: key } });
       }
       return;

@@ -233,26 +233,55 @@
   z-index: 2;
 }
 
-/* IMAGEN DE TARJETA */
+/* ==========================================================================
+   IMAGEN DE TARJETA CON BALANCEO DE ESCALA NATIVO
+   ========================================================================== */
 .vehicle-card-premium .img-holder {
   width: 100%;
-  height: 200px;
+  height: 220px;            
   display: flex;
-  align-items: center;
+  align-items: flex-end;    
   justify-content: center;
-  padding: 20px;
-  background: rgba(255, 255, 255, 0.02);
+  padding: 0 25px 15px 25px; 
+  background: rgba(255, 255, 255, 0.01);
+  overflow: hidden;
+  position: relative;
 }
 
 .vehicle-card-premium .img-holder img {
-  max-width: 100%;
-  max-height: 100%;
+  height: auto;
+  max-height: 85%;          
   object-fit: contain;
+  transform-origin: bottom center; 
   transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
+.vehicle-card-premium .img-holder img[alt="Toyota Hiace"] {
+  width: 70% !important;
+}
+
+.vehicle-card-premium .img-holder img[alt="Toyota Coaster"] {
+  width: 74% !important;
+}
+
+.vehicle-card-premium .img-holder img[data-scale="bus"] {
+  width: 95%;
+}
+
+.vehicle-card-premium .img-holder img[data-scale="van"] {
+  width: 82%;
+}
+
+.vehicle-card-premium .img-holder img[data-scale="large-suv"] {
+  width: 78%;
+}
+
+.vehicle-card-premium .img-holder img[data-scale="compact"] {
+  width: 70%;
+}
+
 .vehicle-card-premium:hover .img-holder img {
-  transform: scale(1.06);
+  transform: scale(1.05);
 }
 
 /* CONTENIDO DE TARJETA */
