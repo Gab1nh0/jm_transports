@@ -192,7 +192,7 @@
 }
 
 .navbar--scrolled .brand-group {
-  color: rgba(0, 0, 0, 0.3);
+  color: gray;
 }
 
 .navbar--scrolled .nav-links a {

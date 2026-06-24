@@ -37,7 +37,6 @@ function ImageCarousel({ images, className = '' }: CarouselProps) {
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
-      {/* El wrapper con width = N * 100% y cada slide ocupa exactamente 1/N */}
       <div
         className="tc-slides"
         style={{
@@ -72,7 +71,7 @@ function ImageCarousel({ images, className = '' }: CarouselProps) {
   );
 }
 
-/* ── Imágenes ── */
+/* ── Recursos de Imágenes ── */
 const sanBlasImages = [
   { src: 'https://i0.wp.com/panamamastertours.com/wp-content/uploads/2023/08/panama-city-4-day-island-hopping-san-blas-adventure-1695289.webp?fit=1500%2C1001&ssl=1', alt: 'San Blas Islands' },
   { src: 'https://sanblasadventours.com/wp-content/uploads/AnyConv.com__psina-5-scaled.webp', alt: 'San Blas turquoise water' },
@@ -103,12 +102,15 @@ const playasImages = [
   { src: 'https://elcapitalfinanciero.com/wp-content/uploads/2022/12/Evenia-Hotel.jpg', alt: 'Playa Tour Bijao' },
   { src: 'https://travelagents.decameron.com/images/destinos/panama/royal-panama/panoramica-hotal-panama.jpg', alt: 'Playa Tour Decameron' },
 ];
-
-
+const emberaImages = [
+  { src: 'https://upload.wikimedia.org/wikipedia/commons/e/ee/Embera_Panama_2011.jpg', alt: 'Embera Cultural Tour' },
+  { src: 'https://www.viajesyfotografia.com/wp-content/uploads/2015/04/comunidad-embera-rio-chagres.jpg', alt: 'Chagres River' }
+];
 
 export default function Tours() {
   const navigate = useNavigate();
   const { lang, t } = useLang();
+
   return (
     <div className="tc-root" id="tc-header">
       <div className="tc-header">
@@ -119,181 +121,204 @@ export default function Tours() {
 
       <div className="tc-grid">
 
-        {/* ── San Blas ── */}
-                  <div className="tc-card sanblas">
-            <ImageCarousel images={sanBlasImages} />
-            <div className="tc-card-body">
-              <div className="tc-badges">
-                <span className="tc-badge featured">{t('tours.sanblas.badge1')}</span>
-                <span className="tc-badge rated">{t('tours.sanblas.badge2')}</span>
-              </div>
-              <div className="tc-card-top">
-                <h3>{t('tours.sanblas.title')}</h3>
-                <div className="tc-price">
-                  <span>{lang === 'en' ? 'From' : 'Desde'}</span>
-                  <strong>{t('tours.sanblas.price_label')}</strong>
-                </div>
-              </div>
-              <div className="tc-meta">
-                <span className="tc-meta-item">⏱ {t('tours.sanblas.meta1')}</span>
-                <span className="tc-meta-item">👥 {t('tours.sanblas.meta2')}</span>
-              </div>
+        {/* ── 1. San Blas (ESPACIO EXTRA APROVECHADO) ── */}
+        <div className="tc-card sanblas">
+          <ImageCarousel images={sanBlasImages} />
+          <div className="tc-card-body">
+            <div className="tc-card-main-info">
+              <h3>{t('tours.sanblas.title')}</h3>
+              <div className="tc-card-meta">{t('tours.sanblas.meta')}</div>
               <p className="tc-desc">{t('tours.sanblas.desc')}</p>
-              <div className="tc-tags">
-                <span className="tc-tag">{t('tours.sanblas.tag1')}</span>
-                <span className="tc-tag">{t('tours.sanblas.tag2')}</span>
-                <span className="tc-tag">{t('tours.sanblas.tag3')}</span>
+              <div className="tc-highlights">
+                <span className="tc-hl">{t('tours.sanblas.hl1')}</span>
+                <span className="tc-hl">{t('tours.sanblas.hl2')}</span>
+                <span className="tc-hl">{t('tours.sanblas.hl3')}</span>
+                <span className="tc-hl">{t('tours.sanblas.hl4')}</span>
+                <span className="tc-hl">{t('tours.sanblas.hl5')}</span>
+              </div>
+              <p className="tc-not-included">{t('tours.sanblas.not_inc')}</p>
+            </div>
+            <div className="tc-card-footer">
+              <div className="tc-price-block">
+                <span className="tc-label">{t('tours.sanblas.price_label')}</span>
+                <strong className="tc-amount">{t('tours.sanblas.price')}</strong>
               </div>
               <button className="tc-btn" onClick={() => navigate('/booking?tour=san-blas')}>
                 {lang === 'en' ? 'Book Now' : 'Reservar Ahora'}
               </button>
             </div>
           </div>
+        </div>
 
-        {/* ── Monkey Tour ── */}
-                  <div className="tc-card monkey">
-            <ImageCarousel images={monkeyImages} />
-            <div className="tc-card-body">
-              <div className="tc-card-top">
-                <h3>{t('tours.monkey.title')}</h3>
-                <div className="tc-price"><strong>{t('tours.monkey.price')}</strong></div>
-              </div>
-              <div className="tc-meta">
-                <span className="tc-meta-item">⏱ {t('tours.monkey.price_label')}</span>
-              </div>
+        {/* ── 2. Monkey Tour ── */}
+        <div className="tc-card monkey">
+          <ImageCarousel images={monkeyImages} />
+          <div className="tc-card-body">
+            <div className="tc-card-main-info">
+              <h3>{t('tours.monkey.title')}</h3>
+              <div className="tc-card-meta">{t('tours.monkey.meta')}</div>
               <p className="tc-desc">{t('tours.monkey.desc')}</p>
-              <div className="tc-includes">
-                <span className="tc-include">{t('tours.monkey.inc1')}</span>
-                <span className="tc-include">{t('tours.monkey.inc2')}</span>
-                <span className="tc-include">{t('tours.monkey.inc3')}</span>
+              <div className="tc-highlights">
+                <span className="tc-hl">{t('tours.monkey.hl1')}</span>
+                <span className="tc-hl">{t('tours.monkey.hl2')}</span>
+                <span className="tc-hl">{t('tours.monkey.hl3')}</span>
+              </div>
+            </div>
+            <div className="tc-card-footer">
+              <div className="tc-price-block">
+                <span className="tc-label">{t('tours.monkey.price_label')}</span>
+                <strong className="tc-amount">{t('tours.monkey.price')}</strong>
               </div>
               <button className="tc-btn" onClick={() => navigate('/booking?tour=monkey-tour')}>
                 {lang === 'en' ? 'Book Now' : 'Reservar Ahora'}
               </button>
             </div>
           </div>
+        </div>
 
-        {/* ── Beach Transfers ── */}
-                  <div className="tc-card playas">
-            <ImageCarousel images={playasImages} />
-            <div className="tc-card-body">
-              <div className="tc-card-top">
-                <h3>{t('tours.playas.title')}</h3>
-                <div className="tc-price">
-                  <span>{t('tours.playas.price_label')}</span>
-                  <strong>{t('tours.playas.price')}</strong>
-                </div>
-              </div>
-              <div className="tc-meta">
-                <span className="tc-meta-item">{t('tours.playas.meta1')}</span>
-                <span className="tc-meta-item">👥 {t('tours.playas.meta2')}</span>
-              </div>
-              <p className="tc-desc">{t('tours.playas.desc')}</p>
-              <p className="tc-destinations-text">
-                <strong>{lang === 'en' ? 'Destinations:' : 'Destinos:'}</strong> RIU Playa Blanca, Gran Evenia Bijao, Decameron, Buenaventura.
-              </p>
-              <div className="tc-tags">
-                <span className="tc-tag">{t('tours.playas.tag1')}</span>
-                <span className="tc-tag">{t('tours.playas.tag2')}</span>
-                <span className="tc-tag">{t('tours.playas.tag3')}</span>
-              </div>
-              <button className="tc-btn" onClick={() => navigate('/booking?tour=playas')}>
-                {lang === 'en' ? 'Book Now' : 'Reservar Ahora'}
-              </button>
-            </div>
-          </div>
-
-        {/* ── Historic Colon ── */}
-                  <div className="tc-card colon">
-            <ImageCarousel images={colonImages} />
-            <div className="tc-card-body">
-              <div className="tc-card-top">
-                <h3>{t('tours.colon.title')}</h3>
-                <div className="tc-price">
-                  <span>{t('tours.colon.price_label')}</span>
-                  <strong>{t('tours.colon.price')}</strong>
-                </div>
-              </div>
-              <div className="tc-meta">
-                <span className="tc-meta-item">{t('tours.colon.meta1')}</span>
-                <span className="tc-meta-item">🚗 {t('tours.colon.meta2')}</span>
-              </div>
+        {/* ── 3. Historic Colon ── */}
+        <div className="tc-card colon">
+          <ImageCarousel images={colonImages} />
+          <div className="tc-card-body">
+            <div className="tc-card-main-info">
+              <h3>{t('tours.colon.title')}</h3>
+              <div className="tc-card-meta">{t('tours.colon.meta')}</div>
               <p className="tc-desc">{t('tours.colon.desc')}</p>
-              <div className="tc-includes">
-                <span className="tc-include">{t('tours.colon.inc1')}</span>
-                <span className="tc-include">{t('tours.colon.inc2')}</span>
-                <span className="tc-include">{t('tours.colon.inc3')}</span>
-                <span className="tc-include">{t('tours.colon.inc4')}</span>
+              <div className="tc-highlights">
+                <span className="tc-hl">{t('tours.colon.hl1')}</span>
+                <span className="tc-hl">{t('tours.colon.hl2')}</span>
+                <span className="tc-hl">{t('tours.colon.hl3')}</span>
+              </div>
+            </div>
+            <div className="tc-card-footer">
+              <div className="tc-price-block">
+                <span className="tc-label">{t('tours.colon.price_label')}</span>
+                <strong className="tc-amount">{t('tours.colon.price')}</strong>
               </div>
               <button className="tc-btn" onClick={() => navigate('/booking?tour=colon')}>
                 {lang === 'en' ? 'Book Now' : 'Reservar Ahora'}
               </button>
             </div>
           </div>
+        </div>
 
         {/* ── City Tour ── */}
-                  <div className="tc-card city">
-            <ImageCarousel images={cityImages} />
-            <div className="tc-card-body">
-              <div className="tc-card-top">
-                <h3>{t('tours.city.title')}</h3>
-                <div className="tc-price">
-                  <span>{t('tours.city.price_label')}</span>
-                  <strong>{t('tours.city.price')}</strong>
-                </div>
-              </div>
-              <div className="tc-meta">
-                <span className="tc-meta-item">⏱ {t('tours.city.meta1')}</span>
-                <span className="tc-meta-item">🚗 {t('tours.city.meta2')}</span>
-              </div>
+        <div className="tc-card city">
+          <ImageCarousel images={cityImages} />
+          <div className="tc-card-body">
+            <div className="tc-card-main-info">
+              <h3>{t('tours.city.title')}</h3>
+              <div className="tc-card-meta">{t('tours.city.meta')}</div>
               <p className="tc-desc">{t('tours.city.desc')}</p>
-              <div className="tc-includes">
-                <span className="tc-include">{t('tours.city.inc1')}</span>
-                <span className="tc-include">{t('tours.city.inc2')}</span>
-                <span className="tc-include">{t('tours.city.inc3')}</span>
+              <div className="tc-highlights">
+                <span className="tc-hl">{t('tours.city.hl1')}</span>
+                <span className="tc-hl">{t('tours.city.hl2')}</span>
+                <span className="tc-hl">{t('tours.city.hl3')}</span> {/* Mostrará el servicio opcional bajo solicitud */}
+              </div>
+            </div>
+            <div className="tc-card-footer">
+              <div className="tc-price-block">
+                <span className="tc-label">{t('tours.city.price_label')}</span>
+                <strong className="tc-amount">{t('tours.city.price')}</strong>
               </div>
               <button className="tc-btn" onClick={() => navigate('/booking?tour=city-tour')}>
                 {lang === 'en' ? 'Book Now' : 'Reservar Ahora'}
               </button>
             </div>
           </div>
+        </div>
 
-        {/* ── Portobelo ── */}
-                  <div className="tc-card portobelo">
-            <ImageCarousel images={portobeloImages} />
-            <div className="tc-card-body">
-              <div className="tc-card-top">
-                <h3>{t('tours.portobelo.title')}</h3>
-                <div className="tc-price">
-                  <span>{t('tours.portobelo.price_label')}</span>
-                  <strong>{t('tours.portobelo.price')}</strong>
-                </div>
-              </div>
-              <div className="tc-meta">
-                <span className="tc-meta-item">{t('tours.portobelo.meta1')}</span>
-                <span className="tc-meta-item">⛵ {t('tours.portobelo.meta2')}</span>
-              </div>
+        {/* ── 5. Portobelo ── */}
+        <div className="tc-card portobelo">
+          <ImageCarousel images={portobeloImages} />
+          <div className="tc-card-body">
+            <div className="tc-card-main-info">
+              <h3>{t('tours.portobelo.title')}</h3>
+              <div className="tc-card-meta">{t('tours.portobelo.meta')}</div>
               <p className="tc-desc">{t('tours.portobelo.desc')}</p>
-              <div className="tc-includes">
-                <span className="tc-include">{t('tours.portobelo.inc1')}</span>
-                <span className="tc-include">{t('tours.portobelo.inc2')}</span>
-                <span className="tc-include">{t('tours.portobelo.inc3')}</span>
-                <span className="tc-include">{t('tours.portobelo.inc4')}</span>
+              <div className="tc-highlights">
+                <span className="tc-hl">{t('tours.portobelo.hl1')}</span>
+                <span className="tc-hl">{t('tours.portobelo.hl2')}</span>
+                <span className="tc-hl">{t('tours.portobelo.hl3')}</span>
+              </div>
+            </div>
+            <div className="tc-card-footer">
+              <div className="tc-price-block">
+                <span className="tc-label">{t('tours.portobelo.price_label')}</span>
+                <strong className="tc-amount">{t('tours.portobelo.price')}</strong>
               </div>
               <button className="tc-btn" onClick={() => navigate('/booking?tour=portobelo')}>
                 {lang === 'en' ? 'Book Now' : 'Reservar Ahora'}
               </button>
             </div>
           </div>
+        </div>
 
-        {/* ── Custom Experience ── */}
+        {/* ── 6. Emberá Tour ── */}
+        <div className="tc-card embera">
+          <ImageCarousel images={emberaImages} />
+          <div className="tc-card-body">
+            <div className="tc-card-main-info">
+              <h3>{t('tours.embera.title')}</h3>
+              <div className="tc-card-meta">{t('tours.embera.meta')}</div>
+              <p className="tc-desc">{t('tours.embera.desc')}</p>
+              <div className="tc-highlights">
+                <span className="tc-hl">{t('tours.embera.hl1')}</span>
+                <span className="tc-hl">{t('tours.embera.hl2')}</span>
+                <span className="tc-hl">{t('tours.embera.hl3')}</span>
+                <span className="tc-hl">{t('tours.embera.hl4')}</span>
+                <span className="tc-hl">{t('tours.embera.hl5')}</span>
+              </div>
+              <p className="tc-not-included">{t('tours.embera.not_inc')}</p>
+            </div>
+            <div className="tc-card-footer">
+              <div className="tc-price-block">
+                <span className="tc-label">{t('tours.embera.price_label')}</span>
+                <strong className="tc-amount">{t('tours.embera.price')}</strong>
+              </div>
+              <button className="tc-btn" onClick={() => navigate('/booking?tour=embera')}>
+                {lang === 'en' ? 'Book Now' : 'Reservar Ahora'}
+              </button>
+            </div>
+          </div>
+        </div>
+
+        {/* ── 7. Beach Transfers ── */}
+        <div className="tc-card playas tc-transfer-card">
+          <ImageCarousel images={playasImages} />
+          <div className="tc-card-body">
+            <div className="tc-card-main-info">
+              <span className="tc-transfer-badge">{lang === 'en' ? 'PRIVATE TRANSFER SERVICE' : 'SERVICIO DE TRASLADO PRIVADO'}</span>
+              <h3>{t('tours.playas.title')}</h3>
+              <div className="tc-card-meta">{t('tours.playas.meta')}</div>
+              <p className="tc-desc">{t('tours.playas.desc')}</p>
+              <p className="tc-destinations-text">{t('tours.playas.destinations')}</p>
+              <div className="tc-highlights">
+                <span className="tc-hl">{t('tours.playas.hl1')}</span>
+                <span className="tc-hl">{t('tours.playas.hl2')}</span>
+                <span className="tc-hl">{t('tours.playas.hl3')}</span>
+              </div>
+            </div>
+            <div className="tc-card-footer">
+              <div className="tc-price-block">
+                <span className="tc-label">{t('tours.playas.price_label')}</span>
+                <strong className="tc-amount">{t('tours.playas.price')}</strong>
+              </div>
+              <button className="tc-btn tc-btn-transfer" onClick={() => navigate('/booking?tour=playas')}>
+                {lang === 'en' ? 'Book Transfer' : 'Reservar Traslado'}
+              </button>
+            </div>
+          </div>
+        </div>
+
+        {/* Custom Experience */}
         <div className="tc-custom">
           <div className="tc-custom-icon">
             <img 
-                  src={imgCustomExperience} 
-                  alt="Check Icon" 
-                  className="custom-appointment-svg yellow-svg"
-                />
+              src={imgCustomExperience} 
+              alt="Check Icon" 
+              className="custom-appointment-svg yellow-svg"
+            />
           </div>
           <h3>{lang === 'en' ? 'Need a Custom Experience?' : '¿Necesitas una Experiencia Personalizada?'}</h3>
           <p>

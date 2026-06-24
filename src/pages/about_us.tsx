@@ -103,16 +103,16 @@ export default function AboutUs() {
                 
                 <div className="ab-editorial-metrics">
                   <div className="ab-metric-node">
-                    <span className="ab-node-num">12<span className="ab-node-mini">YRS</span></span>
+                    <span className="ab-node-num">14<span className="ab-node-mini">Yrs</span></span>
                     <span className="ab-node-label">{t('about.stats.exp')}</span>
                   </div>
                   <div className="ab-metric-node">
-                    <span className="ab-node-num">4<span className="ab-node-mini">K+</span></span>
+                    <span className="ab-node-num">4<span className="ab-node-mini">k+</span></span>
                     <span className="ab-node-label">{t('about.stats.guests')}</span>
                   </div>
                   <div className="ab-metric-node">
-                    <span className="ab-node-num">100%</span>
-                    <span className="ab-node-label">{lang === 'en' ? 'Reliability' : 'Confianza'}</span>
+                    <span className="ab-node-num">24/7</span>
+                    <span className="ab-node-label">{lang === 'en' ? 'Reliability' : 'Atención y coordinación'}</span>
                   </div>
                 </div>
               </div>
@@ -160,7 +160,7 @@ export default function AboutUs() {
 
             <div className="ab-pillars-editorial-grid">
               <div className="ab-pillar-row">
-                <div className="ab-pillar-meta">/ 01 . COMMITMENT</div>
+                <div className="ab-pillar-meta">/ 01 . Compromiso</div>
                 <div className="ab-pillar-main">
                   <h3>{lang === 'en' ? 'Unwavering Integrity' : 'Integridad Inquebrantable'}</h3>
                   <p>{lang === 'en' ? 'We operate with transparent communication, direct human support, and absolute loyalty to our clients convenience.' : 'Operamos bajo una comunicación transparente, soporte humano directo y una lealtad absoluta hacia la comodidad de nuestros clientes.'}</p>
@@ -168,7 +168,7 @@ export default function AboutUs() {
               </div>
 
               <div className="ab-pillar-row active-row">
-                <div className="ab-pillar-meta">/ 02 . RIGOR</div>
+                <div className="ab-pillar-meta">/ 02 . Excelencia Operativa</div>
                 <div className="ab-pillar-main">
                   <h3>{lang === 'en' ? 'Flawless Execution' : 'Ejecución Impecable'}</h3>
                   <p>{lang === 'en' ? 'Strict punctuality, routes fully verified by active operators, and vehicles prepared to strict detailing standards.' : 'Puntualidad rigurosa, rutas validadas previamente por operadores activos y vehículos preparados bajo estrictos estándares de limpieza.'}</p>
@@ -176,10 +176,10 @@ export default function AboutUs() {
               </div>
 
               <div className="ab-pillar-row">
-                <div className="ab-pillar-meta">/ 03 . PRIVACY</div>
+                <div className="ab-pillar-meta">/ 03 . Confidencialidad</div>
                 <div className="ab-pillar-main">
                   <h3>{lang === 'en' ? 'Discreet Chauffeur Protocol' : 'Protocolo Discreto de Conducción'}</h3>
-                  <p>{lang === 'en' ? 'Our elite professional drivers are fully bilingual and trained in premium corporate confidentiality manners.' : 'Nuestros conductores profesionales de élite son completamente bilingües y están formados bajo estrictas normas de confidencialidad.'}</p>
+                  <p>{lang === 'en' ? 'Our elite professional drivers are fully bilingual and trained in premium corporate confidentiality manners.' : 'Contamos con conductores profesionales capacitados en atención al cliente, confidencialidad y protocolos de servicio. Conductores bilingües disponibles bajo solicitud.'}</p>
                 </div>
               </div>
             </div>

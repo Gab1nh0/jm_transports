@@ -39,14 +39,15 @@
   font-weight: 400;
 }
 
-
+/* ── GRILLA ASIMÉTRICA ORIGINAL CON TRASLADO AL FINAL ── */
 .tc-grid {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   grid-template-areas:
     "sanblas sanblas monkey"
-    "playas  colon   colon"
-    "city    city    portobelo"
+    "colon   colon   city"
+    "portobelo embera  embera"
+    "playas  playas  playas" /* Ahora el traslado se consolida como el cierre de la grilla */
     "custom  custom  custom";
   gap: 30px; 
 }
@@ -68,39 +69,37 @@
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
 }
 
-.tc-card.sanblas { grid-area: sanblas; }
-.tc-card.monkey  { grid-area: monkey; }
-.tc-card.playas  { grid-area: playas; }
-.tc-card.colon   { grid-area: colon; }
-.tc-card.city    { grid-area: city; }
+.tc-card.sanblas   { grid-area: sanblas; }
+.tc-card.monkey    { grid-area: monkey; }
+.tc-card.colon     { grid-area: colon; }
+.tc-card.city      { grid-area: city; }
 .tc-card.portobelo { grid-area: portobelo; }
+.tc-card.embera    { grid-area: embera; }
+.tc-card.playas    { grid-area: playas; }
 
-/* ── CAROUSEL FIX ──────────────────────────────────────── */
+/* ── ALTURAS ASIMÉTRICAS ORIGINALES REINTEGRADAS ── */
 .tc-carousel {
   position: relative;
-  overflow: hidden;       /* clips el track */
+  overflow: hidden;       
   flex-shrink: 0;
   width: 100%;
 }
 
-/* Altura por card */
 .tc-card.sanblas   .tc-carousel { height: 480px; }
 .tc-card.monkey    .tc-carousel { height: 480px; }
-.tc-card.playas    .tc-carousel { height: 480px; }
 .tc-card.colon     .tc-carousel { height: 480px; }
 .tc-card.city      .tc-carousel { height: 350px; }
 .tc-card.portobelo .tc-carousel { height: 350px; }
+.tc-card.embera    .tc-carousel { height: 350px; }
+.tc-card.playas    .tc-carousel { height: 380px; } /* Altura optimizada para la base horizontal final */
 
-/* El track tiene el ancho total de todos los slides (fijado inline) */
 .tc-slides {
   display: flex;
   height: 100%;
-  /* width e transform vienen del style inline en el JSX */
   transition: transform 0.55s cubic-bezier(0.4, 0, 0.2, 1);
   will-change: transform;
 }
 
-/* Cada slide ocupa exactamente 1/N del track (width inline) */
 .tc-slide {
   height: 100%;
   flex-shrink: 0;
@@ -113,7 +112,6 @@
   width: 100%;
   height: 100%;
 }
-/* ──────────────────────────────────────────────────────── */
 
 .tc-dots {
   position: absolute;
@@ -155,191 +153,155 @@
   z-index: 2;
 }
 
+/* ── DISEÑO INTERNO REFINADO CON FILA INFERIOR LINEAL ── */
 .tc-card-body {
   padding: 28px 24px;
   flex: 1;
   display: flex;
   flex-direction: column;
-}
-
-.tc-badges { display: flex; gap: 6px; margin-bottom: 12px; }
-
-.tc-badge {
-  font-family: var(--font-body);
-  font-size: 0.68rem;
-  font-weight: 700;
-  padding: 4px 12px;
-  border-radius: 50px;
-  letter-spacing: 0.05em;
-  text-transform: uppercase;
-}
-
-.tc-badge.featured { background: var(--color-primary); color: white; }
-.tc-badge.rated    { background: #f1f5f9; color: #64748b; border: 1px solid #e2e8f0; }
-
-.tc-card-top {
-  display: flex;
   justify-content: space-between;
-  align-items: flex-start;
-  margin-bottom: 12px;
-  gap: 12px;
 }
 
-.tc-card-top h3 {
+.tc-card-main-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.tc-card-body h3 {
   font-family: var(--font-headlines);
-  font-size: 1.4rem;
+  font-size: 1.45rem;
   font-weight: 700;
   color: var(--color-primary);
   line-height: 1.25;
   letter-spacing: -0.01em;
+  margin-bottom: 4px;
 }
 
-.tc-price {
-  text-align: right;
-  flex-shrink: 0;
-}
-
-.tc-price span {
+.tc-card-meta {
   font-family: var(--font-body);
-  font-size: 0.65rem;
+  font-size: 0.82rem;
   color: #94a3b8;
-  display: block;
   font-weight: 600;
-  letter-spacing: 0.06em;
   text-transform: uppercase;
-  margin-bottom: 2px;
-}
-
-.tc-price strong {
-  font-family: var(--font-headlines);
-  font-size: 2.2rem;
-  font-weight: 800;
-  color: var(--color-secondary); 
-  line-height: 1;
-}
-
-.tc-meta {
-  display: flex;
-  gap: 14px;
+  letter-spacing: 0.03em;
   margin-bottom: 14px;
-  flex-wrap: wrap;
-}
-
-.tc-meta-item {
-  font-family: var(--font-body);
-  font-size: 0.88rem;
-  color: #94a3b8;
-  font-weight: 500;
 }
 
 .tc-desc {
   font-family: var(--font-body);
-  font-size: 0.98rem;
+  font-size: 0.95rem;
   color: #64748b;
-  line-height: 1.6;
+  line-height: 1.55;
   font-weight: 400;
-  flex: 1;
-  margin-bottom: 18px;
+  margin-bottom: 16px;
 }
 
 .tc-destinations-text {
   font-family: var(--font-body);
-  font-size: 0.82rem; 
-  color: #64748b; 
-  font-weight: 500; 
+  font-size: 0.85rem;
+  color: #475569;
+  font-weight: 600;
   margin-bottom: 16px;
 }
 
-.tc-includes {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-  margin-bottom: 18px;
-}
-
-.tc-include {
-  font-family: var(--font-body);
-  font-size: 0.9rem;
-  color: #64748b;
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  font-weight: 400;
-}
-
-.tc-include::before {
-  content: '';
-  display: inline-block;
-  width: 14px;
-  height: 8px;
-  border-left: 2px solid var(--color-secondary);
-  border-bottom: 2px solid var(--color-secondary);
-  transform: rotate(-45deg);
-  margin-bottom: 4px;
-  flex-shrink: 0;
-}
-
-.tc-tags {
+.tc-highlights {
   display: flex;
   gap: 6px;
   flex-wrap: wrap;
-  margin-bottom: 18px;
+  margin-bottom: 24px;
 }
 
-.tc-tag {
+.tc-hl {
   font-family: var(--font-body);
   font-size: 0.75rem;
-  padding: 4px 10px;
+  padding: 5px 12px;
   border-radius: 6px;
   border: 1px solid #e2e8f0;
-  color: #64748b;
+  color: #475569;
   background: #f8fafc;
   font-weight: 500;
 }
 
-.tc-btn {
-  width: 100%; 
-  padding: 14px;
-  border: none;
-  border-radius: 12px; 
+/* ── ORGANIZACIÓN DE PRECIO ABAJO Y BOTÓN JUNTOS ── */
+.tc-card-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 18px;
+  border-top: 1px solid #f1f5f9;
+  margin-top: auto;
+}
+
+.tc-price-block {
+  display: flex;
+  flex-direction: column;
+}
+
+.tc-label {
   font-family: var(--font-body);
-  font-size: 0.95rem;
+  font-size: 0.68rem;
+  color: #94a3b8;
+  text-transform: uppercase;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  margin-bottom: 1px;
+}
+
+.tc-amount {
+  font-family: var(--font-headlines);
+  font-size: 1.65rem;
+  font-weight: 800;
+  color: var(--color-secondary); 
+  line-height: 1.1;
+}
+
+.tc-btn {
+  padding: 12px 24px;
+  border: none;
+  border-radius: 10px; 
+  font-family: var(--font-body);
+  font-size: 0.9rem;
   font-weight: 700;
   cursor: pointer;
   background: var(--color-primary); 
   color: var(--color-white);
-  margin-top: auto;
-  letter-spacing: 0.02em;
-  overflow: hidden;
-  position: relative;
-  transition: background-color 0.3s cubic-bezier(0.16, 1, 0.3, 1), transform 0.2s ease;
+  letter-spacing: 0.01em;
+  transition: background-color 0.2s ease;
 }
-
-.tc-btn::after {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: -75%;
-  width: 50%;
-  height: 100%;
-  background: linear-gradient(
-    to right,
-    transparent 0%,
-    rgba(255, 255, 255, 0.2) 50%,
-    transparent 100%
-  );
-  transform: skewX(-20deg);
-  transition: left 0.6s ease;
-  pointer-events: none;
-}
-
-.tc-btn:hover::after { left: 130%; }
 
 .tc-btn:hover {
-  background: var(--color-secondary); 
-  color: var(--color-white);
+  background: var(--color-secondary);
 }
 
+/* ── DIFERENCIACIÓN EJECUTIVA PARA EL TRASLADO ── */
+.tc-transfer-card {
+  border: 1px solid rgba(243, 156, 18, 0.25);
+  background: linear-gradient(180deg, var(--color-white) 0%, #fffdfa 100%);
+}
+
+.tc-transfer-badge {
+  font-size: 0.68rem;
+  font-weight: 800;
+  color: var(--color-secondary);
+  letter-spacing: 0.08em;
+  display: block;
+  margin-bottom: 4px;
+}
+
+.tc-transfer-card .tc-hl {
+  background: rgba(243, 156, 18, 0.05);
+  border-color: rgba(243, 156, 18, 0.15);
+  color: #b37d14;
+}
+
+.tc-btn-transfer {
+  background: #1e293b; 
+}
+.tc-btn-transfer:hover {
+  background: #0f172a;
+}
+
+/* CUSTOM SECT */
 .tc-custom {
   grid-area: custom;
   background: #f8fafc;
@@ -363,7 +325,6 @@
   align-items: center;
   justify-content: center;
   margin-bottom: 16px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.02);
 }
 
 .custom-appointment-svg.yellow-svg {
@@ -384,7 +345,6 @@
   font-family: var(--font-body);
   font-size: 0.95rem;
   color: #64748b;
-  font-weight: 400;
   line-height: 1.6;
   max-width: 500px;
   margin-bottom: 24px;
@@ -402,38 +362,29 @@
   display: inline-flex;
   align-items: center;
   gap: 10px;
-  box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3);
-  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: all 0.3s ease;
 }
 
-.tc-wa-icon {
-  width: 18px;
-  height: 18px;
+.tc-not-included {
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  color: #94a3b8;
+  font-style: italic;
+  margin-top: 4px;
+  line-height: 1.4;
 }
 
-.tc-green-tornasol-btn:hover {
-  transform: translateY(-2px);
-  filter: brightness(1.15);
-  box-shadow: 0 8px 25px rgba(16, 185, 129, 0.45);
-}
+.tc-wa-icon { width: 18px; height: 18px; }
+.tc-green-tornasol-btn:hover { filter: brightness(1.15); }
 
 @media (max-width: 992px) {
   .tc-root { padding: 60px 24px; }
-
   .tc-grid {
     grid-template-columns: 1fr;
     grid-template-areas: none;
     gap: 25px;
   }
-
-  .tc-card,
-  .tc-custom {
-    grid-area: auto !important;
-  }
-
+  .tc-card, .tc-custom { grid-area: auto !important; }
   .tc-header h2 { font-size: 2.2rem; }
-
-  .tc-card .tc-carousel {
-    height: 280px !important;
-  }
+  .tc-card .tc-carousel { height: 280px !important; }
 }

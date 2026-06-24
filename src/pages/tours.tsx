@@ -476,11 +476,11 @@ export default function Booking() {
           {/* Sidebar */}
           <aside className="bk-sidebar">
             <div className="bk-contact-card">
-              <h3>{lang === 'en' ? 'VIP Chauffeur & Logistics Support' : 'Soporte y Conserjería de Movilidad'}</h3>
+              <h3>{lang === 'en' ? '24/7 Executive Assistance and Concierge' : 'Asistencia Ejecutiva y Concierge 24/7'}</h3>
               <p className="bk-sidebar-lead">
                 {lang === 'en'
-                  ? 'Do you have custom security guidelines, tight corporate timelines, or specific VIP requests? Talk with an executive operator immediately.'
-                  : '¿Tiene pautas de seguridad estrictas, agendas corporativas complejas o solicitudes VIP específicas? Coordine con un operador ejecutivo en tiempo real.'}
+                  ? 'Do you have special requirements, complex schedules, or VIP requests? Our team coordinates every detail in real time.'
+                  : '¿Tiene requerimientos especiales, agendas complejas o solicitudes VIP? Nuestro equipo coordina cada detalle en tiempo real.'}
               </p>
 
               <div className="bk-contact-item">
@@ -509,7 +509,7 @@ export default function Booking() {
               </div>
 
               <a href="#" onClick={handleSupportRedirect} className="bk-whatsapp-editorial-btn">
-                <span className="bk-pulse-gold-dot" /> WhatsApp Concierge 24/7
+                <span className="bk-pulse-gold-dot" /> Hablar con un Asesor
               </a>
             </div>
           </aside>
