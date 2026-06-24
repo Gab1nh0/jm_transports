@@ -75,7 +75,7 @@ const translations = {
     'tours.monkey.hl2': 'Wildlife Spotting',
     'tours.monkey.hl3': 'Comfortable Return',
     'tours.monkey.price_label': 'Per person',
-    'tours.monkey.price': '$65',
+    'tours.monkey.price': '$85',
 
     // Beach Transfers
     'tours.playas.title': 'Transfers to Tourist Destinations',
@@ -344,7 +344,7 @@ const translations = {
     'tours.monkey.hl2': 'Avistamiento de Fauna',
     'tours.monkey.hl3': 'Retorno Seguro al Hotel',
     'tours.monkey.price_label': 'Por persona',
-    'tours.monkey.price': '$65',
+    'tours.monkey.price': '$85',
 
     // Beach Transfers
     'tours.playas.title': 'Traslados a Destinos Turísticos',

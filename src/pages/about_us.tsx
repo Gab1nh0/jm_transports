@@ -103,11 +103,11 @@ export default function AboutUs() {
                 
                 <div className="ab-editorial-metrics">
                   <div className="ab-metric-node">
-                    <span className="ab-node-num">14<span className="ab-node-mini">Yrs</span></span>
+                    <span className="ab-node-num">14<span className="ab-node-mini">+ Years</span></span>
                     <span className="ab-node-label">{t('about.stats.exp')}</span>
                   </div>
                   <div className="ab-metric-node">
-                    <span className="ab-node-num">4<span className="ab-node-mini">k+</span></span>
+                    <span className="ab-node-num">4<span className="ab-node-mini">k</span></span>
                     <span className="ab-node-label">{t('about.stats.guests')}</span>
                   </div>
                   <div className="ab-metric-node">
