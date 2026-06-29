@@ -3,6 +3,9 @@ import { useState, useEffect } from 'react';
 import Navbarwhite from '../components/navbar_fondo.tsx';
 import Footer from '../components/footer.tsx';
 import { useLang } from '../context/LanguageContext';
+import imgCiudad from '../assets/ciudad.webp';
+import imgchofer from '../assets/chofera.jpg';
+import imgflota from '../assets/flota.jpg';
 
 export default function AboutUs() {
   const { lang, t } = useLang();
@@ -92,7 +95,7 @@ export default function AboutUs() {
 
             <div className="ab-hero-split-block">
               <div className="ab-hero-image-wrapper">
-                <img src="https://firebasestorage.googleapis.com/v0/b/jmtransport-df658.firebasestorage.app/o/kunayala53925.jpg?alt=media&token=c5111d87-fbb1-48d0-83f6-3f75ab1ca004" alt="Panama Luxury Transit" />
+                <img src={imgCiudad} alt="Panama Luxury Transit" />
                 <div className="ab-hero-gradient-shield" />
               </div>
               
@@ -103,7 +106,7 @@ export default function AboutUs() {
                 
                 <div className="ab-editorial-metrics">
                   <div className="ab-metric-node">
-                    <span className="ab-node-num">14<span className="ab-node-mini">+Years</span></span>
+                    <span className="ab-node-num">14<span className="ab-node-mini">Years</span></span>
                     <span className="ab-node-label">{t('about.stats.exp')}</span>
                   </div>
                   <div className="ab-metric-node">
@@ -211,9 +214,9 @@ export default function AboutUs() {
 
               <div className="ab-collective-visual-side-composite">
                 <div className="ab-editorial-composite-frame">
-                  <img className="ab-composite-main-img" src="https://firebasestorage.googleapis.com/v0/b/jmtransport-df658.firebasestorage.app/o/kunayala53925.jpg?alt=media&token=c5111d87-fbb1-48d0-83f6-3f75ab1ca004" alt="JM Premium Fleet Base" />
+                  <img className="ab-composite-main-img" src={imgchofer}  alt="JM Premium Fleet Base" />
                   <div className="ab-composite-overlap-card">
-                    <img src="https://firebasestorage.googleapis.com/v0/b/jmtransport-df658.firebasestorage.app/o/kunayala53925.jpg?alt=media&token=c5111d87-fbb1-48d0-83f6-3f75ab1ca004" alt="JM Executive Detail" />
+                    <img src={imgflota} alt="JM Executive Detail" />
                   </div>
                 </div>
               </div>

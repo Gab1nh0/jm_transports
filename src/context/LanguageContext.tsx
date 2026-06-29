@@ -128,7 +128,6 @@ const translations = {
     'tours.embera.hl3': 'Ancestral Dances',
     'tours.embera.hl4': 'Crafts Exhibition',
     'tours.embera.hl5': 'Trip Coordinator',
-    'tours.embera.not_inc': 'Not Included: Souvenirs, additional beverages, and tips.',
     'tours.embera.price_label': 'Per person',
     'tours.embera.price': '$110',
     
@@ -206,7 +205,7 @@ const translations = {
 
     'fleet.header.subtitle': 'OUR FLEET',
     'fleet.header.title': 'Travel with Style, Comfort & Security',
-    'fleet.header.desc': 'Discover our diverse lineup of modern, impeccably maintained vehicles tailored to match your exact corporate, group, or VIP transportation requirements in Panama.',
+    'fleet.header.desc': 'Modern, meticulously maintained vehicles for corporate transfers, tourism, events, and VIP services across Panama. We operate our own fleet and a trusted network of partner vehicles to provide the best transportation solution for every service.',
     'fleet.filter.all': 'All Fleet',
     'fleet.filter.suv': 'SUVs',
     'fleet.filter.coaster': 'Group Vans & Coasters',
@@ -396,7 +395,6 @@ const translations = {
     'tours.embera.hl3': 'Danzas Típicas',
     'tours.embera.hl4': 'Exposición de Artesanías',
     'tours.embera.hl5': 'Coordinador de Viaje',
-    'tours.embera.not_inc': 'No Incluye: Compras de artesanías, bebidas adicionales y propinas.',
     'tours.embera.price_label': 'Por persona',
     'tours.embera.price': '$110',
 
@@ -480,7 +478,7 @@ const translations = {
     // Fleet Section
     'fleet.header.subtitle': 'NUESTRA FLOTA',
     'fleet.header.title': 'Viaja con Estilo, Comodidad y Seguridad',
-    'fleet.header.desc': 'Descubre nuestra diversa flota, Contamos con flota propia y una red de vehículos asociados seleccionados para ofrecer la solución de transporte ideal para cada servicio.',
+    'fleet.header.desc': 'Vehículos modernos y cuidadosamente mantenidos para traslados corporativos, turismo, eventos y servicios VIP en todo Panamá. Contamos con una flota propia y una red de vehículos asociados para ofrecer la mejor opción de transporte en cada servicio.',
     'fleet.filter.all': 'Toda la Flota',
     'fleet.filter.suv': 'SUVs',
     'fleet.filter.coaster': 'Furgonetas y Autobuses',

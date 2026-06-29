@@ -410,3 +410,34 @@
     padding-bottom: 45px !important;
   }
 }
+
+/* ==========================================================================
+   AVISO INFORMATIVO DE REFERENCIA VISUAL DE LA FLOTA (DISCRETO Y CORPORATIVO)
+   ========================================================================== */
+.fleet-disclaimer-note {
+  margin-top: 50px;
+  text-align: center;
+  width: 100%;
+}
+
+.fleet-disclaimer-note p {
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  line-height: 1.5;
+  color: var(--color-tertiary); 
+  opacity: 0.65;
+  max-width: 800px;
+  margin: 0 auto;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+}
+
+@media (max-width: 768px) {
+  .fleet-disclaimer-note {
+    margin-top: 35px;
+    padding: 0 15px;
+  }
+  .fleet-disclaimer-note p {
+    font-size: 0.78rem;
+  }
+}

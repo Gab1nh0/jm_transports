@@ -2,6 +2,9 @@ import './css/TourCard.css';
 import { useNavigate } from 'react-router-dom';
 import { useRef, useState, useEffect, useCallback } from 'react';
 import { useLang } from '../context/LanguageContext';
+import imgemb from "../assets/embera2.jpg";
+import imgemb1 from "../assets/embera1.jpg";
+import imgemb2 from "../assets/embera.jpeg";
 
 import imgCustomExperience from '../assets/tour_icon.png';
 
@@ -103,8 +106,9 @@ const playasImages = [
   { src: 'https://travelagents.decameron.com/images/destinos/panama/royal-panama/panoramica-hotal-panama.jpg', alt: 'Playa Tour Decameron' },
 ];
 const emberaImages = [
-  { src: 'https://upload.wikimedia.org/wikipedia/commons/e/ee/Embera_Panama_2011.jpg', alt: 'Embera Cultural Tour' },
-  { src: 'https://www.viajesyfotografia.com/wp-content/uploads/2015/04/comunidad-embera-rio-chagres.jpg', alt: 'Chagres River' }
+  { src: imgemb1, alt: 'Chagres River' },
+  { src: imgemb, alt: 'Embera Cultural Tour' },
+  { src: imgemb2, alt: 'type' }
 ];
 
 export default function Tours() {
@@ -136,7 +140,7 @@ export default function Tours() {
                 <span className="tc-hl">{t('tours.sanblas.hl4')}</span>
                 <span className="tc-hl">{t('tours.sanblas.hl5')}</span>
               </div>
-              <p className="tc-not-included">{t('tours.sanblas.not_inc')}</p>
+              
             </div>
             <div className="tc-card-footer">
               <div className="tc-price-block">
@@ -269,7 +273,7 @@ export default function Tours() {
                 <span className="tc-hl">{t('tours.embera.hl4')}</span>
                 <span className="tc-hl">{t('tours.embera.hl5')}</span>
               </div>
-              <p className="tc-not-included">{t('tours.embera.not_inc')}</p>
+            
             </div>
             <div className="tc-card-footer">
               <div className="tc-price-block">

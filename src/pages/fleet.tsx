@@ -29,21 +29,21 @@ interface Vehicle {
   passengers: string;
   isVip: boolean;
   image: string;
-  scaleGroup: 'bus' | 'van' | 'large-suv' | 'compact'; // Nueva propiedad interna para controlar escalas exactas
+  scaleGroup: 'bus' | 'van' | 'large-suv' | 'compact'; 
 }
 
+// Se reordenaron las SUVs (Okavango -> Chery Tiggo -> Kia Carens) y las Vans/Buses (Hiace antes de Coaster)
 const FLEET_DATA: Vehicle[] = [
   { name: "Chevrolet Suburban", type: "vip", passengers: "6-7", isVip: true, image: imgSuburban, scaleGroup: 'large-suv' },
   { name: "Mercedes-Benz Sprinter", type: "vip", passengers: "14-15", isVip: true, image: imgSprinter, scaleGroup: 'van' },
   { name: "Toyota Prado", type: "vip", passengers: "4-5", isVip: true, image: imgPrado, scaleGroup: 'large-suv' },
-  // Kia Carnival actualizada a VIP tal como solicitaste:
   { name: "Kia Carnival", type: "vip", passengers: "7-8", isVip: true, image: imgCarnival, scaleGroup: 'large-suv' },
-  { name: "Kia Carens", type: "suv", passengers: "6", isVip: false, image: imgCarens, scaleGroup: 'compact' },
   { name: "Geely Okavango", type: "suv", passengers: "6", isVip: false, image: imgOkavango, scaleGroup: 'compact' },
   { name: "Chery Tiggo 8 Pro", type: "suv", passengers: "6", isVip: false, image: imgTiggo, scaleGroup: 'compact' },
+  { name: "Kia Carens", type: "suv", passengers: "6", isVip: false, image: imgCarens, scaleGroup: 'compact' },
   { name: "Suzuki XL7", type: "suv", passengers: "6", isVip: false, image: imgXl7, scaleGroup: 'compact' },
-  { name: "Toyota Coaster", type: "coaster", passengers: "22-26", isVip: false, image: imgCoaster, scaleGroup: 'bus' },
   { name: "Toyota Hiace", type: "coaster", passengers: "14-15", isVip: false, image: imgHiace, scaleGroup: 'van' },
+  { name: "Toyota Coaster", type: "coaster", passengers: "22-26", isVip: false, image: imgCoaster, scaleGroup: 'bus' },
   { name: "Hyundai Universe", type: "coaster", passengers: "45-49", isVip: false, image: imgUniverse, scaleGroup: 'bus' },
 ];
 
@@ -156,13 +156,12 @@ export const FleetSection: React.FC = () => {
                 <div className="vehicle-card-premium">
                   {vehicle.isVip && <div className="vip-tag-badge">{t('fleet.vip.tag')}</div>}
                   
-                  {/* Se modificó el img-holder */}
                   <div className="img-holder">
                     <img 
                       src={vehicle.image} 
                       alt={vehicle.name} 
                       loading="lazy" 
-                      data-scale={vehicle.scaleGroup} /* Atributo clave inyectado al DOM */
+                      data-scale={vehicle.scaleGroup} 
                     />
                   </div>
 
@@ -201,6 +200,15 @@ export const FleetSection: React.FC = () => {
               </div>
             ))}
           </div>
+        </div>
+
+        {/* ── Nota Informativa Discreta e Integral del Cierre de Sección ── */}
+        <div className="fleet-disclaimer-note">
+          <p>
+            {lang === 'en' 
+              ? 'Images are for reference only. The assigned vehicle may vary depending on availability, the reserved category, and the specific requirements of your service.' 
+              : 'Las imágenes son referenciales. El vehículo asignado puede variar según disponibilidad, la categoría reservada y los requerimientos específicos del servicio.'}
+          </p>
         </div>
 
       </div>

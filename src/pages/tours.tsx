@@ -29,6 +29,10 @@ export default function Booking() {
   const [notes, setNotes] = useState('');
   const [phoneNumber, setPhoneNumber] = useState('');
 
+  // Estados de consentimiento de fotografías/videos
+  const [consentSocials, setConsentSocials] = useState(false);
+  const [consentAnonymous, setConsentAnonymous] = useState(false);
+
   // Estados - Servicio de Traslado
   const [transferRoute, setTransferRoute] = useState('');
   const [airport, setAirport] = useState('');
@@ -102,6 +106,20 @@ export default function Booking() {
     window.open(`https://wa.me/${companyPhone}?text=${encodeURIComponent(supportMessage)}`, '_blank');
   };
 
+  const handleConsentSocialsChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setConsentSocials(e.target.checked);
+    if (e.target.checked) {
+      setConsentAnonymous(false);
+    }
+  };
+
+  const handleConsentAnonymousChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setConsentAnonymous(e.target.checked);
+    if (e.target.checked) {
+      setConsentSocials(false);
+    }
+  };
+
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
 
@@ -114,7 +132,8 @@ export default function Booking() {
       alert(t('bk.alertFields'));
       return;
     }
-    if (serviceType === 'tour' && (!selectedTour || !pickupLocation.trim() || !tourDuration.trim() || !tourPlaces.trim() || !detailedDescription.trim())) {
+    // Remoción de la validación obligatoria de tourPlaces.trim() para evitar bloqueos
+    if (serviceType === 'tour' && (!selectedTour || !pickupLocation.trim() || !tourDuration.trim() || !detailedDescription.trim())) {
       alert(t('bk.alertFields'));
       return;
     }
@@ -160,7 +179,6 @@ export default function Booking() {
         ` *Tour Seleccionado:* ${selectedTour}`,
         ` *Duración Estimada:* ${tourDuration}`,
         ` *Lugar de Recogida:* ${pickupLocation.trim()}`,
-        ` *Lugares de Interés:* ${tourPlaces.trim()}`,
         '',
         ` *Descripción Detallada:*`,
         detailedDescription.trim()
@@ -205,6 +223,12 @@ export default function Booking() {
     if (notes.trim()) {
       lines.push('', ` *Notas Especiales:* ${notes.trim()}`);
     }
+
+    // Inclusión limpia del estatus del consentimiento en el reporte de WhatsApp
+    let mediaConsentStatus = 'No especificado / declinado';
+    if (consentSocials) mediaConsentStatus = 'Autorizado para redes sociales';
+    if (consentAnonymous) mediaConsentStatus = 'Autorizado de forma anónima (sin nombre)';
+    lines.push('', ` *Consentimiento Multimedia:* ${mediaConsentStatus}`);
 
     lines.push('', '__________________________________________', ' *JM Transport Group* — *Panama Premium Mobility*');
 
@@ -402,11 +426,8 @@ export default function Booking() {
                     <label>{t('bk.pickupLabel')}</label>
                     <input type="text" placeholder="e.g. Riu Plaza Hotel, Casco Viejo Airbnb..." value={pickupLocation} onChange={e => setPickupLocation(e.target.value)} required />
                   </div>
-
-                  <div className="bk-field full">
-                    <label>{t('bk.tourPlacesLabel')}</label>
-                    <input type="text" placeholder={t('bk.tourPlacesPlaceholder')} value={tourPlaces} onChange={e => setTourPlaces(e.target.value)} required />
-                  </div>
+                  
+                  {/* Se ha eliminado completamente el campo "Places of Interest" únicamente de esta sección */}
                 </>
               )}
 
@@ -457,6 +478,44 @@ export default function Booking() {
                 </div>
               )}
 
+              {/* ── Nueva Sección Discreta de Consentimiento Multimedia ── */}
+              {serviceType !== '' && (
+                <div className="bk-field full bk-consent-section">
+                  <label className="bk-consent-title">
+                    {lang === 'en' ? 'Media Consent (Optional)' : 'Consentimiento Multimedia (Opcional)'}
+                  </label>
+                  <div className="bk-consent-group">
+                    <label className="bk-consent-checkbox-label">
+                      <input 
+                        type="checkbox" 
+                        checked={consentSocials} 
+                        onChange={handleConsentSocialsChange} 
+                      />
+                      <span className="bk-custom-checkbox" />
+                      <span className="bk-checkbox-text">
+                        {lang === 'en' 
+                          ? "I'd love to appear on JM Transport Group's social media and authorize the use of photos or videos taken during my service."
+                          : "Me encantaría aparecer en las redes sociales de JM Transport Group y autorizo el uso de fotos o videos tomados durante mi servicio."}
+                      </span>
+                    </label>
+
+                    <label className="bk-consent-checkbox-label">
+                      <input 
+                        type="checkbox" 
+                        checked={consentAnonymous} 
+                        onChange={handleConsentAnonymousChange} 
+                      />
+                      <span className="bk-custom-checkbox" />
+                      <span className="bk-checkbox-text">
+                        {lang === 'en'
+                          ? "I authorize photos/videos to be taken, but without identifying my name."
+                          : "Autorizo que se tomen fotos/videos, pero sin identificar mi nombre."}
+                      </span>
+                    </label>
+                  </div>
+                </div>
+              )}
+
             </div>
 
             {serviceType !== '' && (
@@ -468,7 +527,7 @@ export default function Booking() {
                     <polygon points="22 2 15 22 11 13 2 9 22 2" />
                   </svg>
                 </button>
-                <p className="bk-note">⚡ {t('bk.waNote')}</p>
+                <p className="bk-note"> {t('bk.waNote')}</p>
               </>
             )}
           </form>
