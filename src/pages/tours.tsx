@@ -44,7 +44,7 @@ export default function Booking() {
   const [selectedTour, setSelectedTour] = useState('');
   const [pickupLocation, setPickupLocation] = useState('');
   const [tourDuration, setTourDuration] = useState('');
-  const [tourPlaces, setTourPlaces] = useState('');
+
 
   // Estados - Personalizados & Corporativos
   const [subCategory, setSubCategory] = useState('personal'); 
