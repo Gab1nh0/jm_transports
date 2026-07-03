@@ -4,8 +4,8 @@ import Navbarwhite from '../components/navbar_fondo.tsx';
 import Footer from '../components/footer.tsx';
 import { useLang } from '../context/LanguageContext';
 import imgCiudad from '../assets/ciudad.webp';
-import imgchofer from '../assets/chofera.jpg';
-import imgflota from '../assets/flota.jpg';
+import imgchofer from '../assets/equipo.jpeg';
+import imgflota from '../assets/flotalateral.jpeg';
 
 export default function AboutUs() {
   const { lang, t } = useLang();
