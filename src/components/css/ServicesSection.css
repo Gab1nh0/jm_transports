@@ -168,15 +168,15 @@ position: absolute;
 }
 
 .bg-airport { 
-  background-image: url('../../assets/chofer.png'); 
+  background-image: url('https://firebasestorage.googleapis.com/v0/b/jmtransport-df658.firebasestorage.app/o/chofer.png?alt=media&token=7e270379-b744-4a1c-a81b-5f988d1ceaec'); 
 }
 
 .bg-corporate { 
-  background-image: url('../../assets/ejecutivo.png'); 
+  background-image: url('https://firebasestorage.googleapis.com/v0/b/jmtransport-df658.firebasestorage.app/o/ejecutivo.png?alt=media&token=45ad2885-c80b-42f7-aefe-da878bf3498f'); 
 }
 
 .bg-tours { 
-  background-image: url('../../assets/panama.png'); 
+  background-image: url('https://firebasestorage.googleapis.com/v0/b/jmtransport-df658.firebasestorage.app/o/panama.png?alt=media&token=3c79e81b-b186-4f85-978f-af2fb00b2320'); 
 }
 
 /* --- MODAL OVERLAY (FONDO DIFUMINADO) --- */

@@ -21,7 +21,7 @@
   /* Degradado asfáltico premium. Si deseas colocar una imagen de fondo real, 
      descomenta la siguiente línea y reemplaza el link */
   background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
-  background-image: url('../../assets/portobelo.png');
+  background-image: url('https://firebasestorage.googleapis.com/v0/b/jmtransport-df658.firebasestorage.app/o/portobelo.png?alt=media&token=6ff05524-a929-48db-a3ef-8550295c8cd2');
   background-size: cover;
   background-position: center;
   overflow: hidden;

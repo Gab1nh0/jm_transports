@@ -5,23 +5,9 @@ import { Autoplay, Navigation, Pagination } from 'swiper/modules';
 import type { Swiper as SwiperType } from 'swiper';
 import { useLang } from '../context/LanguageContext';
 import { useNavigate } from 'react-router-dom';
-
 import 'swiper/css';
 import 'swiper/css/pagination'; 
 import './css/fleet.css';
-import imgCheckInstagram from '../assets/check.png'; 
-
-import imgSuburban from '../assets/suburban.avif';
-import imgSprinter from '../assets/sprinter.png';
-import imgCarens from '../assets/carens.png';
-import imgPrado from '../assets/prado.png';
-import imgCarnival from '../assets/Carnival.png';
-import imgOkavango from '../assets/okavango.png';
-import imgTiggo from '../assets/tiggo.png';
-import imgXl7 from '../assets/xl7.png';
-import imgCoaster from '../assets/coaster.png';
-import imgHiace from '../assets/hiace.png';
-import imgUniverse from '../assets/universe.png';
 
 interface Vehicle {
   name: string;
@@ -32,19 +18,18 @@ interface Vehicle {
   scaleGroup: 'bus' | 'van' | 'large-suv' | 'compact'; 
 }
 
-// Se reordenaron las SUVs (Okavango -> Chery Tiggo -> Kia Carens) y las Vans/Buses (Hiace antes de Coaster)
 const FLEET_DATA: Vehicle[] = [
-  { name: "Chevrolet Suburban", type: "vip", passengers: "6-7", isVip: true, image: imgSuburban, scaleGroup: 'large-suv' },
-  { name: "Mercedes-Benz Sprinter", type: "vip", passengers: "14-15", isVip: true, image: imgSprinter, scaleGroup: 'van' },
-  { name: "Toyota Prado", type: "vip", passengers: "4-5", isVip: true, image: imgPrado, scaleGroup: 'large-suv' },
-  { name: "Kia Carnival", type: "vip", passengers: "7-8", isVip: true, image: imgCarnival, scaleGroup: 'large-suv' },
-  { name: "Geely Okavango", type: "suv", passengers: "6", isVip: false, image: imgOkavango, scaleGroup: 'compact' },
-  { name: "Chery Tiggo 8 Pro", type: "suv", passengers: "6", isVip: false, image: imgTiggo, scaleGroup: 'compact' },
-  { name: "Kia Carens", type: "suv", passengers: "6", isVip: false, image: imgCarens, scaleGroup: 'compact' },
-  { name: "Suzuki XL7", type: "suv", passengers: "6", isVip: false, image: imgXl7, scaleGroup: 'compact' },
-  { name: "Toyota Hiace", type: "coaster", passengers: "14-15", isVip: false, image: imgHiace, scaleGroup: 'van' },
-  { name: "Toyota Coaster", type: "coaster", passengers: "22-26", isVip: false, image: imgCoaster, scaleGroup: 'bus' },
-  { name: "Hyundai Universe", type: "coaster", passengers: "45-49", isVip: false, image: imgUniverse, scaleGroup: 'bus' },
+  { name: "Chevrolet Suburban", type: "vip", passengers: "6-7", isVip: true, image: "https://firebasestorage.googleapis.com/v0/b/jmtransport-df658.firebasestorage.app/o/fleet%2Fsuburban.avif?alt=media&token=1a6b24d2-f7b6-4a89-86d0-66574c68e71b", scaleGroup: 'large-suv' },
+  { name: "Mercedes-Benz Sprinter", type: "vip", passengers: "14-15", isVip: true, image:"https://firebasestorage.googleapis.com/v0/b/jmtransport-df658.firebasestorage.app/o/fleet%2Fsprinter.png?alt=media&token=f913b809-9f27-44ee-a7f3-ba88eb8faa16", scaleGroup: 'van' },
+  { name: "Toyota Prado", type: "vip", passengers: "4-5", isVip: true, image: "https://firebasestorage.googleapis.com/v0/b/jmtransport-df658.firebasestorage.app/o/fleet%2Fprado.png?alt=media&token=f459288e-f960-4f05-a06b-f3f81f2a0423", scaleGroup: 'large-suv' },
+  { name: "Kia Carnival", type: "vip", passengers: "7-8", isVip: true, image: "https://firebasestorage.googleapis.com/v0/b/jmtransport-df658.firebasestorage.app/o/fleet%2FCarnival.png?alt=media&token=394cf5b0-844c-4c1b-b3c5-55bbfcab129e", scaleGroup: 'large-suv' },
+  { name: "Geely Okavango", type: "suv", passengers: "6", isVip: false, image: "https://firebasestorage.googleapis.com/v0/b/jmtransport-df658.firebasestorage.app/o/fleet%2Fokavango.png?alt=media&token=b2492ee7-8339-435a-a0bc-65d245b51fc2", scaleGroup: 'compact' },
+  { name: "Chery Tiggo 8 Pro", type: "suv", passengers: "6", isVip: false, image: "https://firebasestorage.googleapis.com/v0/b/jmtransport-df658.firebasestorage.app/o/fleet%2Ftiggo.png?alt=media&token=509a04d8-f27f-422c-a1f8-af526b347d54", scaleGroup: 'compact' },
+  { name: "Kia Carens", type: "suv", passengers: "6", isVip: false, image: "https://firebasestorage.googleapis.com/v0/b/jmtransport-df658.firebasestorage.app/o/fleet%2Fcarens.png?alt=media&token=a08e24d4-caa6-49ab-a9b3-c796723bd74e", scaleGroup: 'compact' },
+  { name: "Suzuki XL7", type: "suv", passengers: "6", isVip: false, image: "https://firebasestorage.googleapis.com/v0/b/jmtransport-df658.firebasestorage.app/o/fleet%2Fxl7.png?alt=media&token=1151f2ec-1dd8-4d4e-827f-64c5f1d18f5e", scaleGroup: 'compact' },
+  { name: "Toyota Hiace", type: "coaster", passengers: "14-15", isVip: false, image: "https://firebasestorage.googleapis.com/v0/b/jmtransport-df658.firebasestorage.app/o/fleet%2Fhiace.png?alt=media&token=2a6c61b3-32f5-4c69-8e60-70625311a903", scaleGroup: 'van' },
+  { name: "Toyota Coaster", type: "coaster", passengers: "22-26", isVip: false, image: "https://firebasestorage.googleapis.com/v0/b/jmtransport-df658.firebasestorage.app/o/fleet%2Fcoaster.png?alt=media&token=c8e55f54-c888-4235-97e4-a4617f9fd1bc", scaleGroup: 'bus' },
+  { name: "Hyundai Universe", type: "coaster", passengers: "45-49", isVip: false, image: "https://firebasestorage.googleapis.com/v0/b/jmtransport-df658.firebasestorage.app/o/fleet%2Funiverse.png?alt=media&token=92555ba5-3fb1-4f8d-9372-bc73ed894e36", scaleGroup: 'bus' },
 ];
 
 export const FleetSection: React.FC = () => {
@@ -192,7 +177,7 @@ export const FleetSection: React.FC = () => {
             {INCLUDED_BENEFITS.map((benefit, idx) => (
               <div key={idx} className="perk-card-item">
                 <img 
-                  src={imgCheckInstagram} 
+                  src="https://firebasestorage.googleapis.com/v0/b/jmtransport-df658.firebasestorage.app/o/check.png?alt=media&token=9ddfa5bf-b03b-4452-b878-90943868defa"
                   alt="Check Icon" 
                   className="perk-png-icon" 
                 />

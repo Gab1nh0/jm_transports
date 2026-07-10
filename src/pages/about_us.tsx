@@ -3,9 +3,7 @@ import { useState, useEffect } from 'react';
 import Navbarwhite from '../components/navbar_fondo.tsx';
 import Footer from '../components/footer.tsx';
 import { useLang } from '../context/LanguageContext';
-import imgCiudad from '../assets/ciudad.webp';
-import imgchofer from '../assets/equipo.jpeg';
-import imgflota from '../assets/flotalateral.jpeg';
+
 
 export default function AboutUs() {
   const { lang, t } = useLang();
@@ -95,7 +93,7 @@ export default function AboutUs() {
 
             <div className="ab-hero-split-block">
               <div className="ab-hero-image-wrapper">
-                <img src={imgCiudad} alt="Panama Luxury Transit" />
+                <img src="https://firebasestorage.googleapis.com/v0/b/jmtransport-df658.firebasestorage.app/o/flotalateral.jpeg?alt=media&token=8d36d3d9-480a-49ba-81d5-f5bee3ff01f5" alt="Panama Luxury Transit" />
                 <div className="ab-hero-gradient-shield" />
               </div>
               
@@ -214,9 +212,9 @@ export default function AboutUs() {
 
               <div className="ab-collective-visual-side-composite">
                 <div className="ab-editorial-composite-frame">
-                  <img className="ab-composite-main-img" src={imgchofer}  alt="JM Premium Fleet Base" />
+                  <img className="ab-composite-main-img" src="https://firebasestorage.googleapis.com/v0/b/jmtransport-df658.firebasestorage.app/o/equipo.jpeg?alt=media&token=40e74c81-e9b8-4ac7-b7dd-36e93fa181a3"  alt="JM Premium Fleet Base" />
                   <div className="ab-composite-overlap-card">
-                    <img src={imgflota} alt="JM Executive Detail" />
+                    <img src="https://firebasestorage.googleapis.com/v0/b/jmtransport-df658.firebasestorage.app/o/flotalateral.jpeg?alt=media&token=8d36d3d9-480a-49ba-81d5-f5bee3ff01f5" alt="JM Executive Detail" />
                   </div>
                 </div>
               </div>

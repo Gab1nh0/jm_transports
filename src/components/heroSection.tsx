@@ -1,6 +1,4 @@
 import './css/heroSection.css';
-import heroVideo from '../assets/hero-video.mp4';
-import heroVideoMobile from '../assets/hero-video-mobile.mp4';
 import { useLang } from '../context/LanguageContext';
 import { useNavigate } from 'react-router-dom';
 
@@ -48,12 +46,12 @@ export const Hero = () => {
         <div className="hero-main-container">
           {/* VIDEO PARA PC */}
           <video className="hero-video video-pc" autoPlay loop muted playsInline>
-            <source src={heroVideo} type="video/mp4" />
+            <source src="https://firebasestorage.googleapis.com/v0/b/jmtransport-df658.firebasestorage.app/o/hero-video.mp4?alt=media&token=036c7bc8-06af-49a7-814e-c2701b589b4a" type="video/mp4" />
           </video>
 
           {/* VIDEO PARA RESPONSIVE (MÓVIL) */}
           <video className="hero-video video-mobile" autoPlay loop muted playsInline>
-            <source src={heroVideoMobile} type="video/mp4" />
+            <source src="https://firebasestorage.googleapis.com/v0/b/jmtransport-df658.firebasestorage.app/o/hero-video-mobile.mp4?alt=media&token=32be8da4-2051-409c-bd43-8fcb9c9095b1" type="video/mp4" />
           </video>
 
           <div className="hero-overlay"></div>

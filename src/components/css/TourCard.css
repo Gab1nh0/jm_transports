@@ -39,7 +39,6 @@
   font-weight: 400;
 }
 
-/* ── GRILLA ASIMÉTRICA ORIGINAL CON TRASLADO AL FINAL ── */
 .tc-grid {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
@@ -47,7 +46,7 @@
     "sanblas sanblas monkey"
     "colon   colon   city"
     "portobelo embera  embera"
-    "playas  playas  playas" /* Ahora el traslado se consolida como el cierre de la grilla */
+    "playas  playas  playas" 
     "custom  custom  custom";
   gap: 30px; 
 }
@@ -77,7 +76,6 @@
 .tc-card.embera    { grid-area: embera; }
 .tc-card.playas    { grid-area: playas; }
 
-/* ── ALTURAS ASIMÉTRICAS ORIGINALES REINTEGRADAS ── */
 .tc-carousel {
   position: relative;
   overflow: hidden;       
@@ -91,7 +89,7 @@
 .tc-card.city      .tc-carousel { height: 350px; }
 .tc-card.portobelo .tc-carousel { height: 350px; }
 .tc-card.embera    .tc-carousel { height: 350px; }
-.tc-card.playas    .tc-carousel { height: 380px; } /* Altura optimizada para la base horizontal final */
+.tc-card.playas    .tc-carousel { height: 380px; } 
 
 .tc-slides {
   display: flex;
@@ -153,7 +151,6 @@
   z-index: 2;
 }
 
-/* ── DISEÑO INTERNO REFINADO CON FILA INFERIOR LINEAL ── */
 .tc-card-body {
   padding: 28px 24px;
   flex: 1;
@@ -222,7 +219,6 @@
   font-weight: 500;
 }
 
-/* ── ORGANIZACIÓN DE PRECIO ABAJO Y BOTÓN JUNTOS ── */
 .tc-card-footer {
   display: flex;
   align-items: center;
@@ -273,7 +269,6 @@
   background: var(--color-secondary);
 }
 
-/* ── DIFERENCIACIÓN EJECUTIVA PARA EL TRASLADO ── */
 .tc-transfer-card {
   border: 1px solid rgba(243, 156, 18, 0.25);
   background: linear-gradient(180deg, var(--color-white) 0%, #fffdfa 100%);
@@ -301,7 +296,6 @@
   background: #0f172a;
 }
 
-/* CUSTOM SECT */
 .tc-custom {
   grid-area: custom;
   background: #f8fafc;
@@ -377,6 +371,10 @@
 .tc-wa-icon { width: 18px; height: 18px; }
 .tc-green-tornasol-btn:hover { filter: brightness(1.15); }
 
+.img-monkey-3 {
+  object-position: center 20%;
+}
+
 @media (max-width: 992px) {
   .tc-root { padding: 60px 24px; }
   .tc-grid {
@@ -387,4 +385,8 @@
   .tc-card, .tc-custom { grid-area: auto !important; }
   .tc-header h2 { font-size: 2.2rem; }
   .tc-card .tc-carousel { height: 280px !important; }
+  
+  .img-monkey-1 {
+    object-position: top center;
+  }
 }

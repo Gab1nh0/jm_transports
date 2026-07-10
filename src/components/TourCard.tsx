@@ -2,14 +2,9 @@ import './css/TourCard.css';
 import { useNavigate } from 'react-router-dom';
 import { useRef, useState, useEffect, useCallback } from 'react';
 import { useLang } from '../context/LanguageContext';
-import imgemb from "../assets/embera2.jpg";
-import imgemb1 from "../assets/embera1.jpg";
-import imgemb2 from "../assets/embera.jpeg";
-
-import imgCustomExperience from '../assets/tour_icon.png';
 
 interface CarouselProps {
-  images: { src: string; alt: string }[];
+  images: { src: string; alt: string; id?: string }[];
   className?: string;
 }
 
@@ -53,7 +48,12 @@ function ImageCarousel({ images, className = '' }: CarouselProps) {
             className="tc-slide"
             style={{ width: `${100 / images.length}%` }}
           >
-            <img className="tc-card-img" src={img.src} alt={img.alt} loading="lazy" />
+            <img 
+              className={`tc-card-img ${img.id ? `img-${img.id}` : ''}`} 
+              src={img.src} 
+              alt={img.alt} 
+              loading="lazy" 
+            />
           </div>
         ))}
       </div>
@@ -74,41 +74,40 @@ function ImageCarousel({ images, className = '' }: CarouselProps) {
   );
 }
 
-/* ── Recursos de Imágenes ── */
 const sanBlasImages = [
-  { src: 'https://i0.wp.com/panamamastertours.com/wp-content/uploads/2023/08/panama-city-4-day-island-hopping-san-blas-adventure-1695289.webp?fit=1500%2C1001&ssl=1', alt: 'San Blas Islands' },
-  { src: 'https://sanblasadventours.com/wp-content/uploads/AnyConv.com__psina-5-scaled.webp', alt: 'San Blas turquoise water' },
-  { src: 'https://sanblasdreams.com/wp-content/uploads/2024/02/Diablo-Island-San-Blas-Tour-with-San-Blas-Dreams.jpg', alt: 'Guna Yala village' },
+  { src: 'https://firebasestorage.googleapis.com/v0/b/jmtransport-df658.firebasestorage.app/o/tour%2FSanblas1.webp?alt=media&token=502492ba-79c1-4fa2-9d63-e1f72092d8d0', alt: 'San Blas Islands' },
+  { src: 'https://firebasestorage.googleapis.com/v0/b/jmtransport-df658.firebasestorage.app/o/tour%2FSanblas2.webp?alt=media&token=122d9a06-c962-4756-b7a6-10a2c4c7094e ', alt: 'San Blas turquoise water' },
+  { src: 'https://firebasestorage.googleapis.com/v0/b/jmtransport-df658.firebasestorage.app/o/tour%2FSanblas3.jpg?alt=media&token=8ba9aaef-b449-4f7c-950f-6668806f6b93', alt: 'Guna Yala village' },
 ];
 const monkeyImages = [
-  { src: 'https://img.magnific.com/foto-gratis/macaco-cola-munon-cara-roja-selva-verde_475641-1561.jpg?semt=ais_hybrid&w=740&q=80', alt: 'Monkey on tree' },
-  { src: 'https://elfarodelcanal.com/wp-content/uploads/2022/07/mono-arana.jpg', alt: 'Howler monkey' },
-  { src: 'https://www.panamacanal-excursions.com/images/monkeyisland/monkey1_h.jpg', alt: 'Panama Canal rainforest' },
+  { id: 'monkey-1', src: 'https://firebasestorage.googleapis.com/v0/b/jmtransport-df658.firebasestorage.app/o/tour%2Fmonkey1.avif?alt=media&token=6701ca68-1169-4868-9db0-07dbe0839056', alt: 'Monkey on tree' },
+  { src: 'https://firebasestorage.googleapis.com/v0/b/jmtransport-df658.firebasestorage.app/o/tour%2Fmonkey2.jpg?alt=media&token=495e2e95-f44b-4e6b-a0b2-4f4abe1aafbb', alt: 'Howler monkey' },
+  { id: 'monkey-3', src: 'https://firebasestorage.googleapis.com/v0/b/jmtransport-df658.firebasestorage.app/o/tour%2Fmonkey3.jpg?alt=media&token=95bb24bc-6ef5-48b1-837d-525d8dd8cd3d' , alt: 'Howler monkey'},
 ];
 const cityImages = [
-  { src: 'https://media.admagazine.com/photos/6298ea6145a759381146b164/16:9/w_2991,h_1682,c_limit/panama-1.jpg', alt: 'Miraflores Locks' },
-  { src: 'https://media.istockphoto.com/id/1097678776/es/foto/skyline-ciudad-de-panam%C3%A1.jpg?s=612x612&w=0&k=20&c=HIF5ggcAMc_0VCkUxnun1dwEpoXV29FYrBpBzVOHD88=', alt: 'Panama City skyline' },
-  { src: 'https://balaena.travel/storage/header_bookable_category-photos-b3bdd95d-de9c-4444-9d28-efa1eb0f14ed', alt: 'Casco Antiguo' },
+  { src: 'https://firebasestorage.googleapis.com/v0/b/jmtransport-df658.firebasestorage.app/o/tour%2Ftourpanama1.webp?alt=media&token=80f0f899-7e29-495b-b9f3-5b95c7b5e828', alt: 'Miraflores Locks' },
+  { src: 'https://firebasestorage.googleapis.com/v0/b/jmtransport-df658.firebasestorage.app/o/tour%2Ftourpanama2.jpg?alt=media&token=27d424c7-ed8f-485c-8ad8-17a1a141ad50', alt: 'Panama City skyline' },
+  { src: 'https://firebasestorage.googleapis.com/v0/b/jmtransport-df658.firebasestorage.app/o/tour%2Ftourpanama3.jpg?alt=media&token=f9d864ea-f8db-4cd2-ac35-5531edf1cdad', alt: 'Casco Antiguo' },
 ];
 const portobeloImages = [
-  { src: 'https://upload.wikimedia.org/wikipedia/commons/thumb/e/e8/Bater%C3%ADa_de_Santiago_en_Portobelo.jpg/1280px-Bater%C3%ADa_de_Santiago_en_Portobelo.jpg', alt: 'Portobelo Forts' },
-  { src: 'https://www.thevisitorpanama.info/esp/wp-content/uploads/2024/08/Compress_20240817_235251_1205.jpg', alt: 'Portobelo Culture' },
-  { src: 'https://e9q4u4m64gi.exactdn.com/wp-content/uploads/2018/01/Portobelo-Panam%C3%A1-e1516284626521.jpg?strip=all', alt: 'Portobelo Coastline' },
+  { src: 'https://firebasestorage.googleapis.com/v0/b/jmtransport-df658.firebasestorage.app/o/tour%2FPortebelo1.jpg?alt=media&token=19a1838e-819f-4713-b57e-52f5e29f4058', alt: 'Portobelo Forts' },
+  { src: 'https://firebasestorage.googleapis.com/v0/b/jmtransport-df658.firebasestorage.app/o/tour%2Fportobelo2.jpg?alt=media&token=eab93003-7576-47e4-9475-b55c74308f46', alt: 'Portobelo Culture' },
+  { src: 'https://firebasestorage.googleapis.com/v0/b/jmtransport-df658.firebasestorage.app/o/tour%2Fportobelo3.webp?alt=media&token=eb84b355-fd9b-4e28-8e54-1a56fd5c44c2', alt: 'Portobelo Coastline' },
 ];
 const colonImages = [
-  { src: 'https://upload.wikimedia.org/wikipedia/commons/4/43/Toma_a%C3%A9rea_del_Fuerte_San_Lorenzo.jpg', alt: 'Colón Histórico Tour' },
-  { src: 'https://elcapitalfinanciero.com/wp-content/uploads/2017/07/sanlorenzo3.png', alt: 'San Lorenzo' },
-  { src: 'https://www.viajesyfotografia.com/wp-content/uploads/2016/11/esclusas-agua-clara.jpg', alt: 'Agua Clara Locks' },
+  { src: 'https://firebasestorage.googleapis.com/v0/b/jmtransport-df658.firebasestorage.app/o/tour%2Fcolon1.jpg?alt=media&token=78e302f3-48ca-4602-8c3d-20008385a907', alt: 'Colón Histórico Tour' },
+  { src: 'https://firebasestorage.googleapis.com/v0/b/jmtransport-df658.firebasestorage.app/o/tour%2Fcolon2.png?alt=media&token=91c488f1-dcc6-4539-b4ae-e174863d3e07', alt: 'San Lorenzo' },
+  { src: 'https://firebasestorage.googleapis.com/v0/b/jmtransport-df658.firebasestorage.app/o/tour%2Fcolon3.webp?alt=media&token=376dfdcd-349a-436c-ad25-8352c24561bc', alt: 'Agua Clara Locks' },
 ];
 const playasImages = [
-  { src: 'https://buenaventura.com.pa/wp-content/uploads/2024/06/video-4.jpg', alt: 'Playa Tour Buenaventura' },
-  { src: 'https://elcapitalfinanciero.com/wp-content/uploads/2022/12/Evenia-Hotel.jpg', alt: 'Playa Tour Bijao' },
-  { src: 'https://travelagents.decameron.com/images/destinos/panama/royal-panama/panoramica-hotal-panama.jpg', alt: 'Playa Tour Decameron' },
+  { src: 'https://firebasestorage.googleapis.com/v0/b/jmtransport-df658.firebasestorage.app/o/tour%2Fplaya1.jpg?alt=media&token=d36c0fac-0e84-4957-b1ac-c0d4cf5a0f5a', alt: 'Playa Tour Buenaventura' },
+  { src: 'https://firebasestorage.googleapis.com/v0/b/jmtransport-df658.firebasestorage.app/o/tour%2Fplaya2.jpg?alt=media&token=7a170522-76e3-4a9d-af0c-c88af0d62d68', alt: 'Playa Tour Bijao' },
+  { src: 'https://firebasestorage.googleapis.com/v0/b/jmtransport-df658.firebasestorage.app/o/tour%2Fplaya3.jpg?alt=media&token=088d2ea6-3b62-4ddd-b171-d3abf878dea7', alt: 'Playa Tour Decameron' },
 ];
 const emberaImages = [
-  { src: imgemb1, alt: 'Chagres River' },
-  { src: imgemb, alt: 'Embera Cultural Tour' },
-  { src: imgemb2, alt: 'type' }
+  { src: 'https://firebasestorage.googleapis.com/v0/b/jmtransport-df658.firebasestorage.app/o/tour%2Fembera.jpeg?alt=media&token=0924aae3-de64-4e4d-9e45-7a9111364300', alt: 'Chagres River' },
+  { src: 'https://firebasestorage.googleapis.com/v0/b/jmtransport-df658.firebasestorage.app/o/tour%2Fembera1.jpg?alt=media&token=fa8766fc-422e-42ab-8180-b0f8fd6ab3ac', alt: 'Embera Cultural Tour' },
+  { src: 'https://firebasestorage.googleapis.com/v0/b/jmtransport-df658.firebasestorage.app/o/tour%2Fembera2.jpg?alt=media&token=2289fbf3-a1fb-4748-b85d-8bf98626d3e6', alt: 'type' }
 ];
 
 export default function Tours() {
@@ -124,8 +123,6 @@ export default function Tours() {
       </div>
 
       <div className="tc-grid">
-
-        {/* ── 1. San Blas (ESPACIO EXTRA APROVECHADO) ── */}
         <div className="tc-card sanblas">
           <ImageCarousel images={sanBlasImages} />
           <div className="tc-card-body">
@@ -140,7 +137,6 @@ export default function Tours() {
                 <span className="tc-hl">{t('tours.sanblas.hl4')}</span>
                 <span className="tc-hl">{t('tours.sanblas.hl5')}</span>
               </div>
-              
             </div>
             <div className="tc-card-footer">
               <div className="tc-price-block">
@@ -154,7 +150,6 @@ export default function Tours() {
           </div>
         </div>
 
-        {/* ── 2. Monkey Tour ── */}
         <div className="tc-card monkey">
           <ImageCarousel images={monkeyImages} />
           <div className="tc-card-body">
@@ -180,7 +175,6 @@ export default function Tours() {
           </div>
         </div>
 
-        {/* ── 3. Historic Colon ── */}
         <div className="tc-card colon">
           <ImageCarousel images={colonImages} />
           <div className="tc-card-body">
@@ -206,7 +200,6 @@ export default function Tours() {
           </div>
         </div>
 
-        {/* ── City Tour ── */}
         <div className="tc-card city">
           <ImageCarousel images={cityImages} />
           <div className="tc-card-body">
@@ -217,7 +210,7 @@ export default function Tours() {
               <div className="tc-highlights">
                 <span className="tc-hl">{t('tours.city.hl1')}</span>
                 <span className="tc-hl">{t('tours.city.hl2')}</span>
-                <span className="tc-hl">{t('tours.city.hl3')}</span> {/* Mostrará el servicio opcional bajo solicitud */}
+                <span className="tc-hl">{t('tours.city.hl3')}</span>
               </div>
             </div>
             <div className="tc-card-footer">
@@ -232,7 +225,6 @@ export default function Tours() {
           </div>
         </div>
 
-        {/* ── 5. Portobelo ── */}
         <div className="tc-card portobelo">
           <ImageCarousel images={portobeloImages} />
           <div className="tc-card-body">
@@ -258,7 +250,6 @@ export default function Tours() {
           </div>
         </div>
 
-        {/* ── 6. Emberá Tour ── */}
         <div className="tc-card embera">
           <ImageCarousel images={emberaImages} />
           <div className="tc-card-body">
@@ -273,7 +264,6 @@ export default function Tours() {
                 <span className="tc-hl">{t('tours.embera.hl4')}</span>
                 <span className="tc-hl">{t('tours.embera.hl5')}</span>
               </div>
-            
             </div>
             <div className="tc-card-footer">
               <div className="tc-price-block">
@@ -287,7 +277,6 @@ export default function Tours() {
           </div>
         </div>
 
-        {/* ── 7. Beach Transfers ── */}
         <div className="tc-card playas tc-transfer-card">
           <ImageCarousel images={playasImages} />
           <div className="tc-card-body">
@@ -315,11 +304,10 @@ export default function Tours() {
           </div>
         </div>
 
-        {/* Custom Experience */}
         <div className="tc-custom">
           <div className="tc-custom-icon">
             <img 
-              src={imgCustomExperience} 
+              src="https://firebasestorage.googleapis.com/v0/b/jmtransport-df658.firebasestorage.app/o/tour_icon.png?alt=media&token=a5665592-cc6e-4789-b099-af1685287203" 
               alt="Check Icon" 
               className="custom-appointment-svg yellow-svg"
             />
@@ -337,7 +325,6 @@ export default function Tours() {
             {lang === 'en' ? 'Contact Support' : 'Contactar Soporte'}
           </a>
         </div>
-
       </div>
     </div>
   );
