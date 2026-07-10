@@ -1,7 +1,3 @@
-/* ==========================================================================
-   HERO SECTION 
-   ========================================================================== */
-
 .hero-main-container {
   position: relative;
   width: 100%;
@@ -11,9 +7,9 @@
   justify-content: flex-start;
   overflow: hidden;
   color: var(--color-white);
+  background: #121212;
 }
 
-/* Video de Fondo General */
 .hero-video {
   position: absolute;
   top: 50%;
@@ -26,16 +22,23 @@
   transform-origin: center center;
 }
 
-/* --- CONTROL VISUAL DE VIDEOS POR DEFECTO (PC) --- */
+.hero-video::-webkit-media-controls-panel,
+.hero-video::-webkit-media-controls-play-button,
+.hero-video::-webkit-media-controls-start-playback-button {
+  display: none !important;
+  -webkit-appearance: none !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+}
+
 .video-pc {
-  display: block; /* Se muestra en PC */
+  display: block; 
 }
 
 .video-mobile {
-  display: none;  /* Se oculta en PC */
+  display: none;  
 }
 
-/* Capa oscura */
 .hero-overlay {
   position: absolute;
   top: 0;
@@ -46,7 +49,6 @@
   z-index: 2;
 }
 
-/* Texto del hero */
 .hero-content {
   position: relative;
   z-index: 3;
@@ -73,7 +75,6 @@
   color: #E2E8F0;
 }
 
-/* Contenedor de botones */
 .hero-buttons {
   display: flex;
   gap: 20px;
@@ -90,7 +91,6 @@
   transition: all 0.25s ease;
 }
 
-/* --- BOTÓN WHATSAPP --- */
 .btn-whatsapp {
   background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
   color: var(--color-white) !important;
@@ -122,7 +122,6 @@
   filter: brightness(1.15);
 }
 
-/* --- BOTÓN EXPLORAR TOURS --- */
 .btn-tours {
   background-color: transparent;
   color: var(--color-white);
@@ -143,11 +142,6 @@
               0 8px 20px rgba(0, 0, 0, 0.3);
 }
 
-/* ==========================================================================
-   RESPONSIVE EXCLUSIVO
-   ========================================================================== */
-
-/* Tablets y Laptops Pequeñas */
 @media (max-width: 1024px) {
   .hero-content {
     padding-left: 60px;
@@ -159,7 +153,6 @@
   }
 }
 
-/* Celulares y Dispositivos Móviles */
 @media (max-width: 768px) {
   .hero-main-container {
     padding-left: 24px;   
@@ -167,7 +160,6 @@
     justify-content: flex-start;
   }
 
-  /* ── INTERCAMBIO DE VIDEOS REAL ── */
   .video-pc {
     display: none !important;    
   }
@@ -178,11 +170,10 @@
     height: 100%;
     top: 0;
     left: 0;
-    transform: none;            /* Quitamos transformaciones pesadas para el 9:16 */
+    transform: none;            
     object-fit: cover;
   }
 
-  /* Ajustes de contenido */
   .hero-content {
     padding-left: 0; 
     padding-right: 0;
@@ -203,7 +194,6 @@
     line-height: 1.5;
   }
 
-  /* Botones adaptados para mobile */
   .hero-buttons {
     flex-direction: column; 
     gap: 14px;           
@@ -226,7 +216,6 @@
   }
 }
 
-/* Optimización landscape */
 @media (max-height: 500px) and (orientation: landscape) {
   .hero-main-container {
     height: auto;

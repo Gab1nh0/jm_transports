@@ -8,7 +8,6 @@ export const Hero = () => {
 
   const companyPhone = '50762166675';
 
-  
   const handleWhatsAppContact = () => {
     const customMessage = lang === 'en'
       ? 'Hello, JM Transport Group!  I just visited your website and would like to get custom information regarding private transport services in Panama. '
@@ -18,18 +17,13 @@ export const Hero = () => {
     window.open(`https://wa.me/${companyPhone}?text=${encodedMessage}`, '_blank');
   };
 
-  
   const handleScrollToTours = () => {
     const toursSection = document.getElementById('tc-header');
     
     if (toursSection) {
-  
       toursSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
     } else {
-      
       navigate('/');
-      
-
       setTimeout(() => {
         const dynamicSection = document.getElementById('tc-header');
         if (dynamicSection) {
@@ -42,15 +36,14 @@ export const Hero = () => {
   return (
     <>
       <section className="hero-section-wrapper">
-        
         <div className="hero-main-container">
           {/* VIDEO PARA PC */}
-          <video className="hero-video video-pc" autoPlay loop muted playsInline>
+          <video className="hero-video video-pc" autoPlay loop muted playsInline preload="auto">
             <source src="https://firebasestorage.googleapis.com/v0/b/jmtransport-df658.firebasestorage.app/o/hero-video.mp4?alt=media&token=036c7bc8-06af-49a7-814e-c2701b589b4a" type="video/mp4" />
           </video>
 
           {/* VIDEO PARA RESPONSIVE (MÓVIL) */}
-          <video className="hero-video video-mobile" autoPlay loop muted playsInline>
+          <video className="hero-video video-mobile" autoPlay loop muted playsInline preload="auto">
             <source src="https://firebasestorage.googleapis.com/v0/b/jmtransport-df658.firebasestorage.app/o/hero-video-mobile.mp4?alt=media&token=32be8da4-2051-409c-bd43-8fcb9c9095b1" type="video/mp4" />
           </video>
 
@@ -61,7 +54,6 @@ export const Hero = () => {
             <p>{t('hero.subtitle')}</p>
             
             <div className="hero-buttons">
-              {/* Botón WhatsApp */}
               <button className="btn-whatsapp" onClick={handleWhatsAppContact}>
                 <svg xmlns="http://www.w3.org/2000/svg" 
                     viewBox="0 0 24 24" 
@@ -71,15 +63,12 @@ export const Hero = () => {
                 </svg>
                 {t('hero.btn.contact')}
               </button>
-              
-              {/* Botón de Scroll optimizado hacia la ID real de tus tours */}
               <button className="btn-tours" onClick={handleScrollToTours}>
                 {t('hero.btn.tours')}
               </button>
             </div>
           </div>
         </div>
-
       </section>
     </>
   );
