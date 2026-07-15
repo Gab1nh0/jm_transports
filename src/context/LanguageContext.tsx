@@ -353,7 +353,7 @@ const translations = {
     'tours.playas.hl1': 'Vehículos Modernos Ejecutivos',
     'tours.playas.hl2': 'Equipaje sin Límites',
     'tours.playas.hl3': 'Atención Personalizada',
-    'tours.playas.price_label': 'Desde 4 personas',
+    'tours.playas.price_label': 'Desde',
     'tours.playas.price': '$125',
 
     // Historic Colon
