@@ -114,9 +114,9 @@
 
 /* ── Location ── */
 .footer-location address {
-  font-style: normal;
-  font-size: 0.88rem;
-  color: var(--color-tertiary);
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.5rem;
+  color: #ffff;
   line-height: 1.8;
   font-weight: 300;
   white-space: pre-line;

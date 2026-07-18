@@ -22,7 +22,7 @@ export const SocialPill: React.FC = () => {
   return (
     <div className={`social-pill-container ${isVisible ? 'show' : 'hide'}`}>
       <a 
-        href="https://www.instagram.com/jmtransportpa?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" 
+        href="https://www.instagram.com/jmtransportgroup?utm_source=qr" 
         target="_blank" 
         rel="noopener noreferrer" 
         className="social-icon instagram"
